@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>EatMI</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="index.html">EatMi</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Find more
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="services.html">Services</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="about.html">About</a>
+              </div>
+            </li>
+          </ul>
+          <li class="nav-item active">
+          <ul class="navbar-nav mr-auto">
+            <a class="nav-link" href="#">Accedi<span class="sr-only">(current)</span></a>
+          </li>
+          </ul>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+            <a class="nav-link" href="#">Registrati<span class="sr-only">(current)</span></a>
+          </li>
+         </ul>
+        </div>
+      </nav>
+      <h1 style="text-align:center;">Di cosa hai voglia?</h1>
+      <div class="btn-group">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Tipologia di piatto
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="services.html">Hamburger</a>
+          <a class="dropdown-item" href="about.html">Pizze</a>
+          <a class="dropdown-item" href="about.html">Pasta</a>
+          <a class="dropdown-item" href="about.html">Piadine</a>
+          <a class="dropdown-item" href="about.html">Insalate</a>
+          <a class="dropdown-item" href="about.html">Dolci</a>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Fasce di prezzo
+        </button>
+        <div class="dropdown-menu">
+          <div class="slidecontainer">
+            <input type="range" min="4" max="10" value="7" class="slider" id="myRange">
+            <p>Prezzo: <span id="demo"></span></p>
+          </div>
+        </div>
+      </div>
+
+     
+<div id="div1"></div>
+<script>
+  var data = JSON.parse(prodotti);
+  var obj = [
+       {
+        "name":"AmBurger",
+        "image":"INSERISCI IMMAGINE",
+        "type":"panini",
+        "price": 8.00,
+        "ingredients" : [
+            "bread", 
+            "hamburger",
+            "ketchup",
+            "onions",
+            "mustard",
+            "pickle"
+        ]
+       },
+       {
+        "name":"AmBurDen",
+        "image":"INSERISCI IMMAGINE",
+        "type":"panini",
+        "price": 7.50,
+        "ingredients" : [
+            "bread", 
+            "chicken",
+            "caesar sauce"
+        ]
+       },
+       {
+        "name":"Ciobber",
+        "image":"INSERISCI IMMAGINE",
+        "type":"panini",
+        "price": 6.50,
+        "ingredients" : [
+            "bread", 
+            "hamburger",
+            "ketchup",
+            "onions",
+            "mustard",
+            "cheese"
+        ]
+       },
+       {
+        "name":"Veggie",
+        "image":"INSERISCI IMMAGINE",
+        "type":"panini",
+        "price": 8.00,
+        "ingredients" : [
+            "bread", 
+            "soy burger",
+            "tomato",
+            "onions",
+            "mayonnaise",
+            "pickle",
+            "lattuce"
+
+        ]
+       },
+       {
+        "name":"McBEQon",
+        "image":"INSERISCI IMMAGINE",
+        "type":"panini",
+        "price": 5.70,
+        "ingredients" : [
+            "bread", 
+            "hamburger",
+            "crispy sauce",
+            "bacon",
+            "cheese"
+            
+        ]
+       },
+       {
+        "name":"AriPizza",
+        "image":"INSERISCI IMMAGINE",
+        "type":"pizza",
+        "price": 6.50,
+        "ingredients" : [
+            "dough", 
+            "tomato sauce",
+            "mozzarella",
+            "oregano"
+            
+        ]
+       },
+       {
+        "name":"PizzAm",
+        "image":"INSERISCI IMMAGINE",
+        "type":"pizza",
+        "price": 7.00,
+        "ingredients" : [
+            "dough", 
+            "tomato sauce",
+            "mozzarella",
+            "zucchini",
+            "egg plant"
+            
+            
+        ]
+       },
+       {
+        "name":"AmAtriciana",
+        "image":"INSERISCI IMMAGINE",
+        "type":"pasta",
+        "price": 8.00,
+        "ingredients" : [
+            "spaghetti", 
+            "guanciale",
+            "pecorino",
+            "tomatoes"  
+        ]
+       },
+       {
+        "name":"Troie al Pesto",
+        "image":"INSERISCI IMMAGINE",
+        "type":"pasta",
+        "price": 7.00,
+        "ingredients" : [
+            "trofie", 
+            "pecorino",
+            "basil pesto"
+            
+            
+        ]
+       }
+      
+       
+    
+    ]
+
+    
+document.getElementById('div1').innerHTML=prodotti[0].name
+</script>
+
+
+      <div class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <h4> EatMI </h4>
+                </div>
+                <div class="col-lg-3 col-sm-2 col-xs-3">
+                    <h3> Contact </h3>
+                    <ul>
+                        <li><a class="email"href="#"> insert email here </a></li>
+                        <br/>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-sm-2 col-xs-3">
+                    <ul>
+                        <li> <h5> <a href="about.html" style="margin-top: 5em"> ABOUT US</a> <h5></li>
+                        <li> <h5><a href="services.html"> SERVICES </a> <h5></li>
+                        
+                    </ul>
+                </div>
+               
+            <!--/.row--> 
+        </div>
+        <!--/.container--> 
+    </div>
+    <!--/.footer-->
+                          
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="pull-left copyright"> Copyright © EatMI 2020. All right reserved. </p>
+       
+        </div>
+    </div>
+    <!--/.footer-bottom--> 
+
+</footer>
+
+
+
+
+
+
+<script>var slider = document.getElementById("myRange");
+  var output = document.getElementById("demo");
+  output.innerHTML = slider.value; // Display the default slider value
+  
+  // Update the current slider value (each time you drag the slider handle)
+  slider.oninput = function() {
+    output.innerHTML = this.value;
+  }</script>
+
+
+
+
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="script/script.js"></script>
+      <script type="text/javascript" src="prodotti.json"></script>
+</body>
+</html>
