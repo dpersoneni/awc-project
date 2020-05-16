@@ -1,5 +1,5 @@
 
-     [
+    prodotti = '[
        {
         "name":"AmBurger",
         "image":"INSERISCI IMMAGINE",
@@ -125,7 +125,7 @@
       
        
     
-    ]
+    ]';
 
     
 

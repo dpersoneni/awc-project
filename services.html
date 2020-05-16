@@ -41,33 +41,15 @@
       </nav>
      
       <h2 style="text-align: center;">Cosa facciamo?</h2>
-      <p style="text-align: center;">EatMI mette in collegamento i ristoratori milanesi con tutta la città. Offriamo la possibilità di ordinare ciò che desideri, quando lo desideri
+      <p style="text-align: center;">Attraverso EatMI mettiamo in collegamento i ristoratori milanesi con tutta la città. Offriamo la possibilità di ordinare ciò che desideri, quando lo desideri.
       </p> <br>
       <h2 style="text-align: center;">Come lo facciamo?</h2>
-      <p style="text-align: center;">Siamo riusciti a creare una rete </p>
+      <p style="text-align: center;">Ogni ristoratore si collega e aggiunge le proprie pietanze, inserendo informazioni riguardo al locale.
+      In questo modo il cliente si registra e ha la possibilità di scegliere tra un vasto numero di piatti.</p>
+      
 
+    
 
-      <div id="myData"></div>
-    <script>
-        fetch('prodotti.json')
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                appendData(data);
-            })
-            .catch(function (err) {
-                console.log('error: ' + err);
-            });
-        function appendData(data) {
-            var mainContainer = document.getElementById("myData");
-            for (var i = 0; i < data.length; i++) {
-                var div = document.createElement("div");
-                div.innerHTML = 'Name: ' +data[i].name + ' ' + data[i].price;
-                mainContainer.appendChild(div);
-            }
-        }
-    </script>
 
 
 
