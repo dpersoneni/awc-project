@@ -2,7 +2,7 @@
 var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
-        var jsonObject = JSON.parse(this.responseText);
+        var jsonObject = JSON.parse(xhr.responseText);
         txt = "";
         txt += "<table border='1'>"
         for (x in jsonObject) {
