@@ -216,7 +216,25 @@ ul, li {
   background: #817679;
   cursor: pointer;
 }
-.piatti {
+.generic {
   margin: 2% 8% 5% 8%;
+ 
+}
+
+.casa {
+  background-color:#DCDCDC;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  margin: 3em 30em 3em 30em; 
+        float: none; 
+        margin-bottom: 10px;
+
+  border: none;
+  perspective: 1000px;
+}
+
+.casa form {
+  padding: 2em 3em 2em 4em;
 
 }
