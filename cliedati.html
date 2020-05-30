@@ -8,15 +8,65 @@
     <title>EatMI</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="index.html">EatMI</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-       
-    
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="index.html">EatMI</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+<div class="casa">
+<form>
+    <div class="col-sm-10 offset-sm-4"><h3>Dati anagrafici</h3></div>
+    <div class="form-group row">
+        <label for="nomer" class="col-sm-4 col-form-label">Nome</label>
+        <div class="col-sm-7">
+            <input type="text" class="form-control" id="nomer" placeholder="Nome">
         </div>
-      </nav>
+    </div>
+    <div class="form-group row">
+        <label for="cognome" class="col-sm-4 col-form-label">Cognome</label>
+        <div class="col-sm-7">
+            <input type="text" class="form-control" id="cognome" placeholder="Cognome">
+        </div>
+     </div>
+     <div class="form-group row">
+      <label for="datanascita" class="col-sm-4 col-form-label">Data di nascita</label>
+      <div class="col-sm-7">
+          <input type="text" class="form-control" id="datanascita" placeholder="Data di nascita">
+      </div>
+  </div>
+     <div class="form-group row">
+        <label for="indirizzo" class="col-sm-4 col-form-label">Indirizzo</label>
+        <div class="col-sm-7">
+            <input type="text" class="form-control" id="indirizzo" placeholder="Indirizzo">
+        </div>
+     </div><br>
+        
+       <!-- <div class="col-sm-10 offset-sm-4"><h3>Modalità di pagamento</h3></div>-->
+        <div class="form-group row">
+          <label for="cognome" class="col-sm-4 col-form-label" style="font-weight:bold ;">Modalità di pagamento</label>
+          <div class="col-sm-7">
+            <input type="radio" id="contanti" name="persona" value="contanti">
+            <label for="contanti">Contanti</label> <br>
+            <input type="radio" id="carta" name="persona" value="carta">
+            <label for="carta">Carta di credito</label> <br>
+            <input type="radio" id="bancomat" name="persona" value="bancomat">
+            <label for="bancomat">Bancomat</label> <br>
+            <input type="radio" id="paypal" name="persona" value="paypal">
+            <label for="paypal">Paypal</label> <br>
+            <input type="radio" id="buonipasto" name="persona" value="buonipasto">
+            <label for="buonipasto">Buoni pasto</label> <br>
+          </div>
+       </div>
+      
+     <div class="form-group row">
+        <div class="col-sm-10 offset-sm-4">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+</div>
+   
 </body>
 </html>
