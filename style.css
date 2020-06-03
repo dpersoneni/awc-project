@@ -280,9 +280,9 @@ button:hover, a:hover {
 
 .flip-card {
   background-color: transparent;
-  width: 300px;
-  height: 200px;
-  border: 1px solid black;
+  width: 300px; /*forse con width a 100% cambiamo un po' di cosette */
+  height: 250px;
+
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -318,7 +318,7 @@ button:hover, a:hover {
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
-  color: white;
+  background-color: red;
+  color: black;
   transform: rotateY(180deg);
 }
