@@ -40,16 +40,7 @@
   perspective: 1000px;
  
 }
-.card-footer {
-    /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
-    transition: 0.3s;
-    border-radius: 0px;
-    width: 200px;
-    height: 50px;
-    margin: 0 auto; 
-    position: absolute;
-    bottom: 5px;
-}
+
 
 .btn .btn-secondary {
     width: 200px;
@@ -64,7 +55,7 @@
     border: none;
 }
 nav {
-    background-color:  #ffccb3;
+    background-color: #608757;
     color: lightcoral;
 }
 
@@ -280,8 +271,8 @@ button:hover, a:hover {
 
 .flip-card {
   background-color: transparent;
-  width: 300px; /*forse con width a 100% cambiamo un po' di cosette */
-  height: 250px;
+  width: 300px; 
+  height: 260px;
 
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
@@ -294,6 +285,11 @@ button:hover, a:hover {
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
+  font-family: 'BebasNeue-regular';
+  src: url(BebasNeue-Regular.ttf.eot);
+  src: local('BebasNeue'), url('BebasNeue-Regular.ttf') format('truetype');
+  font-size: 20px;
+  letter-spacing: 3px;
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -312,13 +308,24 @@ button:hover, a:hover {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: #bbb;
+  background-color: #e0b241;
   color: black;
 }
 
 /* Style the back side */
 .flip-card-back {
-  background-color: red;
+  background-color:#e0b241 ;
   color: black;
   transform: rotateY(180deg);
+}
+
+.flip-card-back ul {
+  margin-top: 10px;
+  margin-right: 33px; 
+  vertical-align: middle;
+  font-family: 'BebasNeue-regular';
+  src: url(BebasNeue-Regular.ttf.eot);
+  src: local('BebasNeue'), url('BebasNeue-Regular.ttf') format('truetype');
+  font-size: 20px;
+  font-stretch: ultra-condensed;
 }
