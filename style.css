@@ -59,6 +59,7 @@ nav {
     color: lightcoral;
 }
 
+
 ul, li {
   list-style-type: none;
 }
@@ -273,7 +274,7 @@ button:hover, a:hover {
   background-color: transparent;
   width: 300px; 
   height: 260px;
-
+  margin: 5px 37px 5px 37px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
