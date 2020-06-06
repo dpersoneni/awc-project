@@ -26,7 +26,7 @@
 
 
 .card-body{
-    background-color:#ffccb3;
+    background-color:#C7B27F;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   border-radius: 5px;
@@ -55,7 +55,7 @@
     border: none;
 }
 nav {
-    background-color: #608757;
+    background-color: #617C58;
     color: lightcoral;
 }
 
@@ -308,13 +308,13 @@ button:hover, a:hover {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: #e0b241;
+  background-color: #C7B27F;
   color: black;
 }
 
 /* Style the back side */
 .flip-card-back {
-  background-color:#e0b241 ;
+  background-color:#C7B27F ;
   color: black;
   transform: rotateY(180deg);
 }
