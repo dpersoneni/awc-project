@@ -26,7 +26,7 @@
 
 
 .card-body{
-    background-color:#C7B27F;
+    background-color:#ffccb3;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   border-radius: 5px;
@@ -56,8 +56,7 @@
 }
 nav {
     background-color: #617C58;
-    color: lightcoral;
-}
+    }
 
 
 ul, li {
@@ -256,7 +255,6 @@ button {
   background-color: #000;
   text-align: center;
   cursor: pointer;
-  width: 100%;
   font-size: 18px;
 }
 
@@ -309,13 +307,13 @@ button:hover, a:hover {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: #C7B27F;
+  background-color: #e0b241;
   color: black;
 }
 
 /* Style the back side */
 .flip-card-back {
-  background-color:#C7B27F ;
+  background-color:#e0b241 ;
   color: black;
   transform: rotateY(180deg);
 }
@@ -329,4 +327,8 @@ button:hover, a:hover {
   src: local('BebasNeue'), url('BebasNeue-Regular.ttf') format('truetype');
   font-size: 20px;
   font-stretch: ultra-condensed;
+}
+
+.nav-link {
+  color: blanchedalmond;
 }
