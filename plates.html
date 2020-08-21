@@ -40,69 +40,31 @@
       </nav>
       <h1 style="text-align:center;">Di cosa hai voglia?</h1>
       <div class="generic">
-      <div class="btn-group" >
-        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"style="margin: 1em 1em 1em 0;">
-          Tipologia di piatto
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="services.html">Hamburger</a>
-          <a class="dropdown-item" href="about.html">Pizze</a>
-          <a class="dropdown-item" href="about.html">Pasta</a>
-          <a class="dropdown-item" href="about.html">Piadine</a>
-          <a class="dropdown-item" href="about.html">Insalate</a>
-          <a class="dropdown-item" href="about.html">Dolci</a>
-        </div>
-      </div>
-      <div class="btn-group" >
-        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"style="margin: 1em 0 1em 0;">
-          Fasce di prezzo
-        </button>
-        <div class="dropdown-menu">
-          <div class="slidecontainer">
-            <input type="range" min="4" max="10" value="7" class="slider" id="myRange">
-            <p>Prezzo: <span id="demo"></span></p>
-          </div>
-        </div>
-      </div>
-
-      <!--
-      <div class="container">
-        <div class='row'>
-        
-
-            <div class="flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="images/Amburger.jpg" style="width:100%">
-                    <p style="float: left; display: inline; margin-left: 10px; margin-top: 3px;">AmBurger</p>
-                    <p style="float: right; display: inline;  margin-right: 10px; margin-top: 3px;">8.50</p>
-                </div>
-                <div class="flip-card-back">  
-                  <ul>
-                    <li>Pane</li>
-                    <li>Hamburger</li>
-                    <li>Ketchup</li>
-                    <li>Cipolle</li>
-                    <li>Senape</li>
-                    <li>Cetriolo</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          
-          
-          </div>
-        </div>
-     
-         
-          </div> 
-       
-        -->
-      
-
-
+    
 
           <div class="container">
+            <form onSubmit="filtra()">
+            <label for="piatti">Tipologia di piatto</label>
+        <select id="type" name="piatti">
+          <option value="panini">Hamburger</option>
+          <option value="pizza">Pizza</option>
+          <option value="pasta">Pasta</option>
+          <option value="piadine">Piadine</option>
+          <option value="insalate">Insalate</option>
+          <option value="dolci">Dolci</option>
+        </select>
+       <!-- <label for="prezzo">Fasce di prezzo</label>
+        <select id="price" name="prezzo">
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>-->
+        <input type="submit" value="Submit">
+      </form>
 <div id="ciao"></div>
 </div>
 
