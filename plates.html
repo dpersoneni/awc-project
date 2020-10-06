@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>EatMI</title>
 </head>
-<body>
+<body onload="mostraProdotti()">
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="index.html">EatMi</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,9 +43,10 @@
     
 
           <div class="container">
-            <form action="plates.html" onclick="filtra()">
-            <label for="piatti">Tipologia di piatto</label>
+            <form id="filtro">
+            
         <select id="type" name="piatti">
+          <option value="">Tipologia di piatto</option>
           <option value="panini">Hamburger</option>
           <option value="pizza">Pizza</option>
           <option value="pasta">Pasta</option>
@@ -53,19 +54,27 @@
           <option value="insalate">Insalate</option>
           <option value="dolci">Dolci</option>
         </select>
-       <label for="prezzo">Fasce di prezzo</label>
+        
         <select id="price" name="prezzo">
+          <option value="">Fascia di prezzo</option>
           <option value="4">4</option>
           <option value="5">5</option>
           <option value="6">6</option>
           <option value="7">7</option>
           <option value="8">8</option>
           <option value="9">9</option>
-          <option selected="selected" value="10">10</option>
+          <option value="10">10</option>
         </select>
+        <button type="button" onclick="filtraGenerale()" form="filtro">Filtra</button>
+
+      </form>
+        
+        <input id="barraRicerca" type="text" placeholder="Search..">
+
     
       </form>
-<div id="ciao"></div>
+
+<div id="ciao" ></div>
 </div>
 
 </div>

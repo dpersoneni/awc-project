@@ -339,3 +339,7 @@ button:hover, a:hover {
 .nav-link {
   color: blanchedalmond;
 }
+
+#barraRicerca {
+  padding-left: 2em;
+}
