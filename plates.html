@@ -43,6 +43,7 @@
     
 
           <div class="container">
+            <div class="barra">
             <form id="filtro">
             
         <select id="type" name="piatti">
@@ -66,13 +67,12 @@
           <option value="10">10</option>
         </select>
         <button type="button" onclick="filtraGenerale()" form="filtro">Filtra</button>
+      
 
       </form>
-        
-        <input id="barraRicerca" type="text" placeholder="Search..">
+      <input onkeyup="cercaNome()" type="text" placeholder="Search.." id="cerca">
+      </div>
 
-    
-      </form>
 
 <div id="ciao" ></div>
 </div>

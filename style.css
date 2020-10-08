@@ -340,6 +340,12 @@ button:hover, a:hover {
   color: blanchedalmond;
 }
 
-#barraRicerca {
-  padding-left: 2em;
+.barra input {
+  float: right;
+  margin-right: 40px;
 }
+
+.barra form {
+  margin-left: 20px ;
+}
+
