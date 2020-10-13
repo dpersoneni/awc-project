@@ -10,6 +10,24 @@
     
 </head>
 <body>
+    <script>
+        
+        function checkLogin() {
+        console.log("sdgfvsrv");
+
+        credenziali1 = {
+            email : "giancarlo@mail.com",
+            password : "giancarlo"
+        };
+        emailInserita = document.getElementById("email").value ;
+        passwordInserita = document.getElementById("password").value ;
+    
+        if (credenziali1.email == emailInserita && credenziali1.password == passwordInserita) {
+            
+        }
+    }
+
+    </script>
     <div class="wrap">
         <form class="login-form" action="">
             <div class="form-header">
@@ -17,15 +35,15 @@
             </div>
             <!--Email Input-->
             <div class="form-group">
-                <input type="text" class="form-input" placeholder="email">
+                <input id="email" type="text" class="form-input" placeholder="email">
             </div>
             <!--Password Input-->
             <div class="form-group">
-                <input type="password" class="form-input" placeholder="password">
+                <input id="password" type="password" class="form-input" placeholder="password">
             </div>
             <!--Login Button-->
             <div class="form-group">
-                <button class="form-button" type="submit">Login</button>
+                <button class="form-button" type="button" onclick="checkLogin()">Login</button>
             
             </div>
             <div class="form-footer">
@@ -37,5 +55,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+ 
+
+
 </body>
 </html>
