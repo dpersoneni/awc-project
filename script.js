@@ -1,79 +1,128 @@
 
 localStorage.setItem('prodotti', JSON.stringify(prodotti));
-var jsonObject = JSON.parse(localStorage.getItem('prodotti')) ;
+var jsonObject = JSON.parse(localStorage.getItem('prodotti'));
 
 console.log(jsonObject);
 
 function mostraProdotti() {
 
-        txt = "";
-        txt += "<div class='row'>"
-        for (x in jsonObject) {
-            txt += " <div class='flip-card'> <div class='flip-card-inner'> <div class='flip-card-front'>"
-            txt += "<img src='images/Amburger.jpg' style='width:100%'>";
-            txt += "<p style='float: left; display: inline; margin-left: 10px; margin-top: 3px;'>"+jsonObject[x].name + "</p>"
-            txt += "<p style='float: right; display: inline; margin-right: 10px; margin-top: 3px;'>"+jsonObject[x].price + "€ </p>"
-            txt += "</div> <div class='flip-card-back'> <ul>"
-            for (i in jsonObject[x].ingredients) {
-                txt += "<li>" + jsonObject[x].ingredients[i] + "</li>"
-            }
-            txt += "</ul> </div> </div> </div>"
+    txt = "";
+    txt += "<div class='row'>"
+    for (x in jsonObject) {
+        txt += " <div class='flip-card'> <div class='flip-card-inner'> <div class='flip-card-front'>"
+        txt += "<img src='images/Amburger.jpg' style='width:100%'>";
+        txt += "<p style='float: left; display: inline; margin-left: 10px; margin-top: 3px;'>" + jsonObject[x].name + "</p>"
+        txt += "<p style='float: right; display: inline; margin-right: 10px; margin-top: 3px;'>" + jsonObject[x].price + "€ </p>"
+        txt += "</div> <div class='flip-card-back'> <ul>"
+        for (i in jsonObject[x].ingredients) {
+            txt += "<li>" + jsonObject[x].ingredients[i] + "</li>"
         }
-        txt += "</div>"
-        document.getElementById("ciao").innerHTML = txt;
-    
+        txt += "</ul>  <button type='button' onclick='aggiungiCarrello(" + x + ")'>Aggiungi al carrello</button></div> </div> </div>"
+    }
+    txt += "</div>"
+    document.getElementById("ciao").innerHTML = txt;
+
+    if ("carrello" in localStorage) {
+        riempiCarrello();
+    }
+}
+
+function riempiCarrello() {
+    qnt = 0;
+    tot = 0;
+    txt = "<span>";
+    carrello = JSON.parse(localStorage.getItem("carrello"));
+    for (c in carrello) {
+        qnt += carrello[c].qnt;
+        tot += carrello[c].price * carrello[c].qnt;
+        txt += carrello[c].name + " " + carrello[c].price + " " + carrello[c].qnt + "\n";
+
+    }
+
+    document.getElementById("carrello").innerHTML = txt + "</span> \n Totale"+tot;
+    document.getElementById("numeroelementi").innerHTML = qnt;
+}
+
+
+function aggiungiCarrello(x) {
+    var carrello = [];
+    if ("carrello" in localStorage) {
+        carrello = JSON.parse(localStorage.getItem('carrello'));
+    }
+
+    obj = {
+        "id": jsonObject[x].id,
+        "name": jsonObject[x].name,
+        "price": jsonObject[x].price,
+        "qnt": 1
+    };
+
+    var index = carrello.findIndex(function (item, i) {
+        return item.id == obj.id;
+    });
+
+    if (index === -1) {
+        carrello.push(obj);
+    } else {
+        carrello[index].qnt++;
+    }
+
+    localStorage.setItem('carrello', JSON.stringify(carrello));
+    console.log(localStorage.getItem('carrello'));
+
+    riempiCarrello();
 }
 
 
 function filtraTipo() {
-var xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        var jsonObject = JSON.parse(xhr.responseText);
-        txt = "";
-        txt += "<div class='row'>"
-        for (x in jsonObject) {           
-            if (jsonObject[x].type == document.getElementById("type").value )   {
-            txt += " <div class='flip-card'> <div class='flip-card-inner'> <div class='flip-card-front'>"
-            txt += "<img src='images/Amburger.jpg' style='width:100%'>";
-            txt += "<p style='float: left; display: inline; margin-left: 10px; margin-top: 3px;'>"+jsonObject[x].name + "</p>"
-            txt += "<p style='float: right; display: inline; margin-right: 10px; margin-top: 3px;'>"+jsonObject[x].price + "€ </p>"
-            txt += "</div> <div class='flip-card-back'> <ul>"
-            for (i in jsonObject[x].ingredients) {
-                txt += "<li>" + jsonObject[x].ingredients[i] + "</li>"
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var jsonObject = JSON.parse(xhr.responseText);
+            txt = "";
+            txt += "<div class='row'>"
+            for (x in jsonObject) {
+                if (jsonObject[x].type == document.getElementById("type").value) {
+                    txt += " <div class='flip-card'> <div class='flip-card-inner'> <div class='flip-card-front'>"
+                    txt += "<img src='images/Amburger.jpg' style='width:100%'>";
+                    txt += "<p style='float: left; display: inline; margin-left: 10px; margin-top: 3px;'>" + jsonObject[x].name + "</p>"
+                    txt += "<p style='float: right; display: inline; margin-right: 10px; margin-top: 3px;'>" + jsonObject[x].price + "€ </p>"
+                    txt += "</div> <div class='flip-card-back'> <ul>"
+                    for (i in jsonObject[x].ingredients) {
+                        txt += "<li>" + jsonObject[x].ingredients[i] + "</li>"
+                    }
+                    txt += "</ul> </div> </div> </div>"
+                }
             }
-            txt += "</ul> </div> </div> </div>"
+            txt += "</div>"
+            document.getElementById("ciao").innerHTML = txt;
         }
     }
-        txt += "</div>"
-        document.getElementById("ciao").innerHTML = txt;
-    }
-}
-xhr.open('GET', 'https://raw.githubusercontent.com/dpersoneni/awc-project/master/prodotti1.json', true);
-xhr.send(null);
+    xhr.open('GET', 'https://raw.githubusercontent.com/dpersoneni/awc-project/master/prodotti1.json', true);
+    xhr.send(null);
 }
 
 
 function filtraPrezzo() {
     var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var jsonObject = JSON.parse(xhr.responseText);
             txt = "";
             txt += "<div class='row'>"
-            for (x in jsonObject) {           
-                if (jsonObject[x].price <= document.getElementById("price").value )   {
-                txt += " <div class='flip-card'> <div class='flip-card-inner'> <div class='flip-card-front'>"
-                txt += "<img src='images/Amburger.jpg' style='width:100%'>";
-                txt += "<p style='float: left; display: inline; margin-left: 10px; margin-top: 3px;'>"+jsonObject[x].name + "</p>"
-                txt += "<p style='float: right; display: inline; margin-right: 10px; margin-top: 3px;'>"+jsonObject[x].price + "€ </p>"
-                txt += "</div> <div class='flip-card-back'> <ul>"
-                for (i in jsonObject[x].ingredients) {
-                    txt += "<li>" + jsonObject[x].ingredients[i] + "</li>"
+            for (x in jsonObject) {
+                if (jsonObject[x].price <= document.getElementById("price").value) {
+                    txt += " <div class='flip-card'> <div class='flip-card-inner'> <div class='flip-card-front'>"
+                    txt += "<img src='images/Amburger.jpg' style='width:100%'>";
+                    txt += "<p style='float: left; display: inline; margin-left: 10px; margin-top: 3px;'>" + jsonObject[x].name + "</p>"
+                    txt += "<p style='float: right; display: inline; margin-right: 10px; margin-top: 3px;'>" + jsonObject[x].price + "€ </p>"
+                    txt += "</div> <div class='flip-card-back'> <ul>"
+                    for (i in jsonObject[x].ingredients) {
+                        txt += "<li>" + jsonObject[x].ingredients[i] + "</li>"
+                    }
+                    txt += "</ul> </div> </div> </div>"
                 }
-                txt += "</ul> </div> </div> </div>"
             }
-        }
             txt += "</div>"
             document.getElementById("ciao").innerHTML = txt;
         }
@@ -85,24 +134,24 @@ function filtraPrezzo() {
 
 function filtraEntrambi() {
     var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var jsonObject = JSON.parse(xhr.responseText);
             txt = "";
             txt += "<div class='row'>"
-            for (x in jsonObject) {           
-                if (jsonObject[x].price <= document.getElementById("price").value && jsonObject[x].type == document.getElementById("type").value )   {
-                txt += " <div class='flip-card'> <div class='flip-card-inner'> <div class='flip-card-front'>"
-                txt += "<img src='images/Amburger.jpg' style='width:100%'>";
-                txt += "<p style='float: left; display: inline; margin-left: 10px; margin-top: 3px;'>"+jsonObject[x].name + "</p>"
-                txt += "<p style='float: right; display: inline; margin-right: 10px; margin-top: 3px;'>"+jsonObject[x].price + "€ </p>"
-                txt += "</div> <div class='flip-card-back'> <ul>"
-                for (i in jsonObject[x].ingredients) {
-                    txt += "<li>" + jsonObject[x].ingredients[i] + "</li>"
+            for (x in jsonObject) {
+                if (jsonObject[x].price <= document.getElementById("price").value && jsonObject[x].type == document.getElementById("type").value) {
+                    txt += " <div class='flip-card'> <div class='flip-card-inner'> <div class='flip-card-front'>"
+                    txt += "<img src='images/Amburger.jpg' style='width:100%'>";
+                    txt += "<p style='float: left; display: inline; margin-left: 10px; margin-top: 3px;'>" + jsonObject[x].name + "</p>"
+                    txt += "<p style='float: right; display: inline; margin-right: 10px; margin-top: 3px;'>" + jsonObject[x].price + "€ </p>"
+                    txt += "</div> <div class='flip-card-back'> <ul>"
+                    for (i in jsonObject[x].ingredients) {
+                        txt += "<li>" + jsonObject[x].ingredients[i] + "</li>"
+                    }
+                    txt += "</ul> </div> </div> </div>"
                 }
-                txt += "</ul> </div> </div> </div>"
             }
-        }
             txt += "</div>"
             document.getElementById("ciao").innerHTML = txt;
         }
@@ -125,53 +174,60 @@ function filtraGenerale() {
         filtraPrezzo();
         return;
     }
-    if( document.getElementById("price").value === "") {
+    if (document.getElementById("price").value === "") {
         filtraTipo();
         return;
-    }      
+    }
 }
 
 function cercaNome() {
-var xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        var jsonObject = JSON.parse(xhr.responseText);
-        txt = "";
-        txt += "<div class='row'>"
-        for (x in jsonObject) {    
-            if (jsonObject[x].name.toLowerCase() == document.getElementById("cerca").value.toLowerCase() )   {
-            console.log("ciao");
-            txt += " <div class='flip-card'> <div class='flip-card-inner'> <div class='flip-card-front'>"
-            txt += "<img src='images/Amburger.jpg' style='width:100%'>";
-            txt += "<p style='float: left; display: inline; margin-left: 10px; margin-top: 3px;'>"+jsonObject[x].name + "</p>"
-            txt += "<p style='float: right; display: inline; margin-right: 10px; margin-top: 3px;'>"+jsonObject[x].price + "€ </p>"
-            txt += "</div> <div class='flip-card-back'> <ul>"
-            for (i in jsonObject[x].ingredients) {
-                txt += "<li>" + jsonObject[x].ingredients[i] + "</li>"
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var jsonObject = JSON.parse(xhr.responseText);
+            txt = "";
+            txt += "<div class='row'>"
+            for (x in jsonObject) {
+                if (jsonObject[x].name.toLowerCase() == document.getElementById("cerca").value.toLowerCase()) {
+                    console.log("ciao");
+                    txt += " <div class='flip-card'> <div class='flip-card-inner'> <div class='flip-card-front'>"
+                    txt += "<img src='images/Amburger.jpg' style='width:100%'>";
+                    txt += "<p style='float: left; display: inline; margin-left: 10px; margin-top: 3px;'>" + jsonObject[x].name + "</p>"
+                    txt += "<p style='float: right; display: inline; margin-right: 10px; margin-top: 3px;'>" + jsonObject[x].price + "€ </p>"
+                    txt += "</div> <div class='flip-card-back'> <ul>"
+                    for (i in jsonObject[x].ingredients) {
+                        txt += "<li>" + jsonObject[x].ingredients[i] + "</li>"
+                    }
+                    txt += "</ul> </div> </div> </div>"
+                }
             }
-            txt += "</ul> </div> </div> </div>"
+            txt += "</div>"
+            document.getElementById("ciao").innerHTML = txt;
         }
-    }
-        txt += "</div>"
-        document.getElementById("ciao").innerHTML = txt;
-    }
 
+    }
+    xhr.open('GET', 'https://raw.githubusercontent.com/dpersoneni/awc-project/master/prodotti1.json', true);
+    xhr.send(null);
 }
-xhr.open('GET', 'https://raw.githubusercontent.com/dpersoneni/awc-project/master/prodotti1.json', true);
-xhr.send(null);
-}
+
+
+
+
+
+
+
 /*
 
-prodotti =  
+prodotti =
 [
     {
-        "id" : 1,   
+        "id" : 1,
         "name":"AmBurger",
         "image":"INSERISCI IMMAGINE",
         "type":"panini",
         "price": 8.00,
         "ingredients" : [
-            "bread", 
+            "bread",
             "hamburger",
             "ketchup",
             "onions",
@@ -180,13 +236,13 @@ prodotti =
         ]
     },
     {
-        "id" : 2,   
+        "id" : 2,
         "name":"AmBurDen",
         "image":"INSERISCI IMMAGINE",
         "type":"panini",
         "price": 7.50,
         "ingredients" : [
-            "bread", 
+            "bread",
             "chicken",
             "caesar sauce"
      ]
@@ -198,7 +254,7 @@ prodotti =
         "type":"panini",
         "price": 6.50,
         "ingredients" : [
-            "bread", 
+            "bread",
             "hamburger",
             "ketchup",
             "onions",
@@ -213,7 +269,7 @@ prodotti =
         "type":"panini",
         "price": 8.00,
         "ingredients" : [
-            "bread", 
+            "bread",
             "soy burger",
             "tomato",
             "onions",
@@ -229,7 +285,7 @@ prodotti =
         "type":"panini",
         "price": 5.70,
         "ingredients" : [
-            "bread", 
+            "bread",
             "hamburger",
             "crispy sauce",
             "bacon",
@@ -243,11 +299,11 @@ prodotti =
         "type":"pizza",
         "price": 6.50,
         "ingredients" : [
-            "dough", 
+            "dough",
             "tomato sauce",
             "mozzarella",
             "oregano"
-            
+
         ]
     },
     {
@@ -257,13 +313,13 @@ prodotti =
         "type":"pizza",
         "price": 7.00,
         "ingredients" : [
-            "dough", 
+            "dough",
             "tomato sauce",
             "mozzarella",
             "zucchini",
             "egg plant"
-            
-            
+
+
         ]
     },
     {
@@ -273,10 +329,10 @@ prodotti =
         "type":"pasta",
         "price": 8.00,
         "ingredients" : [
-            "spaghetti", 
+            "spaghetti",
             "guanciale",
             "pecorino",
-            "tomatoes"  
+            "tomatoes"
         ]
     },
     {
@@ -286,11 +342,11 @@ prodotti =
         "type":"pasta",
         "price": 7.00,
         "ingredients" : [
-            "trofie", 
+            "trofie",
             "pecorino",
             "basil pesto"
-            
-            
+
+
         ]
     }
  ]
