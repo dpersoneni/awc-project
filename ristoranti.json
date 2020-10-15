@@ -1,1 +1,17 @@
-ristoranti = 
+ristoranti = [
+    {
+        "id":1,
+        "name":"Ristoria Pizzorante",
+        "address": "via degli Olmi 4"
+    },
+    {
+        "id": 2,
+        "name":"Pasta, mi hai rotto!",
+        "address": "via le mani dal naso 12"
+    },
+    {
+        "id": 3,
+        "name": "All you can meet",
+        "address": "via vai 445"
+    }
+]
