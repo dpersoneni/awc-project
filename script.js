@@ -25,12 +25,9 @@ function mostraProdotti() {
         localStorage.clear();
         riempiCarrello();
     }
-<<<<<<< HEAD
     
-=======
   
 
->>>>>>> 5b55a8bb1e36a7ef03752fdf0b5902c037567fe4
 }
 
 function riempiCarrello() {
@@ -221,10 +218,7 @@ function cercaNome() {
 
 
 
-<<<<<<< HEAD
 
 
 
 
-=======
->>>>>>> 5b55a8bb1e36a7ef03752fdf0b5902c037567fe4
