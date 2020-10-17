@@ -20,11 +20,21 @@ utenti = [
     {
         "id":3,
         "mail":"giacominoporetti@mail.com",
-        "firstname": "Giocaomo",
+        "firstname": "Giacomo",
         "secondname": "Poretti",
         "method": "bancomat",
-        "password": "giocaomopw",
+        "password": "giacomopw",
         "address": "via statale 152"
+    },
+
+    {
+        "id":4,
+        "mail":"marinamassironi@mail.com",
+        "firstname": "Marina",
+        "secondname": "Massironi",
+        "method": "paypal",
+        "password": "maripw",
+        "address": "via grecia 18"
     }
 
 ]

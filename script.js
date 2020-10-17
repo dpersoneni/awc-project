@@ -42,7 +42,7 @@ function riempiCarrello() {
         txt += "<tr><td>"+carrello[c].name + "</td><td> " + carrello[c].price + "</td><td> " + carrello[c].qnt + "</td></tr>\n";
 
     }
-    document.getElementById("carrello").innerHTML = txt + "</table></span> \n " +"Prezzo totale"+"   "+tot;
+    document.getElementById("carrello").innerHTML = txt + "</table></span> \n " +"Prezzo totale"+"   "+tot + "<br><button type='button' onclick=window.location.href='login.html'>Procedi all'acquisto</button>";
     document.getElementById("numeroelementi").innerHTML = qnt;
 }
 
