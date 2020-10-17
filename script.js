@@ -2,7 +2,6 @@
 localStorage.setItem('prodotti', JSON.stringify(prodotti));
 var jsonObject = JSON.parse(localStorage.getItem('prodotti'));
 
-console.log(jsonObject);
 
 function mostraProdotti() {
 
@@ -23,36 +22,43 @@ function mostraProdotti() {
     document.getElementById("ciao").innerHTML = txt;
 
     if ("carrello" in localStorage) {
+        localStorage.clear();
         riempiCarrello();
     }
+<<<<<<< HEAD
     
+=======
+  
+
+>>>>>>> 5b55a8bb1e36a7ef03752fdf0b5902c037567fe4
 }
 
 function riempiCarrello() {
     qnt = 0;
     tot = 0;
-    txt = "<span>";
+    txt = "<span><table><tr><th>Prodotto</th><th>Prezzo</th><th>Quantità</th></tr>";
     carrello = JSON.parse(localStorage.getItem("carrello"));
     for (c in carrello) {
+
         qnt += carrello[c].qnt;
         tot += carrello[c].price * carrello[c].qnt;
-        txt += carrello[c].name + " " + carrello[c].price + " " + carrello[c].qnt + "\n";
+        txt += "<tr><td>"+carrello[c].name + "</td><td> " + carrello[c].price + "</td><td> " + carrello[c].qnt + "</td></tr>\n";
 
     }
-
-    document.getElementById("carrello").innerHTML = txt + "</span> \n Totale"+tot;
+    document.getElementById("carrello").innerHTML = txt + "</table></span> \n " +"Prezzo totale"+"   "+tot;
     document.getElementById("numeroelementi").innerHTML = qnt;
 }
 
 
 function aggiungiCarrello(x) {
     var carrello = [];
+    console.log(localStorage.length);
     if ("carrello" in localStorage) {
         carrello = JSON.parse(localStorage.getItem('carrello'));
 
        
     }
-
+    
     obj = {
         "id": jsonObject[x].id,
         "name": jsonObject[x].name,
@@ -215,7 +221,10 @@ function cercaNome() {
 
 
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 5b55a8bb1e36a7ef03752fdf0b5902c037567fe4
