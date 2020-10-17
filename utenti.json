@@ -1,0 +1,30 @@
+utenti = [
+    {
+        "id":1,
+        "mail":"giovastorti@mail.com",
+        "firstname": "Govanni",
+        "secondname": "Storti",
+        "method": "contanti",
+        "password": "giovannipw",
+        "address": "via san siro 12"
+    },
+    {
+        "id":2,
+        "mail":"aldobaglio@mail.com",
+        "firstname": "Aldio",
+        "secondname": "Baglio",
+        "method": "buonipasto",
+        "password": "aldopw",
+        "address": "via sicilia 11"
+    },
+    {
+        "id":3,
+        "mail":"giacominoporetti@mail.com",
+        "firstname": "Giocaomo",
+        "secondname": "Poretti",
+        "method": "bancomat",
+        "password": "giocaomopw",
+        "address": "via statale 152"
+    }
+
+]
