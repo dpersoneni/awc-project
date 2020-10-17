@@ -49,11 +49,8 @@ function riempiCarrello() {
 
 function aggiungiCarrello(x) {
     var carrello = [];
-    console.log(localStorage.length);
     if ("carrello" in localStorage) {
-        carrello = JSON.parse(localStorage.getItem('carrello'));
-
-       
+        carrello = JSON.parse(localStorage.getItem('carrello'));  
     }
     
     obj = {

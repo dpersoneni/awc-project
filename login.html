@@ -16,16 +16,19 @@
     <script>
         localStorage.setItem('utenti', JSON.stringify(utenti));
         var jsonObject = JSON.parse(localStorage.getItem('utenti'));
-        function checkLogin() {
-
+        function checkLogin() { 
+            console.log("ciao2");
             emailInserita = document.getElementById("email").value;
             passwordInserita = document.getElementById("password").value;
-            
+            console.log(emailInserita);
+            console.log(passwordInserita);
             for(x in jsonObject) {
-                if (jsonObject[x].email == emailInserita && jsonObject[x].password == passwordInserita) {
-                window.location.href = "acquista.html";
-            }
+                if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita) {
+                    window.location.href = "acquista.html";
+                    localStorage.setItem('utente', JSON.stringify(jsonObject[x]));
+                    
 
+                }
             }
         }
 
