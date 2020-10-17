@@ -25,6 +25,7 @@ function mostraProdotti() {
         localStorage.clear();
         riempiCarrello();
     }
+    
   
 
 }
@@ -51,6 +52,8 @@ function aggiungiCarrello(x) {
     console.log(localStorage.length);
     if ("carrello" in localStorage) {
         carrello = JSON.parse(localStorage.getItem('carrello'));
+
+       
     }
     
     obj = {
@@ -71,9 +74,9 @@ function aggiungiCarrello(x) {
     }
 
     localStorage.setItem('carrello', JSON.stringify(carrello));
-    console.log(localStorage.getItem('carrello'));
 
     riempiCarrello();
+
 }
 
 
@@ -212,6 +215,10 @@ function cercaNome() {
     xhr.open('GET', 'https://raw.githubusercontent.com/dpersoneni/awc-project/master/prodotti1.json', true);
     xhr.send(null);
 }
+
+
+
+
 
 
 
