@@ -74,7 +74,6 @@ function aggiungiCarrello(x) {
     localStorage.setItem('carrello', JSON.stringify(carrello));
 
     riempiCarrello();
-
 }
 
 

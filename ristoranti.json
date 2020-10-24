@@ -2,16 +2,19 @@ ristoranti = [
     {
         "id":1,
         "name":"Ristoria Pizzorante",
-        "address": "via degli Olmi 4 <3<3<3"
+        "address": "via degli Olmi 4 <3<3<3",
+        "plates": []
     },
     {
         "id": 2,
         "name":"Pasta, mi hai rotto!",
-        "address": "via le mani dal naso 12"
+        "address": "via le mani dal naso 12",
+        "plates": []
     },
     {
         "id": 3,
         "name": "All you can meet",
-        "address": "via vai 445"
+        "address": "via vai 445",
+        "plates": []    
     }
 ]
