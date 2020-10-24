@@ -3,7 +3,7 @@ prodotti =
     {
         "id" : 1,   
         "name":"AmBurger",
-        "image":"INSERISCI IMMAGINE",
+        "image":"images/1.jpg",
         "type":"panini",
         "price": 8.00,
         "ingredients" : [
@@ -18,7 +18,7 @@ prodotti =
     {
         "id" : 2,   
         "name":"AmBurDen",
-        "image":"INSERISCI IMMAGINE",
+        "image":"images/2.png",
         "type":"panini",
         "price": 7.50,
         "ingredients" : [
@@ -30,7 +30,7 @@ prodotti =
     {
         "id" : 3,
         "name":"Ciobber",
-        "image":"INSERISCI IMMAGINE",
+        "image":"images/3.png",
         "type":"panini",
         "price": 6.50,
         "ingredients" : [
@@ -45,7 +45,7 @@ prodotti =
     {
         "id": 4,
         "name":"Veggie",
-        "image":"INSERISCI IMMAGINE",
+        "image":"images/4.jpg",
         "type":"panini",
         "price": 8.00,
         "ingredients" : [
@@ -60,7 +60,7 @@ prodotti =
     {
         "id" : 5,
         "name":"McBEQon",
-        "image":"INSERISCI IMMAGINE",
+        "image":"images/5.png",
         "type":"panini",
         "price": 5.70,
         "ingredients" : [
@@ -74,7 +74,7 @@ prodotti =
     {
         "id" : 6,
         "name":"AriPizza",
-        "image":"INSERISCI IMMAGINE",
+        "image":"images/pizza1.jpg",
         "type":"pizza",
         "price": 6.50,
         "ingredients" : [
@@ -88,7 +88,7 @@ prodotti =
     {
         "id": 7,
         "name":"PizzAm",
-        "image":"INSERISCI IMMAGINE",
+        "image":"images/pizza2.jpg",
         "type":"pizza",
         "price": 7.00,
         "ingredients" : [
@@ -104,7 +104,7 @@ prodotti =
     {
         "id":8,
         "name":"AmAtriciana",
-        "image":"INSERISCI IMMAGINE",
+        "image":"images/amatriciana.jpg",
         "type":"pasta",
         "price": 8.00,
         "ingredients" : [
@@ -117,7 +117,7 @@ prodotti =
     {
         "id":9,
         "name":"Troie al Pesto",
-        "image":"INSERISCI IMMAGINE",
+        "image":"images/trofie.jpg",
         "type":"pasta",
         "price": 7.00,
         "ingredients" : [

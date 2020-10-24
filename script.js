@@ -9,7 +9,7 @@ function mostraProdotti() {
     txt += "<div class='row'>"
     for (x in jsonObject) {
         txt += " <div class='flip-card'> <div class='flip-card-inner'> <div class='flip-card-front'>"
-        txt += "<img src='images/Amburger.jpg' style='width:100%'>";
+        txt += "<img src='" + jsonObject[x].image +"'style='width:100%'>";
         txt += "<p style='float: left; display: inline; margin-left: 10px; margin-top: 3px;'>" + jsonObject[x].name + "</p>"
         txt += "<p style='float: right; display: inline; margin-right: 10px; margin-top: 3px;'>" + jsonObject[x].price + "€ </p>"
         txt += "</div> <div class='flip-card-back'> <ul>"
@@ -18,6 +18,7 @@ function mostraProdotti() {
         }
         txt += "</ul>  <button type='button' onclick='aggiungiCarrello(" + x + ")'>Aggiungi al carrello</button></div> </div> </div>"
     }
+    
     txt += "</div>"
     document.getElementById("ciao").innerHTML = txt;
 

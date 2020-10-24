@@ -96,57 +96,23 @@ ul, li {
 	display: block;
 }
 .footer {
-	background: #817679;
-	height: auto;
-	padding-bottom: 30px;
-	position: relative;
-	width: 100%;
-	border-bottom: 1px solid #CCCCCC;
-	border-top: 1px solid #DDDDDD;
-}
-.footer p {
-	margin: 0;
-}
-.footer img {
-	max-width: 100%;
-}
-.footer h3 {
-	color: white;
-	font-size: 18px;
-	font-weight: 600;
-	line-height: 27px;
-	padding: 40px 0 0px;
-	text-transform: uppercase;
-  margin-bottom: 15px;
+  background: #817679;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+	
 }
 
-.footer h4 {
-	color: white;
-	font-size: 2em;
-	font-weight: 600;
-	line-height: 38px;
-	padding: 40px 0 10px;
-	font-family: cursive;
-  font-weight: lighter
+
+.footer_Links {
+  text-align: left;
 }
 
-.footer ul {
-	font-size: 13px;
-	list-style-type: none;
-	margin-left: 0;
-	padding-left: 0;
-	margin-top: 0px;
-	color: #7F8C8D;
-  padding: 0 0 8px 0;
-}
-
-.footer ul li a {
-	padding: 0 0 12px 0;
-	display: block;
-}
-.footer a {
-	color: white;
-  font-weight: lighter;
+ul {
+  list-style-type: none;
 }
 .footer a:visited{
   color: white;
