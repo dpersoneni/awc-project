@@ -1,20 +1,35 @@
 ristoranti = [
     {
         "id":1,
-        "name":"Ristoria Pizzorante",
+        "restaurant":"Ristoria Pizzorante",
+        "mail":"albijojoba@mail.com",
+        "passowrd":"albertopw",
         "address": "via degli Olmi 4 <3<3<3",
-        "plates": []
+        "partitaiva" : "25458565896",
+        "telephone": "0399935656",
+        "firstname" : "Alberto",
+        "lastname" : "Jojoba"
     },
     {
         "id": 2,
-        "name":"Pasta, mi hai rotto!",
+        "restaurant":"Pasta, mi hai rotto!",
+        "mail":"sofiaberga@mail.com",
+        "passowrd":"sofiapw",
         "address": "via le mani dal naso 12",
-        "plates": []
+        "partitaiva" : "58545812378",
+        "telephone": "0368884741",
+        "firstname" : "Sofia",
+        "lastname" : "Bergamaschi"
     },
     {
         "id": 3,
-        "name": "All you can meet",
+        "restaurant": "All you can meet",
+        "mail":"quasilopez@mail.com",
+        "passowrd":"quasimodopw",
         "address": "via vai 445",
-        "plates": []    
+        "partitaiva" : "56581219753",
+        "telephone": "0399954826",
+        "firstname" : "Quasimodo",
+        "lastname" : "Lopez  "
     }
 ]

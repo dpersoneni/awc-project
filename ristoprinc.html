@@ -46,34 +46,33 @@
       txt += "</div>"
       document.getElementById("ciao").innerHTML = txt;
 
-      
+
 
     }
 
     function aggiungiLista(x) {
-      console.log("uela");
       var lista = [];
-    if ("lista" in localStorage) {
-        lista = JSON.parse(localStorage.getItem('lista'));  
-    }
-    
-    obj = {
+      if ("lista" in localStorage) {
+        lista = JSON.parse(localStorage.getItem('lista'));
+      }
+
+      obj = {
         "id": jsonProdotti[x].id,
         "name": jsonProdotti[x].name,
         "price": jsonProdotti[x].price
-    };
+      };
 
-    var index = lista.findIndex(function (item, i) {
+      var index = lista.findIndex(function (item, i) {
         return item.id == obj.id;
-    });
+      });
 
-    if (index === -1) {
+      if (index === -1) {
         lista.push(obj);
-    } else {
+      } else {
         lista.add(obj);
-    }
+      }
 
-    localStorage.setItem('lista', JSON.stringify(lista));
+      localStorage.setItem('lista', JSON.stringify(lista));
     }
 
   </script>
