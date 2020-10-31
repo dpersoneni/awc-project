@@ -1,12 +1,12 @@
 ristoranti = [
     {
-        "id":1,
-        "name":"Ristoria Pizzorante",
+        "id": 1,
+        "name": "Ristoria Pizzorante",
         "address": "via degli Olmi 4 <3<3<3"
     },
     {
         "id": 2,
-        "name":"Pasta, mi hai rotto!",
+        "name": "Pasta, mi hai rotto!",
         "address": "via le mani dal naso 12"
     },
     {

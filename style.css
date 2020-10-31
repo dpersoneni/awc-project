@@ -103,12 +103,14 @@ ul, li {
   width: 100%;
   color: white;
   text-align: center;
+  margin-bottom: 0;
 	
 }
 
 
 .footer_Links {
   text-align: left;
+  margin-bottom: 0;
 }
 
 ul {
@@ -128,18 +130,6 @@ ul {
 	text-decoration:none;
   font-weight: bold;
 }
-.supportLi h4 {
-	font-size: 20px;
-	font-weight: lighter;
-	line-height: normal;
-	margin-bottom: 0 !important;
-	padding-bottom: 0;
-}
-
-.bg-gray {
-	background-image: -moz-linear-gradient(center bottom, #BBBBBB 0%, #F0F0F0 100%);
-	box-shadow: 0 1px 0 #B4B3B3;
-}
 
 .footer a {
 	color: #78828D
@@ -150,10 +140,6 @@ ul {
 	border-top: 1px solid #DDDDDD;
 	padding-top: 20px;
 	padding-bottom: 10px;
-}
-.footer-bottom p.pull-left {
-	padding-top: 6px;
-  font-size: 0.75em
 }
 
 .slider {
