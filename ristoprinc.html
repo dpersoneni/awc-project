@@ -1,19 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="style.css" type="text/css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>EatMI</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>EatMI</title>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="index.html">EatMI</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+
+<body onload="mostraLista()">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="index.html">EatMI</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+
+  <script type="text/javascript" src="prodotti1.json"></script>
+  <script type="text/javascript" src="ristoranti.json"></script>
+  <div id="ciao"></div>
+
+  <script>
+    localStorage.setItem('prodotti', JSON.stringify(prodotti));
+    var jsonProdotti = JSON.parse(localStorage.getItem('prodotti'));
+    localStorage.setItem('ristoranti', JSON.stringify(ristoranti));
+    var jsonRistoranti = JSON.parse(localStorage.getItem('ristoranti'));
+
+    function mostraLista() {
+      txt = "";
+      txt += "<div class='row'>"
+      for (x in jsonProdotti) {
+        txt += " <div class='flip-card'> <div class='flip-card-inner'> <div class='flip-card-front'>"
+        txt += "<img src='" + jsonProdotti[x].image + "'style='width:100%'>";
+        txt += "<p style='float: left; display: inline; margin-left: 10px; margin-top: 3px;'>" + jsonProdotti[x].name + "</p>"
+        txt += "<p style='float: right; display: inline; margin-right: 10px; margin-top: 3px;'>" + jsonProdotti[x].price + "€ </p>"
+        txt += "</div> <div class='flip-card-back'> <ul>"
+        for (i in jsonProdotti[x].ingredients) {
+          txt += "<li>" + jsonProdotti[x].ingredients[i] + "</li>"
+        }
+        txt += "</ul>  <button type='button' onclick='aggiungiLista(" + x + ")'>Aggiungi ai tuoi piatti</button></div> </div> </div>"
+      }
+      txt += "</div>"
+      document.getElementById("ciao").innerHTML = txt;
+
+      
+
+    }
+
+    function aggiungiLista(x) {
+      console.log("uela");
+      var lista = [];
+    if ("lista" in localStorage) {
+        lista = JSON.parse(localStorage.getItem('lista'));  
+    }
     
-      </nav>
+    obj = {
+        "id": jsonProdotti[x].id,
+        "name": jsonProdotti[x].name,
+        "price": jsonProdotti[x].price
+    };
+
+    var index = lista.findIndex(function (item, i) {
+        return item.id == obj.id;
+    });
+
+    if (index === -1) {
+        lista.push(obj);
+    } else {
+        lista.add(obj);
+    }
+
+    localStorage.setItem('lista', JSON.stringify(lista));
+    }
+
+  </script>
 </body>
+
 </html>
