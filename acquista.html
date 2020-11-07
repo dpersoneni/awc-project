@@ -11,6 +11,7 @@
   <script src="prodotti1.json"></script>
   <script src="utenti.json"></script>
 </head>
+
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-light">
@@ -42,39 +43,46 @@
   <div id="visualCarrello">
     <div id="titoloCarrello"></div>
     <div id="tableCarrello"></div>
-    
-    <div><small class="btn btn-secondary" href="successo.html" role="button" style="float: right;">Concludi acquisto</small></div>
+
+    <div><small class="btn btn-secondary" onclick="concludiAquisto()" role="button" style="float: right;">Concludi
+        acquisto</small></div>
   </div>
-  
+
 
   <script>
-     var utenteObj = JSON.parse(localStorage.getItem('utente'));
-     var carrelloObj = JSON.parse(localStorage.getItem('carrello'));
+    var utenteObj = JSON.parse(localStorage.getItem('utente'));
+    var carrelloObj = JSON.parse(localStorage.getItem('carrello'));
     txt1 = "<h3>Carrello</h3>";
     txt = "<table id='tabellabella'><tr><th>Prodotto</th><th>Prezzo</th><th>Quantità</th><th>Modalità di pagamento</th></tr> ";
-    
-      for (x in carrelloObj) {
-      txt += "<tr><td>" + carrelloObj[x].name + "</td><td>" + carrelloObj[x].qnt + "</td><td>" + carrelloObj[x].qnt * carrelloObj[x].price +   "</td><td>" + utenteObj.method + "</td></tr>" ;
+
+    for (x in carrelloObj) {
+      txt += "<tr><td>" + carrelloObj[x].name + "</td><td>" + carrelloObj[x].qnt + "</td><td>" + carrelloObj[x].qnt * carrelloObj[x].price + "</td><td>" + utenteObj.method + "</td></tr>";
     }
-    document.getElementById("titoloCarrello").innerHTML = txt1; 
+    document.getElementById("titoloCarrello").innerHTML = txt1;
     document.getElementById("tableCarrello").innerHTML = txt + "</table>";
-    
+
+    function concludiAquisto() {
+      var count = JSON.parse(localStorage.getItem('contatore'));
+                count++;
+                localStorage.setItem('contatore', JSON.stringify(count));
+                window.location.href = "successo.html";
+    }
 
   </script>
 
- 
+
 
 
 
 
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-  crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-  crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-  crossorigin="anonymous"></script>
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
 </body>

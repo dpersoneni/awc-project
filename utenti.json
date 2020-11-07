@@ -11,7 +11,7 @@ utenti = [
     {
         "id":2,
         "mail":"aldobaglio@mail.com",
-        "firstname": "Aldio",
+        "firstname": "Aldo",
         "secondname": "Baglio",
         "method": "buonipasto",
         "password": "aldopw",

@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Successo</title>
 </head>
-<body>
+
+<body onload="funcContatore()">
     <h3">Acquisto completato con successo!</h3>
+
+        <script>
+         var count = JSON.parse(localStorage.getItem('contatore'));
+                count++;
+                localStorage.setItem('contatore', JSON.stringify(count));
+            }
+
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
+
 </html>
