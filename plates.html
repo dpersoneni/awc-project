@@ -13,6 +13,11 @@
 
 <body onload="mostraProdotti()">
 
+  <script>
+    var count = JSON.parse(localStorage.getItem('contatore'));
+
+  </script>
+
   <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="index.html">EatMi</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -75,8 +80,8 @@
             <span>🛒</span>
             <span id="numeroelementi"></span>
             <div id="carrello" class="dropdown-content">
-                <p>Carrello vuoto!</p>
-                
+              <p>Carrello vuoto!</p>
+
 
             </div>
           </div>

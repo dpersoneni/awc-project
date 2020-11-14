@@ -7,14 +7,16 @@
     <title>Successo</title>
 </head>
 
-<body onload="funcContatore()">
+<body>
     <h3">Acquisto completato con successo!</h3>
 
+    <a href="plates.html">link text</a>
+
+    
         <script>
-         var count = JSON.parse(localStorage.getItem('contatore'));
-                count++;
-                localStorage.setItem('contatore', JSON.stringify(count));
-            }
+            var count = JSON.parse(sessionStorage.getItem('contatore'));
+            sessionStorage.setItem('contatore', JSON.stringify(count));
+            
 
 
         </script>

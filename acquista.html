@@ -43,13 +43,32 @@
   <div id="visualCarrello">
     <div id="titoloCarrello"></div>
     <div id="tableCarrello"></div>
+    <div id="orario"></div>
 
-    <div><small class="btn btn-secondary" onclick="concludiAquisto()" role="button" style="float: right;">Concludi
-        acquisto</small></div>
+    <div><small class="btn btn-secondary" onclick="concludiAquisto()" role="button" style="float: right;">Concludi acquisto</small></div>
+    <div><small class="btn btn-secondary" onclick="location.href='plates.html'" role="button" style="float: right; margin-right: 5px;">Torna ai piatti</small></div>
+
   </div>
 
 
   <script>
+    var count1 = JSON.parse(sessionStorage.getItem('contatore'));
+
+    sessionStorage.setItem('contatore', JSON.stringify(count1));
+    var array = [];
+    for (i = 19; i < 23; i++) {
+      for (j = 0; j < 60; j += 15) {
+        if (j == 0) {
+          minutozero = i + ":00";
+          array.push(minutozero);
+        } else {
+          minutostringa = i.toString() + ":" + j.toString();
+          array.push(minutostringa);
+        }
+
+      }
+    }
+    
     var utenteObj = JSON.parse(localStorage.getItem('utente'));
     var carrelloObj = JSON.parse(localStorage.getItem('carrello'));
     txt1 = "<h3>Carrello</h3>";
@@ -61,12 +80,28 @@
     document.getElementById("titoloCarrello").innerHTML = txt1;
     document.getElementById("tableCarrello").innerHTML = txt + "</table>";
 
-    function concludiAquisto() {
-      var count = JSON.parse(localStorage.getItem('contatore'));
-                count++;
-                localStorage.setItem('contatore', JSON.stringify(count));
-                window.location.href = "successo.html";
+    var arrayLength = array.length;
+    for (var pos = 0; pos < arrayLength; pos++) {
+      if (pos == count1) {
+        console.log(array[pos]);
+        txt2 = "<p> Orario di ritiro: " + array[pos] + "</p>";
+      }
+      if (count1 == null) {
+        console.log(array[0]);
+        txt2 = "<p> Orario di ritiro: " + array[0] + "</p>";
+      }
     }
+    
+    document.getElementById("orario").innerHTML = txt2;
+
+    function concludiAquisto() {
+      var count = JSON.parse(sessionStorage.getItem('contatore'));
+      count++;
+      sessionStorage.setItem('contatore', JSON.stringify(count));
+      window.location.href = "successo.html";
+
+    }
+
 
   </script>
 
