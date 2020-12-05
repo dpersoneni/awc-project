@@ -18,15 +18,15 @@
                 <h3>Dati utente</h3>
             </div>
             <div class="form-group row">
-                <label for="nomer" class="col-sm-4 col-form-label">Mail </label>
-                <div class="col-sm-7">
+                <label for="nomer" class="col-sm-4 col-form-label">Mail</label>
+                <div class="col-sm-8">
                     <input type="email" class="form-control" id="nomer" placeholder="Mail">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="password" class="col-sm-4 col-form-label">Password</label>
-                <div class="col-sm-7">
+                <div class="col-sm-8">
                     <input type="password" class="form-control" id="password" placeholder="Password">
                 </div>
             </div>
@@ -36,18 +36,18 @@
             </div>
             <div class="form-group row">
                 <label for="nomep" class="col-sm-4 col-form-label">Nome</label>
-                <div class="col-sm-7">
+                <div class="col-sm-8">
                     <input type="text" class="form-control" id="firstname" placeholder="Nome">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="cognome" class="col-sm-4 col-form-label">Cognome</label>
-                <div class="col-sm-7">
+                <div class="col-sm-8">
                     <input type="text" class="form-control" id="secondname" placeholder="Cognome">
                 </div>
             </div>
-            <div class="form-group">
-                <p>Metodo di pagamento:</p>
+            <div class="form-group1">
+                <p><b>Metodo di pagamento:</b></p>
                 <input type="radio" id="contanti" name="metodo" value="contanti">
                 <label for="contanti">Contanti</label> <br>
                 <input type="radio" id="buonipasto" name="metodo" value="buonipasto">
@@ -56,13 +56,19 @@
                 <label for="bancomat">Bancomat</label> <br>
                 <input type="radio" id="paypal" name="metodo" value="paypal">
                 <label for="paypal">Paypal</label> <br>
-
-            </div>
-
+             </div>
+             <form>
+                <div>
+                  <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+                  <label for="subscribeNews">Subscribe to newsletter?</label>
+                </div>
+                <div>
+                </div>
+              </form>
 
             <div class="form-group row">
-                <div class="col-sm-10 offset-sm-4">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="col-sm-10 offset-sm-9">
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 15px;">Submit</button>
                 </div>
             </div>
         </form>
