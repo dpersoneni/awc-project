@@ -45,16 +45,17 @@
     <div id="tableCarrello"></div>
     <div id="orario"></div>
 
+ 
 
     <div><small class="btn btn-secondary" onclick="concludiAquisto()" role="button" style="float: right;">Concludi
         acquisto</small></div>
     <div><small class="btn btn-secondary" onclick="location.href='plates.html'" role="button"
         style="float: right; margin-right: 5px;">Torna ai piatti</small></div>
-
+        <div id="acquistiPassati">
+        </div>
   </div>
 
-  <div id="acquistiPassati">
-  </div>
+ 
 
 
   <script>
@@ -86,39 +87,49 @@
     document.getElementById("titoloCarrello").innerHTML = txt1;
     document.getElementById("tableCarrello").innerHTML = txt + "</table>";
 
-    var passato = "";
-    passato += "<table id='tabellabella'> <tr><th>Prodotto</th><th>Quantità</th></tr>"
+   
 
     function prendiPiattiPassati() {
 
       var prodottiPassati = JSON.parse(sessionStorage.getItem(utenteObj.mail));
       console.log(prodottiPassati);
-
+      var passato = "<table id='tabellabella'> <tr><th>Prodotti acquistati in passato</th></tr>";
+      for (x in prodottiPassati) {
+        passato += "<tr><td>" + prodottiPassati[x] + "</td></tr>";
+      }
+      document.getElementById("acquistiPassati").innerHTML = passato;
     }
 
     function aggiungiPiattiPassati() {
 
+
       var prodottiPassati = JSON.parse(sessionStorage.getItem(utenteObj.mail));
 
-      if (JSON.parse(sessionStorage.getItem(utenteObj.mail)) == null) {
+
+      if (prodottiPassati == null) {
         var vuoto = null;
-        sessionStorage.setItem(jsonObject[x].mail, JSON.stringify(vuoto));
-        return;
+        sessionStorage.setItem(utenteObj.mail, JSON.stringify(vuoto));
+        
       }
-
-      
-      var prodottiPassati = JSON.parse(sessionStorage.getItem(utenteObj.mail));
-
-      var arrayPassati = [];
+  
+      var arraytemporaneo = [];
+      //var prodottiPassati = JSON.parse(sessionStorage.getItem(utenteObj.mail));
+      for (x in prodottiPassati) {
+        arraytemporaneo.push(prodottiPassati[x]);
+      }
+     
       for (x in carrelloObj) {
-        arrayPassati.push(carrelloObj[x].name);
-
+        arraytemporaneo.push(carrelloObj[x].name);
+        console.log(carrelloObj[x].name);
       }
 
-      sessionStorage.setItem(utenteObj.mail, JSON.stringify(arrayPassati))
+      sessionStorage.setItem(utenteObj.mail, JSON.stringify(arraytemporaneo))
 
-      console.log(arrayPassati);
+      console.log(arraytemporaneo);
     }
+
+    
+
 
     var arrayLength = array.length;
     for (var pos = 0; pos < arrayLength; pos++) {

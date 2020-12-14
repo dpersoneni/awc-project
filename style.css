@@ -334,6 +334,16 @@ button:hover, a:hover {
     float: none; 
     border: none;
     perspective: 1000px;
+    margin-top: 30px;
+}
+
+#orario {
+  text-align: right;
+  font-weight: bold;
+}
+
+#acquistiPassati {
+padding-top: 30px;
 }
 
 #tabellabella {
@@ -343,10 +353,15 @@ button:hover, a:hover {
     font-family: sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+}
+#tbody {
+  background-color: lavender;
+
 }
 
 #tabellabella thead tr {
-  background-color: #009879;
+  background-color: #520a1d;
   color: #ffffff;
   text-align: left;
 }
@@ -356,15 +371,15 @@ button:hover, a:hover {
 }
 
 #tabellabella tbody tr {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #817679;
 }
 
 #tabellabella tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+  background-color: #817679;
 }
 
 #tabellabella tbody tr:last-of-type {
-  border-bottom: 2px solid #617C58;
+  border-bottom: 2px solid #817679;
 }
 
 *{
