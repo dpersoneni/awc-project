@@ -12,7 +12,7 @@
   <script src="utenti.json"></script>
 </head>
 
-<body>
+<body onload="prendiPiattiPassati()">
 
   <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="index.html">EatMi</a>
@@ -45,9 +45,15 @@
     <div id="tableCarrello"></div>
     <div id="orario"></div>
 
-    <div><small class="btn btn-secondary" onclick="concludiAquisto()" role="button" style="float: right;">Concludi acquisto</small></div>
-    <div><small class="btn btn-secondary" onclick="location.href='plates.html'" role="button" style="float: right; margin-right: 5px;">Torna ai piatti</small></div>
 
+    <div><small class="btn btn-secondary" onclick="concludiAquisto()" role="button" style="float: right;">Concludi
+        acquisto</small></div>
+    <div><small class="btn btn-secondary" onclick="location.href='plates.html'" role="button"
+        style="float: right; margin-right: 5px;">Torna ai piatti</small></div>
+
+  </div>
+
+  <div id="acquistiPassati">
   </div>
 
 
@@ -68,17 +74,51 @@
 
       }
     }
-    
+
     var utenteObj = JSON.parse(localStorage.getItem('utente'));
     var carrelloObj = JSON.parse(localStorage.getItem('carrello'));
     txt1 = "<h3>Carrello</h3>";
-    txt = "<table id='tabellabella'><tr><th>Prodotto</th><th>Prezzo</th><th>Quantità</th><th>Modalità di pagamento</th></tr> ";
-
+    txt = "<table id='tabellabella'><tr><th>Prodotto</th><th>Quantità</th><th>Prezzo</th><th>Modalità di pagamento</th></tr> ";
+    console.log(carrelloObj);
     for (x in carrelloObj) {
-      txt += "<tr><td>" + carrelloObj[x].name + "</td><td>" + carrelloObj[x].qnt + "</td><td>" + carrelloObj[x].qnt * carrelloObj[x].price + "</td><td>" + utenteObj.method + "</td></tr>";
+      txt += "<tr><td>" + carrelloObj[x].name + "</td><td>" + carrelloObj[x].qnt + "</td><td>" + carrelloObj[x].qnt * carrelloObj[x].price + " € </td><td>" + utenteObj.method + "</td></tr>";
     }
     document.getElementById("titoloCarrello").innerHTML = txt1;
     document.getElementById("tableCarrello").innerHTML = txt + "</table>";
+
+    var passato = "";
+    passato += "<table id='tabellabella'> <tr><th>Prodotto</th><th>Quantità</th></tr>"
+
+    function prendiPiattiPassati() {
+
+      var prodottiPassati = JSON.parse(sessionStorage.getItem(utenteObj.mail));
+      console.log(prodottiPassati);
+
+    }
+
+    function aggiungiPiattiPassati() {
+
+      var prodottiPassati = JSON.parse(sessionStorage.getItem(utenteObj.mail));
+
+      if (JSON.parse(sessionStorage.getItem(utenteObj.mail)) == null) {
+        var vuoto = null;
+        sessionStorage.setItem(jsonObject[x].mail, JSON.stringify(vuoto));
+        return;
+      }
+
+      
+      var prodottiPassati = JSON.parse(sessionStorage.getItem(utenteObj.mail));
+
+      var arrayPassati = [];
+      for (x in carrelloObj) {
+        arrayPassati.push(carrelloObj[x].name);
+
+      }
+
+      sessionStorage.setItem(utenteObj.mail, JSON.stringify(arrayPassati))
+
+      console.log(arrayPassati);
+    }
 
     var arrayLength = array.length;
     for (var pos = 0; pos < arrayLength; pos++) {
@@ -91,10 +131,11 @@
         txt2 = "<p> Orario di ritiro: " + array[0] + "</p>";
       }
     }
-    
+
     document.getElementById("orario").innerHTML = txt2;
 
     function concludiAquisto() {
+      aggiungiPiattiPassati();
       var count = JSON.parse(sessionStorage.getItem('contatore'));
       count++;
       sessionStorage.setItem('contatore', JSON.stringify(count));

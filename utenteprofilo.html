@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>EatMI</title>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="index.html">EatMI</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+
+
+    <div class="login-form">
+        <div id="ristorante"></div>
+        <div id="nome"></div>
+        <div id="mail"></div>
+        <div id="indirizzo"></div>
+        <div id="telefono"></div>
+        <div id="partitaiva"></div>
+
+    </div>
+
+    <div class="casa">
+        <form>
+            <div class="col-sm-10 offset-sm-4">
+                <h3>Inserisci un piatto a<br> tua scelta nel menu!</h3>
+            </div>
+            <div class="form-group row">
+                <label for="nomepiatto" class="col-sm-4 col-form-label">Nome piatto</label>
+                <div class="col-sm-7">
+                    <input type="nomepiatto" class="form-control" id="nomepiatto">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="prezzo" class="col-sm-4 col-form-label">Prezzo</label>
+                <div class="col-sm-7">
+                    <input type="number" class="form-control" id="prezzo">
+                </div>
+            </div>
+            <input type="text" id="npiatti" name="npiatti" value="">Numero ingredienti: (max:6)<br />
+            <a href="#" id="aggiungiigredienti" onclick="aggiungiIngredienti()">Aggiungi ingredienti</a>
+            <div id="container">
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-4">
+                    <button type="button" class="btn btn-primary" onclick="salvaRisto()">Aggiungi al menù</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        var jsonObject = JSON.parse(localStorage.getItem('ristoratore'));
+        ristorante = "<p><i class='fas fa-utensils' style = 'margin-right: 8px'></i>" + " " + jsonObject.restaurant + "</p>";
+        document.getElementById("ristorante").innerHTML = ristorante;
+
+        nome = "<p><i class='fas fa-user' style = 'margin-right: 8px'></i>" + " " + jsonObject.firstname + " " + jsonObject.lastname + "</p>";
+        document.getElementById("nome").innerHTML = nome;
+
+        mail = "<p><i class='fas fa-envelope'style = 'margin-right: 8px'></i>" + " " + jsonObject.mail + "</p>";
+        document.getElementById("mail").innerHTML = mail;
+
+        indirizzo = "<p><i class='fas fa-map-marker' style = 'margin-right: 8px'></i>" + " " + jsonObject.address + "</p>";
+        document.getElementById("indirizzo").innerHTML = indirizzo;
+
+        telefono = "<p><i class='fas fa-phone-alt' style = 'margin-right: 8px'></i>" + " " + jsonObject.telephone + "</p>";
+        document.getElementById("telefono").innerHTML = telefono;
+
+        partitaiva = "<p><i class='fas fa-sticky-note' style = 'margin-right: 8px'></i>" + " " + jsonObject.partitaiva + "</p>";
+        document.getElementById("partitaiva").innerHTML = partitaiva;
+
+        //Aggiungi piatto
+        function aggiungiIngredienti(){
+            var number = document.getElementById("npiatti").value;
+            var container = document.getElementById("container");
+            while (container.hasChildNodes()) {
+                container.removeChild(container.lastChild);
+            }
+            for (i=0;i<number;i++){
+                container.appendChild(document.createTextNode("Ingrediente" + (i+1)));
+                var input = document.createElement("input");
+                input.type = "text";
+                container.appendChild(input);
+                container.appendChild(document.createElement("br"));
+            }
+        }
+    </script>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
