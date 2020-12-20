@@ -24,83 +24,38 @@
 
 
     <div class="login-form">
-        <div id="ristorante"></div>
-        <div id="nome"></div>
+     
+        <div id="nomecognome"></div>
         <div id="mail"></div>
         <div id="indirizzo"></div>
         <div id="telefono"></div>
-        <div id="partitaiva"></div>
 
-    </div>
-
-    <div class="casa">
-        <form>
-            <div class="col-sm-10 offset-sm-4">
-                <h3>Inserisci un piatto a<br> tua scelta nel menu!</h3>
-            </div>
-            <div class="form-group row">
-                <label for="nomepiatto" class="col-sm-4 col-form-label">Nome piatto</label>
-                <div class="col-sm-7">
-                    <input type="nomepiatto" class="form-control" id="nomepiatto">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="prezzo" class="col-sm-4 col-form-label">Prezzo</label>
-                <div class="col-sm-7">
-                    <input type="number" class="form-control" id="prezzo">
-                </div>
-            </div>
-            <input type="text" id="npiatti" name="npiatti" value="">Numero ingredienti: (max:6)<br />
-            <a href="#" id="aggiungiigredienti" onclick="aggiungiIngredienti()">Aggiungi ingredienti</a>
-            <div id="container">
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-10 offset-sm-4">
-                    <button type="button" class="btn btn-primary" onclick="salvaRisto()">Aggiungi al menù</button>
-                </div>
-            </div>
-        </form>
-    </div>
+    </div>   
 
     <script>
-        var jsonObject = JSON.parse(localStorage.getItem('ristoratore'));
-        ristorante = "<p><i class='fas fa-utensils' style = 'margin-right: 8px'></i>" + " " + jsonObject.restaurant + "</p>";
-        document.getElementById("ristorante").innerHTML = ristorante;
+        var utenteObj = JSON.parse(localStorage.getItem('utente'));
 
-        nome = "<p><i class='fas fa-user' style = 'margin-right: 8px'></i>" + " " + jsonObject.firstname + " " + jsonObject.lastname + "</p>";
-        document.getElementById("nome").innerHTML = nome;
+        console.log(utenteObj.firstname);
+        console.log(utenteObj.secondname);
+        console.log(utenteObj.address);
+        console.log(utenteObj.mail);
+        console.log(utenteObj.telephone);
 
-        mail = "<p><i class='fas fa-envelope'style = 'margin-right: 8px'></i>" + " " + jsonObject.mail + "</p>";
+        nome = "<p><i class='fas fa-user' style = 'margin-right: 8px'></i>" + " " + utenteObj.firstname + " " + utenteObj.secondname + "</p>";
+        document.getElementById("nomecognome").innerHTML = nome;
+
+        mail = "<p><i class='fas fa-envelope'style = 'margin-right: 8px'></i>" + " " + utenteObj.mail + "</p>";
         document.getElementById("mail").innerHTML = mail;
 
-        indirizzo = "<p><i class='fas fa-map-marker' style = 'margin-right: 8px'></i>" + " " + jsonObject.address + "</p>";
+        indirizzo = "<p><i class='fas fa-map-marker' style = 'margin-right: 8px'></i>" + " " + utenteObj.address + "</p>";
         document.getElementById("indirizzo").innerHTML = indirizzo;
 
-        telefono = "<p><i class='fas fa-phone-alt' style = 'margin-right: 8px'></i>" + " " + jsonObject.telephone + "</p>";
+        telefono = "<p><i class='fas fa-phone-alt' style = 'margin-right: 8px'></i>" + " " + utenteObj.telephone + "</p>";
         document.getElementById("telefono").innerHTML = telefono;
 
-        partitaiva = "<p><i class='fas fa-sticky-note' style = 'margin-right: 8px'></i>" + " " + jsonObject.partitaiva + "</p>";
-        document.getElementById("partitaiva").innerHTML = partitaiva;
 
-        //Aggiungi piatto
-        function aggiungiIngredienti(){
-            var number = document.getElementById("npiatti").value;
-            var container = document.getElementById("container");
-            while (container.hasChildNodes()) {
-                container.removeChild(container.lastChild);
-            }
-            for (i=0;i<number;i++){
-                container.appendChild(document.createTextNode("Ingrediente" + (i+1)));
-                var input = document.createElement("input");
-                input.type = "text";
-                container.appendChild(input);
-                container.appendChild(document.createElement("br"));
-            }
-        }
-    </script>
-
-
-
+      
+    </script>   
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

@@ -6,7 +6,8 @@ utenti = [
         "secondname": "Storti",
         "method": "contanti",
         "password": "giovannipw",
-        "address": "via san siro 12"
+        "address": "via san siro 12",
+        "telephone": "3205564159"
     },
     {
         "id":2,
@@ -15,7 +16,8 @@ utenti = [
         "secondname": "Baglio",
         "method": "buonipasto",
         "password": "aldopw",
-        "address": "via sicilia 11"
+        "address": "via sicilia 11",
+        "telephone": "3315462333"
     },
     {
         "id":3,
@@ -24,7 +26,9 @@ utenti = [
         "secondname": "Poretti",
         "method": "bancomat",
         "password": "giacomopw",
-        "address": "via statale 152"
+        "address": "via statale 152",
+        "telephone": "3225489654"
+
     },
 
     {
@@ -34,7 +38,9 @@ utenti = [
         "secondname": "Massironi",
         "method": "paypal",
         "password": "maripw",
-        "address": "via grecia 18"
+        "address": "via grecia 18",
+        "telephone": "3897603755"
+
     }
 
 ]

@@ -92,6 +92,9 @@
     function prendiPiattiPassati() {
 
       var prodottiPassati = JSON.parse(sessionStorage.getItem(utenteObj.mail));
+      if (prodottiPassati == null) {
+        return;
+      }
       console.log(prodottiPassati);
       var passato = "<table id='tabellabella'> <tr><th>Prodotti acquistati in passato</th></tr>";
       for (x in prodottiPassati) {

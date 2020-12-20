@@ -2,44 +2,44 @@ prodotti =
 [
     {
         "id" : 1,   
-        "name":"AmBurger",
+        "name":"Hamburger",
         "image":"images/1.jpg",
         "type":"panini",
         "price": 8.00,
         "ingredients" : [
-            "bread", 
+            "pane", 
             "hamburger",
             "ketchup",
-            "onions",
-            "mustard",
-            "pickle"
+            "cipolle",
+            "senape",
+            "cetriolo"
         ]
     },
     {
         "id" : 2,   
-        "name":"AmBurDen",
+        "name":"Chicken Burger",
         "image":"images/2.png",
         "type":"panini",
         "price": 7.50,
         "ingredients" : [
-            "bread", 
-            "chicken",
-            "caesar sauce"
+            "pane", 
+            "pollo",
+            "salsa caesar"
      ]
     },
     {
         "id" : 3,
-        "name":"Ciobber",
+        "name":"Cheese Burger",
         "image":"images/3.png",
         "type":"panini",
         "price": 6.50,
         "ingredients" : [
-            "bread", 
+            "pane", 
             "hamburger",
             "ketchup",
-            "onions",
-            "mustard",
-            "cheese"
+            "cipolle",
+            "senape",
+            "formaggio"
         ]
     },
     {
@@ -49,61 +49,61 @@ prodotti =
         "type":"panini",
         "price": 8.00,
         "ingredients" : [
-            "bread", 
-            "soy burger",
-            "tomato",
-            "mayonnaise",
-            "pickle",
-            "lattuce"
+            "pane", 
+            "burger di soia",
+            "pomodoro",
+            "maionese",
+            "cetriolo",
+            "lattuga"
         ]
     },
     {
         "id" : 5,
-        "name":"McBEQon",
+        "name":"Bacon Burger",
         "image":"images/5.png",
         "type":"panini",
         "price": 5.70,
         "ingredients" : [
-            "bread", 
+            "pane", 
             "hamburger",
-            "crispy sauce",
+            "salsa crispy",
             "bacon",
-            "cheese"
+            "formaggio"
         ]
     },
     {
         "id" : 6,
-        "name":"AriPizza",
+        "name":"Margherita",
         "image":"images/pizza1.jpg",
         "type":"pizza",
         "price": 6.50,
         "ingredients" : [
-            "dough", 
-            "tomato sauce",
+            "impasto", 
+            "salsa di pomodoro",
             "mozzarella",
-            "oregano"
+            "origano"
             
         ]
     },
     {
         "id": 7,
-        "name":"PizzAm",
+        "name":"Vegeteriana",
         "image":"images/pizza2.jpg",
         "type":"pizza",
         "price": 7.00,
         "ingredients" : [
-            "dough", 
-            "tomato sauce",
+            "impasto", 
+            "salsa di pomodoro",
             "mozzarella",
-            "zucchini",
-            "egg plant"
+            "zucchine",
+            "melanzane"
             
             
         ]
     },
     {
         "id":8,
-        "name":"AmAtriciana",
+        "name":"Amatriciana",
         "image":"images/amatriciana.jpg",
         "type":"pasta",
         "price": 8.00,
@@ -111,23 +111,135 @@ prodotti =
             "spaghetti", 
             "guanciale",
             "pecorino",
-            "tomatoes"  
+            "pomodoro"  
         ]
     },
     {
         "id":9,
-        "name":"Troie al Pesto",
+        "name":"Trofie al Pesto",
         "image":"images/trofie.jpg",
         "type":"pasta",
         "price": 7.00,
         "ingredients" : [
             "trofie", 
             "pecorino",
-            "basil pesto"
+            "pesto"
             
             
         ]
+    },
+    {
+        "id":10,
+        "name":"Carbonara",
+        "image":"images/trofie.jpg",
+        "type":"pasta",
+        "price": 8.00,
+        "ingredients" : [
+            "spaghetti", 
+            "uovo",
+            "guanciale",
+            "pepe",
+            "pecorino"
+        ]
+    },
+    {
+        "id":11,
+        "name":"Ravioli Ricotta e Spinaci",
+        "image":"images/trofie.jpg",
+        "type":"pasta",
+        "price": 7.50,
+        "ingredients" : [
+            "uovo", 
+            "farina",
+            "spinaci",
+            "ricotta",
+            "pepe",
+            "parmiginao"           
+        ]
+    },
+    {
+        "id":12,
+        "name":"Salsiccia e Peperoni",
+        "image":"images/trofie.jpg",
+        "type":"piadina",
+        "price": 7.00,
+        "ingredients" : [
+            "piadina", 
+            "salsiccia",
+            "peperoni",
+            "gorgonzola"         
+            
+        ]
+    },
+    {
+        "id":13,
+        "name":"Verdure grigliate",
+        "image":"images/trofie.jpg",
+        "type":"piadina",
+        "price": 5.50,
+        "ingredients" : [
+            "piadina", 
+            "zucchine",
+            "melanzane",
+            "pomodoro",
+            "rucola"       
+            
+        ]
+    },
+    {
+        "id":14,
+        "name":"Prosciutto e formaggio",
+        "image":"images/trofie.jpg",
+        "type":"piadina",
+        "price": 7.00,
+        "ingredients" : [
+            "piadina", 
+            "prosciutto",
+            "formaggio"           
+        ]
+    },
+    {
+        "id":15,
+        "name":"Bismarck",
+        "image":"images/trofie.jpg",
+        "type":"pizza",
+        "price": 9.00,
+        "ingredients" : [
+            "impasto", 
+            "salsa di pomodoro",
+            "mozzarella",
+            "origano",
+            "uovo"        
+        ]
+    },
+    {
+        "id":16,
+        "name":"wurstel e patatine",
+        "image":"images/trofie.jpg",
+        "type":"pizza",
+        "price": 8.50,
+        "ingredients" : [
+            "impasto", 
+            "salsa di pomodoro",
+            "mozzarella",
+            "wurstel",
+            "patatine"        
+        ]
+    },
+    {
+        "id":17,
+        "name":"Belpaese",
+        "image":"images/trofie.jpg",
+        "type":"piadina",
+        "price": 7.00,
+        "ingredients" : [
+            "piadina", 
+            "bresaola",
+            "rucola",
+            "grana"        
+        ]
     }
+   
    
     
  

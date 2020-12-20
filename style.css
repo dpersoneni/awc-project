@@ -279,7 +279,7 @@ button:hover, a:hover {
 
 .flip-card-back ul {
   margin-top: 10px;
-  margin-right: 33px; 
+
   vertical-align: middle;
   font-family: 'BebasNeue-regular';
   src: url(BebasNeue-Regular.ttf.eot);
@@ -327,7 +327,7 @@ button:hover, a:hover {
     border: 1px solid #ddd;
     padding: 2rem;
     background: #ffffff;
-    background-color:#ffccb3;
+    background-color: #E4D4C8;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 5px;
@@ -353,6 +353,8 @@ padding-top: 30px;
     font-family: sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: #D0B49F;
+    border-radius: 5px;
 
 }
 #tbody {
@@ -371,16 +373,12 @@ padding-top: 30px;
 }
 
 #tabellabella tbody tr {
-  border-bottom: 1px solid #817679;
+  border-bottom: 1px solid ;
 }
 
-#tabellabella tbody tr:nth-of-type(even) {
-  background-color: #817679;
-}
 
-#tabellabella tbody tr:last-of-type {
-  border-bottom: 2px solid #817679;
-}
+
+
 
 *{
   margin:0;
