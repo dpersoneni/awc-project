@@ -1,34 +1,18 @@
-Vedere perché Accedi e registrati sono fuori dalla card OK
-Mettere un titolo a rist dati
-Sistemare angoli immagine index con border radius
-Aggiungere vari prodotti
+TODO VECCHI
 Cambiare colore Find More per ogni navbar di ogni pagina 
 ??? cambiare tutto ciò che si vede in italiano ???
-Cambiare tutti i bordi delle card farli come quelli dei plates
 font footer plates
-vedere perché la navbar in index è più grande 
-scrivere presentazione su about 
-fare tutte le navbar uguali a quella dell'index
-IMPORTANTE: Vedere le immagini nel json come gestirle come prenderle e dove metterle 
-Sistemare misura del button di plates di filtra
+scrivere presentazione su about  
 
-DEFINITIVE
-Visualizzazione ristoranti, clienti, acquisti
-Login al sito
-Visual acquisti presenti e passati
-Simulazione carrello, acquisto e ritiro
-Visual statistiche ristorante
+TODO NUOVI
+Sistemare footer di ogni pagina
+Aggiungere per ogni ristorante i suoi piatti (den dopo me ne vuole parlare)
+Risolvere problema accedi e registrati di utente e ristoratore 
+Modificare tutot il sito insieme così da averne due diversi
+Rivedere meglio navbar e come navigare tra le pagine e quali pagine inserire
 
-Amrita = aggiungi il carrello sistemare button e fare la funzione creando il carrello (dentro script)
-    Mettere il carrello in una tabella
-    Bottone checkout nel carrello
-    Bottoni add e remove per singolo elemento nel carrello
+
+
     
 Danilo = crea ristoranti [[[guardi Am <3]]]
 
-28.11.2020 (DEFINITIVO)
-– Visualizzazione degli acquisti presenti e passati per un cliente.
-– Visualizzazione statistiche per ristorante.
-- Inoltre, in fase di registrazione gli utenti possono selezionare delle preferenze
-(tra le quali quelle di privacy e relative all’applicazione) per la personalizzazione 
-dei servizi (ad es., offerte speciali in bacheca per la tipologia di prodotto preferito). 

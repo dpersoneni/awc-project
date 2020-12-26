@@ -2,7 +2,7 @@ utenti = [
     {
         "id":1,
         "mail":"giovastorti@mail.com",
-        "firstname": "Govanni",
+        "firstname": "Giovanni",
         "secondname": "Storti",
         "method": "contanti",
         "password": "giovannipw",

@@ -154,7 +154,7 @@ prodotti =
             "spinaci",
             "ricotta",
             "pepe",
-            "parmiginao"           
+            "parmigiano"           
         ]
     },
     {
@@ -195,7 +195,8 @@ prodotti =
         "ingredients" : [
             "piadina", 
             "prosciutto",
-            "formaggio"           
+            "formaggio" ,
+            "maionese"          
         ]
     },
     {
@@ -226,6 +227,7 @@ prodotti =
             "patatine"        
         ]
     },
+    
     {
         "id":17,
         "name":"Belpaese",
@@ -238,9 +240,156 @@ prodotti =
             "rucola",
             "grana"        
         ]
+    },
+   
+    {
+        "id":18,
+        "name":"Tiramisù",
+        "image":"images/trofie.jpg",
+        "type":"dolci",
+        "price": 5.00,
+        "ingredients" : [
+            "savoiardi", 
+            "mascarpone",
+            "caffè",
+            "zucchero",
+            "cacao",
+            "uova"        
+        ]
+    },
+    {
+        "id":19,
+        "name":"Torta della Nonna",
+        "image":"images/trofie.jpg",
+        "type":"dolci",
+        "price": 8.00,
+        "ingredients" : [
+            "crema", 
+            "scorza di limone",
+            "farina",
+            "zucchero",
+            "burro",
+            "uova"        
+        ]
+    },
+    {
+        "id":20,
+        "name":"Torta al cioccolato",
+        "image":"images/trofie.jpg",
+        "type":"dolci",
+        "price": 5.00,
+        "ingredients" : [
+            "cioccolato fondente", 
+            "farina 00",
+            "lievito",
+            "zucchero",
+            "cacao",
+            "uova"        
+        ]
+    },
+    {
+        "id":21,
+        "name":"Crepes alla Nutella",
+        "image":"images/trofie.jpg",
+        "type":"dolci",
+        "price": 4.50,
+        "ingredients" : [
+            "latte", 
+            "farina",
+            "burro",
+            "nutella",
+            "zucchero a velo",
+            "uova"        
+        ]
+    },
+    {
+        "id":22,
+        "name":"Insalata di Castagne",
+        "image":"images/trofie.jpg",
+        "type":"insalate",
+        "price": 8.50,
+        "ingredients" : [
+            "castagne", 
+            "insalata",
+            "pane",
+            "olio d'oliva",
+            "roquefort",
+            "peperoncino"        
+        ]
+    },
+    {
+        "id":23,
+        "name":"Insalata Invernale",
+        "image":"images/trofie.jpg",
+        "type":"insalate",
+        "price": 7.00,
+        "ingredients" : [
+            "finocchi", 
+            "arance",
+            "olio d'oliva",
+            "insalata",
+            "sale",
+            "aceto"        
+        ]
+    },
+    {
+        "id":24,
+        "name":"Insalara di pollo",
+        "image":"images/trofie.jpg",
+        "type":"insalate",
+        "price": 8.00,
+        "ingredients" : [
+            "pollo", 
+            "insalata",
+            "peperoni",
+            "cetriolini",
+            "sale",
+            "olive"        
+        ]
+    },
+    {
+        "id":25,
+        "name":"Insalata greca",
+        "image":"images/trofie.jpg",
+        "type":"insalate",
+        "price": 6.50,
+        "ingredients" : [
+            "feta", 
+            "olive nere",
+            "lattuga",
+            "olio",
+            "cetrioli",
+            "pomodori"        
+        ]
+    },
+    {
+        "id":26,
+        "name":"Marinara",
+        "image":"images/trofie.jpg",
+        "type":"pizza",
+        "price": 6.50,
+        "ingredients" : [
+            "impasto", 
+            "salsa di pomodoro",
+            "origano",
+            "zucchero",
+            "cacao",
+            "uova"        
+        ]
+    },
+    {
+        "id":27,
+        "name":"Pizza Boscaiola",
+        "image":"images/trofie.jpg",
+        "type":"pizza",
+        "price": 7.00,
+        "ingredients" : [
+            "impasto", 
+            "mozzarella",
+            "funghi champignon",
+            "salsiccia",
+            "pepe nero"        
+        ]
     }
-   
-   
-    
  
  ]

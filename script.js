@@ -92,7 +92,6 @@ function filtraTipo() {
                     }
                     txt += "</ul>  <button type='button' onclick='aggiungiCarrello(" + x + ")'>Aggiungi al carrello</button></div> </div> </div>"
 
-                    txt += " </div>"
                 }
             }
             txt += "</div>"
@@ -115,7 +114,8 @@ function filtraPrezzo() {
                     for (i in jsonObject[x].ingredients) {
                         txt += "<li>" + jsonObject[x].ingredients[i] + "</li>"
                     }
-                    txt += "</ul> </div> </div> </div>"
+                    txt += "</ul>  <button type='button' onclick='aggiungiCarrello(" + x + ")'>Aggiungi al carrello</button></div> </div> </div>"
+                    
                 }
             }
             txt += "</div>"
@@ -138,7 +138,8 @@ function filtraEntrambi() {
                     for (i in jsonObject[x].ingredients) {
                         txt += "<li>" + jsonObject[x].ingredients[i] + "</li>"
                     }
-                    txt += "</ul> </div> </div> </div>"
+                    txt += "</ul>  <button type='button' onclick='aggiungiCarrello(" + x + ")'>Aggiungi al carrello</button></div> </div> </div>"
+
                 }
             }
             txt += "</div>"
@@ -182,7 +183,7 @@ function cercaNome() {
                     for (i in jsonObject[x].ingredients) {
                         txt += "<li>" + jsonObject[x].ingredients[i] + "</li>"
                     }
-                    txt += "</ul> </div> </div> </div>"
+                    txt += "</ul>  <button type='button' onclick='aggiungiCarrello(" + x + ")'>Aggiungi al carrello</button></div> </div> </div>"
                 }
             }
             txt += "</div>"
