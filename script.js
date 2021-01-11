@@ -173,8 +173,8 @@ function cercaNome() {
             txt = "";
             txt += "<div class='row'>"
             for (x in jsonObject) {
-                if (jsonObject[x].name.toLowerCase() == document.getElementById("cerca").value.toLowerCase()) {
-                    console.log("ciao");
+                if (jsonObject[x].name.toLowerCase().includes(document.getElementById("cerca").value.toLowerCase()))  {
+                    
                     txt += " <div class='flip-card'> <div class='flip-card-inner'> <div class='flip-card-front'>"
                     txt += "<img src='" + jsonObject[x].image +"' style='width:100%'>";
                     txt += "<p style='float: left; display: inline; margin-left: 10px; margin-top: 3px;'>" + jsonObject[x].name + "</p>"
