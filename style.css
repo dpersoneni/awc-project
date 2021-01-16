@@ -292,10 +292,6 @@ button:hover, a:hover {
   color: blanchedalmond;
 }
 
-.barra input {
-  float: right;
-  margin-right: 40px;
-}
 
 .barra form {
   margin-left: 20px ;
@@ -308,10 +304,17 @@ button:hover, a:hover {
 
 .dropdown-menu {
   left: auto !important;
-  background-color: #617c58 !important; 
+  background-color: #889e81 !important; 
   color: blanchedalmond !important;
+}
+
+#idp {
+  background-color: #617C58 !important;
+}
 
 
+.dropdown-item {
+  color: blanchedalmond !important;
 }
 
 .dropdown-content {
@@ -328,6 +331,20 @@ button:hover, a:hover {
 .dropdown:hover .dropdown-content {
   display: block;
   
+}
+
+#filtro {
+  display: inline-block;
+}
+
+#cerca {
+  display: inline-block;
+  margin-left: 32em;
+}
+
+#carrellodiv {
+  display: inline-block;
+  float:right;
 }
 
 

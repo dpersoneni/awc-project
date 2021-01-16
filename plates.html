@@ -77,19 +77,20 @@
           </select>
           <button type="button" onclick="filtraGenerale()" form="filtro">Filtra</button>
          
-          <div class="dropdown" style="display:inline-block;">
-            <span>🛒</span>
-            <span id="numeroelementi"></span>
-            <div id="carrello" class="dropdown-content">
-              <p>Carrello vuoto!</p>
-
-
-            </div>
-          </div>
+  
 
         </form>
         <input type="text" placeholder="Search.." id="cerca" onkeyup="cercaNome()">
 
+        <div id="carrellodiv" class="dropdown">
+          <span>🛒</span>
+          <span id="numeroelementi"></span>
+          <div id="carrello" class="dropdown-content">
+            <p>Carrello vuoto!</p>
+
+
+          </div>
+        </div>
 
       </div>
 

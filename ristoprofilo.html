@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="prodotti1.json"></script>
     <title>EatMI</title>
 </head>
 
 
-<body>
+<body onload="mostraLista()">
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="index.html">EatMI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -61,6 +62,7 @@
             </div>
         </form>
     </div>
+    <div id="ciao"></div>
 
     <script>
         var jsonObject = JSON.parse(localStorage.getItem('ristoratore'));
@@ -83,20 +85,76 @@
         document.getElementById("partitaiva").innerHTML = partitaiva;
 
         //Aggiungi piatto
-        function aggiungiIngredienti(){
+        function aggiungiIngredienti() {
             var number = document.getElementById("npiatti").value;
             var container = document.getElementById("container");
             while (container.hasChildNodes()) {
                 container.removeChild(container.lastChild);
             }
-            for (i=0;i<number;i++){
-                container.appendChild(document.createTextNode("Ingrediente" + (i+1)));
+            for (i = 0; i < number; i++) {
+                container.appendChild(document.createTextNode("Ingrediente" + (i + 1)));
                 var input = document.createElement("input");
                 input.type = "text";
                 container.appendChild(input);
                 container.appendChild(document.createElement("br"));
             }
         }
+        localStorage.setItem('prodotti', JSON.stringify(prodotti));
+        var jsonProdotti = JSON.parse(localStorage.getItem('prodotti'));
+        var jsonRistoranti = JSON.parse(localStorage.getItem('ristoranti'));
+        /*var jsonObject = JSON.parse(localStorage.getItem('ristoratore'));*/
+
+
+
+        function mostraLista() {
+            var mailProva = "ueeeee";
+            txt = "";
+            txt += "<div class='row'>"
+            for (x in jsonProdotti) {
+                txt += " <div class='flip-card'> <div class='flip-card-inner'> <div class='flip-card-front'>"
+                txt += "<img src='" + jsonProdotti[x].image + "'style='width:100%'>";
+                txt += "<p style='float: left; display: inline; margin-left: 10px; margin-top: 3px;'>" + jsonProdotti[x].name + "</p>"
+                txt += "<p style='float: right; display: inline; margin-right: 10px; margin-top: 3px;'>" + jsonProdotti[x].price + "€ </p>"
+                txt += "</div> <div class='flip-card-back'> <ul>"
+                for (i in jsonProdotti[x].ingredients) {
+                    txt += "<li>" + jsonProdotti[x].ingredients[i] + "</li>"
+                }
+                txt += "</ul>  <button type='button' onclick='aggiungiLista(" + x + ")'>Aggiungi ai tuoi piatti</button></div> </div> </div>"
+            }
+            txt += "</div>"
+            document.getElementById("ciao").innerHTML = txt;
+
+
+
+        }
+
+        function aggiungiLista(x) {
+            var lista = [];
+            if ("lista" in localStorage) {
+                lista = JSON.parse(localStorage.getItem('lista'));
+            }
+
+            obj = {
+                "id": jsonProdotti[x].id,
+                "name": jsonProdotti[x].name,
+                "price": jsonProdotti[x].price
+            };
+
+            var listaProdotti = {};
+            listaProdotti["mail"] = "den";
+
+            var index = lista.findIndex(function (item, i) {
+                return item.id == obj.id;
+            });
+
+            if (index === -1) {
+                lista.push(obj);
+            }
+            listaProdotti["lista"] = lista;
+            console.log(listaProdotti);
+            localStorage.setItem('lista', JSON.stringify(lista));
+        }
+
     </script>
 
 

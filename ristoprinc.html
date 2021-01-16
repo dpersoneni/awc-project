@@ -28,8 +28,12 @@
     var jsonProdotti = JSON.parse(localStorage.getItem('prodotti'));
     localStorage.setItem('ristoranti', JSON.stringify(ristoranti));
     var jsonRistoranti = JSON.parse(localStorage.getItem('ristoranti'));
+    /*var jsonObject = JSON.parse(localStorage.getItem('ristoratore'));*/
+
+  
 
     function mostraLista() {
+      var mailProva = "ueeeee";
       txt = "";
       txt += "<div class='row'>"
       for (x in jsonProdotti) {
@@ -62,16 +66,18 @@
         "price": jsonProdotti[x].price
       };
 
+      var listaProdotti = {};
+      listaProdotti["mail"] = "den"; 
+  
       var index = lista.findIndex(function (item, i) {
         return item.id == obj.id;
       });
 
       if (index === -1) {
         lista.push(obj);
-      } else {
-        lista.add(obj);
       }
-
+      listaProdotti["lista"] = lista;
+      console.log(listaProdotti);
       localStorage.setItem('lista', JSON.stringify(lista));
     }
 
