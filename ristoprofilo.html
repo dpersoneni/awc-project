@@ -13,7 +13,7 @@
 </head>
 
 
-<body onload="mostraLista()">
+<body onload="decidiCosaMostrare()">
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="index.html">EatMI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -22,47 +22,66 @@
         </button>
     </nav>
 
+    <div class="inforistorante">
+        <div class="login-form">
+            <div id="ristorante"></div>
+            <div id="nome"></div>
+            <div id="mail"></div>
+            <div id="indirizzo"></div>
+            <div id="telefono"></div>
+            <div id="partitaiva"></div>
 
+        </div>
 
-    <div class="login-form">
-        <div id="ristorante"></div>
-        <div id="nome"></div>
-        <div id="mail"></div>
-        <div id="indirizzo"></div>
-        <div id="telefono"></div>
-        <div id="partitaiva"></div>
-
-    </div>
-
-    <div class="casa">
-        <form>
-            <div class="col-sm-10 offset-sm-4">
-                <h3>Inserisci un piatto a<br> tua scelta nel menu!</h3>
-            </div>
-            <div class="form-group row">
-                <label for="nomepiatto" class="col-sm-4 col-form-label">Nome piatto</label>
-                <div class="col-sm-7">
-                    <input type="nomepiatto" class="form-control" id="nomepiatto">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="prezzo" class="col-sm-4 col-form-label">Prezzo</label>
-                <div class="col-sm-7">
-                    <input type="number" class="form-control" id="prezzo">
-                </div>
-            </div>
-            <input type="text" id="npiatti" name="npiatti" value="">Numero ingredienti: (max:6)<br />
-            <a href="#" id="aggiungiigredienti" onclick="aggiungiIngredienti()">Aggiungi ingredienti</a>
-            <div id="container">
-            </div>
-            <div class="form-group row">
+        <div class="casa">
+            <form>
                 <div class="col-sm-10 offset-sm-4">
-                    <button type="button" class="btn btn-primary" onclick="salvaRisto()">Aggiungi al menù</button>
+                    <h3>Inserisci un piatto a<br> tua scelta nel menu!</h3>
                 </div>
-            </div>
-        </form>
+                <div class="form-group row">
+                    <label for="nomepiatto" class="col-sm-4 col-form-label">Nome piatto</label>
+                    <div class="col-sm-7">
+                        <input type="nomepiatto" class="form-control" id="nomepiatto">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="prezzo" class="col-sm-4 col-form-label">Prezzo</label>
+                    <div class="col-sm-7">
+                        <input type="number" class="form-control" id="prezzo">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="npiatti" class="col-sm-4 col-form-label">Numero ingredienti </label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="npiatti" name="npiatti" value=""
+                            placeholder="Massimo sei">
+                    </div>
+                    <label class="col-sm-4 col-form-label"></label>
+                    <div class="col-sm-7">
+                        <a href="#" id="aggiungiigredienti" onclick="aggiungiIngredienti()"
+                            style="float: right;">Aggiungi ingredienti</a>
+
+                    </div>
+                </div>
+
+                <div id="container">
+                    <br>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10 offset-sm-4">
+                        <button type="button" class="btn btn-primary" onclick="salvaRisto()">Aggiungi al menù</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-    <div id="ciao"></div>
+
+
+    <div id="piattiristoratore"></div>
+    <div id="piattigiascelti" style="margin-left: 8%;"></div>
+    <button onclick="aggiungiPiattiaLS()" style="margin-right: 10em; margin-bottom: 10em; float: right;">Aggiungi piatti
+        al tuo menu</button>
 
     <script>
         var jsonObject = JSON.parse(localStorage.getItem('ristoratore'));
@@ -92,18 +111,43 @@
                 container.removeChild(container.lastChild);
             }
             for (i = 0; i < number; i++) {
-                container.appendChild(document.createTextNode("Ingrediente" + (i + 1)));
+                if (number > 6) {
+                    return;
+                }
+                container.appendChild(document.createTextNode("Ingrediente " + (i + 1)));
                 var input = document.createElement("input");
                 input.type = "text";
                 container.appendChild(input);
                 container.appendChild(document.createElement("br"));
+
+
+
             }
+
         }
         localStorage.setItem('prodotti', JSON.stringify(prodotti));
         var jsonProdotti = JSON.parse(localStorage.getItem('prodotti'));
         var jsonRistoranti = JSON.parse(localStorage.getItem('ristoranti'));
-        /*var jsonObject = JSON.parse(localStorage.getItem('ristoratore'));*/
+        var jsonRistoratore = JSON.parse(localStorage.getItem('ristoratore'));
 
+        function decidiCosaMostrare() {
+            piattiGiaScelti = JSON.parse(localStorage.getItem(jsonRistoratore.mail))
+            if (piattiGiaScelti === null) {
+                mostraLista();
+            } else {
+                mostraProdottiScelti();
+
+            }
+        }
+
+        function mostraProdottiScelti() {
+            piattiGiaScelti = JSON.parse(localStorage.getItem(jsonRistoratore.mail))
+            txt = "<h3>I tuoi Piatti</h3><br><table id='tabellabella'><tr><th>Prodotto</th><th>Prezzo</th><th>Ingredienti</th></tr> ";
+            for (x in piattiGiaScelti) {
+                txt += "<tr><td>" + piattiGiaScelti[x].name + "</td><td>" + piattiGiaScelti[x].price + " € </td><td>" + piattiGiaScelti[x].ingredients+ "</td></tr>";
+            }
+            document.getElementById("piattigiascelti").innerHTML = txt + "</table>";
+        }
 
 
         function mostraLista() {
@@ -121,15 +165,16 @@
                 }
                 txt += "</ul>  <button type='button' onclick='aggiungiLista(" + x + ")'>Aggiungi ai tuoi piatti</button></div> </div> </div>"
             }
+
             txt += "</div>"
-            document.getElementById("ciao").innerHTML = txt;
+            document.getElementById("piattiristoratore").innerHTML = txt;
 
 
 
         }
-
+        var lista = [];
         function aggiungiLista(x) {
-            var lista = [];
+
             if ("lista" in localStorage) {
                 lista = JSON.parse(localStorage.getItem('lista'));
             }
@@ -137,11 +182,12 @@
             obj = {
                 "id": jsonProdotti[x].id,
                 "name": jsonProdotti[x].name,
-                "price": jsonProdotti[x].price
+                "price": jsonProdotti[x].price,
+                "ingredients": jsonProdotti[x].ingredients
             };
 
             var listaProdotti = {};
-            listaProdotti["mail"] = "den";
+            listaProdotti["mail"] = jsonRistoratore.mail;
 
             var index = lista.findIndex(function (item, i) {
                 return item.id == obj.id;
@@ -151,8 +197,13 @@
                 lista.push(obj);
             }
             listaProdotti["lista"] = lista;
-            console.log(listaProdotti);
-            localStorage.setItem('lista', JSON.stringify(lista));
+            console.log(lista);
+
+        }
+
+        function aggiungiPiattiaLS() {
+            console.log(lista);
+            localStorage.setItem(jsonRistoratore.mail, JSON.stringify(lista));
         }
 
     </script>
