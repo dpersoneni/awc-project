@@ -15,11 +15,16 @@
 
 <body onload="decidiCosaMostrare()">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="index.html">EatMI</a>
+        <a class="navbar-brand">EatMI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
+
         </button>
+        <a class="nav-link" href="logristo.html" role="button" aria-haspopup="true" aria-expanded="false"
+            style="position: absolute; right: 1px;">
+            Accedi
+        </a>
     </nav>
 
     <div class="inforistorante">
@@ -54,7 +59,7 @@
                 <div class="form-group row">
                     <label for="npiatti" class="col-sm-4 col-form-label">Numero ingredienti </label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control" id="npiatti" name="npiatti" value=""
+                        <input type="number" class="form-control" id="npiatti" name="npiatti" value=""
                             placeholder="Massimo sei">
                     </div>
                     <label class="col-sm-4 col-form-label"></label>
@@ -70,7 +75,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-10 offset-sm-4">
-                        <button type="button" class="btn btn-primary" onclick="salvaRisto()">Aggiungi al menù</button>
+                        <button type="button" class="btn btn-primary" onclick="aggiungiPiattoScelto()">Aggiungi al menù</button>
                     </div>
                 </div>
             </form>
@@ -84,6 +89,11 @@
         al tuo menu</button>
 
     <script>
+         localStorage.setItem('prodotti', JSON.stringify(prodotti));
+        var jsonProdotti = JSON.parse(localStorage.getItem('prodotti'));
+        var jsonRistoranti = JSON.parse(localStorage.getItem('ristoranti'));
+        var jsonRistoratore = JSON.parse(localStorage.getItem('ristoratore'));
+
         var jsonObject = JSON.parse(localStorage.getItem('ristoratore'));
         ristorante = "<p><i class='fas fa-utensils' style = 'margin-right: 8px'></i>" + " " + jsonObject.restaurant + "</p>";
         document.getElementById("ristorante").innerHTML = ristorante;
@@ -103,9 +113,11 @@
         partitaiva = "<p><i class='fas fa-sticky-note' style = 'margin-right: 8px'></i>" + " " + jsonObject.partitaiva + "</p>";
         document.getElementById("partitaiva").innerHTML = partitaiva;
 
-        //Aggiungi piatto
+        //Aggiungi input ingredienti 
+        var number;
         function aggiungiIngredienti() {
-            var number = document.getElementById("npiatti").value;
+            number = document.getElementById("npiatti").value;
+            console.log(number)
             var container = document.getElementById("container");
             while (container.hasChildNodes()) {
                 container.removeChild(container.lastChild);
@@ -116,19 +128,60 @@
                 }
                 container.appendChild(document.createTextNode("Ingrediente " + (i + 1)));
                 var input = document.createElement("input");
+                input.id = i+1;
                 input.type = "text";
                 container.appendChild(input);
                 container.appendChild(document.createElement("br"));
-
-
-
             }
 
         }
-        localStorage.setItem('prodotti', JSON.stringify(prodotti));
-        var jsonProdotti = JSON.parse(localStorage.getItem('prodotti'));
-        var jsonRistoranti = JSON.parse(localStorage.getItem('ristoranti'));
-        var jsonRistoratore = JSON.parse(localStorage.getItem('ristoratore'));
+
+        function aggiungiPiattoScelto() {
+            listaProdotti1 = JSON.parse(localStorage.getItem(jsonRistoratore.mail));
+            if (listaProdotti1 != null) {
+                var nome = document.getElementById("nomepiatto").value;
+            var prezzo = document.getElementById("prezzo").value;
+            var ingredienti = [];
+            var id;
+            id = Math.floor(Math.random()*1000)+100; //scelgo numero a caso per l'id
+            for (i = 0; i < number; i++) {
+                ingredienti.push(document.getElementById(i+1).value);
+                }
+                var singoloPiatto = {
+                "id": id,
+                "name": nome,
+                "price": prezzo,
+                "ingredients": ingredienti
+            };
+            console.log(listaProdotti1)
+            listaProdotti1.push(singoloPiatto);
+            localStorage.setItem(jsonRistoratore.mail, JSON.stringify(listaProdotti1));
+            } else {
+                var nome = document.getElementById("nomepiatto").value;
+            var prezzo = document.getElementById("prezzo").value;
+            var ingredienti = [];
+            var id;
+            id = Math.floor(Math.random()*1000)+100; //scelgo numero a caso per l'id
+            for (i = 0; i < number; i++) {
+                ingredienti.push(document.getElementById(i+1).value);
+                }
+                var singoloPiatto = {
+                "id": id,
+                "name": nome,
+                "price": prezzo,
+                "ingredients": ingredienti
+            };
+            console.log(listaProdotti1)
+          
+            localStorage.setItem(jsonRistoratore.mail, JSON.stringify(singoloPiatto));
+            }
+           
+        }
+
+
+
+
+       
 
         function decidiCosaMostrare() {
             piattiGiaScelti = JSON.parse(localStorage.getItem(jsonRistoratore.mail))
@@ -141,16 +194,18 @@
         }
 
         function mostraProdottiScelti() {
+            console.log("mostraProdottiScelti");
             piattiGiaScelti = JSON.parse(localStorage.getItem(jsonRistoratore.mail))
             txt = "<h3>I tuoi Piatti</h3><br><table id='tabellabella'><tr><th>Prodotto</th><th>Prezzo</th><th>Ingredienti</th></tr> ";
             for (x in piattiGiaScelti) {
-                txt += "<tr><td>" + piattiGiaScelti[x].name + "</td><td>" + piattiGiaScelti[x].price + " € </td><td>" + piattiGiaScelti[x].ingredients+ "</td></tr>";
+                txt += "<tr><td>" + piattiGiaScelti[x].name + "</td><td>" + piattiGiaScelti[x].price + " € </td><td>" + piattiGiaScelti[x].ingredients + "</td></tr>";
             }
             document.getElementById("piattigiascelti").innerHTML = txt + "</table>";
         }
 
 
         function mostraLista() {
+            console.log("mostraLista");
             var mailProva = "ueeeee";
             txt = "";
             txt += "<div class='row'>"
@@ -186,18 +241,18 @@
                 "ingredients": jsonProdotti[x].ingredients
             };
 
-            var listaProdotti = {};
-            listaProdotti["mail"] = jsonRistoratore.mail;
+           /* var listaProdotti = {};
+            listaProdotti["mail"] = jsonRistoratore.mail;*/
 
             var index = lista.findIndex(function (item, i) {
-                return item.id == obj.id;
+                return item.id == obj.id; 
             });
 
             if (index === -1) {
-                lista.push(obj);
+                lista.push(obj); //non piglia il prodotto più di una volta
             }
-            listaProdotti["lista"] = lista;
-            console.log(lista);
+           /* listaProdotti["lista"] = lista;
+            console.log(lista);*/
 
         }
 

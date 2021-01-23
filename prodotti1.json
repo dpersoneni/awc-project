@@ -131,7 +131,7 @@ prodotti =
     {
         "id":10,
         "name":"Carbonara",
-        "image":"images/trofie.jpg",
+        "image":"images/10.jpg",
         "type":"pasta",
         "price": 8.00,
         "ingredients" : [
@@ -145,7 +145,7 @@ prodotti =
     {
         "id":11,
         "name":"Ravioli Ricotta e Spinaci",
-        "image":"images/trofie.jpg",
+        "image":"images/11.jpg",
         "type":"pasta",
         "price": 7.50,
         "ingredients" : [
@@ -160,7 +160,7 @@ prodotti =
     {
         "id":12,
         "name":"Salsiccia e Peperoni",
-        "image":"images/trofie.jpg",
+        "image":"images/12.jpg",
         "type":"piadina",
         "price": 7.00,
         "ingredients" : [
@@ -174,7 +174,7 @@ prodotti =
     {
         "id":13,
         "name":"Verdure grigliate",
-        "image":"images/trofie.jpg",
+        "image":"images/13.jpg",
         "type":"piadina",
         "price": 5.50,
         "ingredients" : [
@@ -202,7 +202,7 @@ prodotti =
     {
         "id":15,
         "name":"Bismarck",
-        "image":"images/trofie.jpg",
+        "image":"images/15.jpg",
         "type":"pizza",
         "price": 9.00,
         "ingredients" : [
