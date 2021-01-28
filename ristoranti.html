@@ -11,55 +11,70 @@
 </head>
 
 <body>
-  <script>
-    localStorage.clear();
-  </script>
   <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="index.html">EatMI</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    
-      
-      <li class="nav-item dropdown1">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Accedi come
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="logutente.html">Utente</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="logristo.html">Ristoratore</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Registrati come
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="regutente.html">Utente</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="regristo.html">Ristoratore</a>
-        </div>
-      </li>
-    </div>
   </nav>
 
-  <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <div class="container">
-      <h1 class="display-3">There's no place like EatMI</h1>
-      <!--<p>Scopri le pietanze dei migliori ristoranti milanesi restando comodamente a casa tua</p>-->
-      <br><br>
-      <p><a class="btn btn-primary btn-lg" href="plates.html" role="button">Scopri di più &raquo;</a></p>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-4 col-md-3 col-lg-4">
+
+        <div class="card-body">
+          <h4 class="card-title">Ristoria Pizzorante</h4>
+          <p class="card-text">Via degli Olmi, 4<br><br> 0399935656
+          </p><br><br><br>
+          <small class="btn btn-secondary"  onclick="scegliRistorante('albijojoba@mail.com')" role="button">Mostra di più</small>
+        </div>
+
+      </div>
+      <div class="col-12 col-sm-4 col-md-3 col-lg-4">
+
+
+        <div class="card-body">
+          <h4 class="card-title">Pasta mi hai rotto</h4>
+          <p class="card-text">Via Cesare Battisti, 12<br><br> 0368884741 </p><br><br><br>
+          <small class="btn btn-secondary" onclick="scegliRistorante('sofiaberga@mail.com')" role="button">Mostra di più</small>
+        </div>
+
+      </div>
+      <div class="col-12 col-sm-4 col-md-3 col-lg-4">
+
+        <div class="card-body">
+          <h4 class="card-title">All you can meet</h4>
+          <p class="card-text">Via Giuseppe Garibaldi, 445<br><br> 0399954826</br></p><br><br><br>
+          <small class="btn btn-secondary" onclick="scegliRistorante('quasilopez@mail.com')" role="button">Mostra di più</small>
+        </div>
+
+      </div>
     </div>
   </div>
-
   
+    <script>
 
-  <footer class="footer">
+        function scegliRistorante(mail) {
+            console.log(mail)
+            sessionStorage.setItem("mailristoratore",mail);
+            window.location="plates.html";
+        }
+
+    </script>
+
+      
+
+    
+
+
+
+
+
+  </main>
+
+  <footer class="footer" style="position: absolute;">
     <p>EatMI</p>
     <ul class="footer_Links">
       <li> <a href="about.html">Chi siamo</a> </li>

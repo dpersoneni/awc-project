@@ -90,12 +90,12 @@
 
     <script>
         var lista = [];
-        localStorage.setItem('prodotti', JSON.stringify(prodotti));
-        var jsonProdotti = JSON.parse(localStorage.getItem('prodotti'));
-        var jsonRistoranti = JSON.parse(localStorage.getItem('ristoranti'));
-        var jsonRistoratore = JSON.parse(localStorage.getItem('ristoratore'));
+        sessionStorage.setItem('prodotti', JSON.stringify(prodotti));
+        var jsonProdotti = JSON.parse(sessionStorage.getItem('prodotti'));
+        var jsonRistoranti = JSON.parse(sessionStorage.getItem('ristoranti'));
+        var jsonRistoratore = JSON.parse(sessionStorage.getItem('ristoratore'));
 
-        var jsonObject = JSON.parse(localStorage.getItem('ristoratore'));
+        var jsonObject = JSON.parse(sessionStorage.getItem('ristoratore'));
         ristorante = "<p><i class='fas fa-utensils' style = 'margin-right: 8px'></i>" + " " + jsonObject.restaurant + "</p>";
         document.getElementById("ristorante").innerHTML = ristorante;
 
@@ -139,7 +139,7 @@
 
         function aggiungiPiattoScelto() {
             listaMista = [];
-            listaProdotti1 = JSON.parse(localStorage.getItem(jsonRistoratore.mail));
+            listaProdotti1 = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail));
 
             if (listaProdotti1 != null) {
                 var nome = document.getElementById("nomepiatto").value;
@@ -158,9 +158,9 @@
                 };
                 console.log(listaProdotti1)
                 listaProdotti1.push(singoloPiatto);
-                localStorage.setItem(jsonRistoratore.mail, JSON.stringify(listaProdotti1));
+                sessionStorage.setItem(jsonRistoratore.mail, JSON.stringify(listaProdotti1));
                 location.reload();
-                localStorage.setItem(jsonRistoratore.mail + "2", JSON.stringify("piatto"));
+                sessionStorage.setItem(jsonRistoratore.mail + "2", JSON.stringify("piatto"));
             } else {
                 var nome = document.getElementById("nomepiatto").value;
                 var prezzo = document.getElementById("prezzo").value;
@@ -179,9 +179,9 @@
                 console.log(listaProdotti1)
                 listaMista.push(singoloPiatto);
 
-                localStorage.setItem(jsonRistoratore.mail, JSON.stringify(listaMista));
+                sessionStorage.setItem(jsonRistoratore.mail, JSON.stringify(listaMista));
                 location.reload();
-                localStorage.setItem(jsonRistoratore.mail + "2", JSON.stringify("piatto"));
+                sessionStorage.setItem(jsonRistoratore.mail + "2", JSON.stringify("piatto"));
 
 
             }
@@ -194,8 +194,8 @@
 
 
         function decidiCosaMostrare() {
-            piattiGiaScelti = JSON.parse(localStorage.getItem(jsonRistoratore.mail + "1"))
-            piattoPersonalizzato = JSON.parse(localStorage.getItem(jsonRistoratore.mail + "2"))
+            piattiGiaScelti = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail + "1"))
+            piattoPersonalizzato = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail + "2"))
             if (piattiGiaScelti === null && piattoPersonalizzato === null) {
 
                 mostraLista();
@@ -212,7 +212,7 @@
         }
 
         function mostraProdottiScelti() {
-            piattiGiaScelti = JSON.parse(localStorage.getItem(jsonRistoratore.mail))
+            piattiGiaScelti = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail))
             console.log(piattiGiaScelti);
 
             txt = "<h3>I tuoi Piatti</h3><br><table id='tabellabella'><tr><th>Prodotto</th><th>Prezzo</th><th>Ingredienti</th></tr> ";
@@ -254,8 +254,8 @@
         
         function aggiungiLista(x) {
 
-            if (JSON.parse(localStorage.getItem(jsonRistoratore.mail)) !=null) {
-                lista = JSON.parse(localStorage.getItem(jsonRistoratore.mail));
+            if (JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)) !=null) {
+                lista = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail));
 
                 }
 
@@ -263,6 +263,8 @@
                 "id": jsonProdotti[x].id,
                 "name": jsonProdotti[x].name,
                 "price": jsonProdotti[x].price,
+                "image": jsonProdotti[x].image,
+                "type": jsonProdotti[x].type,
                 "ingredients": jsonProdotti[x].ingredients
             };
 
@@ -278,7 +280,7 @@
             }
             /* listaProdotti["lista"] = lista;
              console.log(lista);*/
-             localStorage.setItem(jsonRistoratore.mail, JSON.stringify(lista));
+             sessionStorage.setItem(jsonRistoratore.mail, JSON.stringify(lista));
 
 
         }
@@ -286,7 +288,7 @@
         function aggiungiPiattiaLS() {
             
             var chiave = "1";
-            localStorage.setItem(jsonRistoratore.mail + chiave, JSON.stringify("mail"));
+            sessionStorage.setItem(jsonRistoratore.mail + chiave, JSON.stringify("mail"));
             location.reload();
 
         }

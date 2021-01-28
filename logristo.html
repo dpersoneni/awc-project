@@ -14,8 +14,8 @@
 
 <body>
     <script>
-        localStorage.setItem('ristoranti', JSON.stringify(ristoranti));
-        var jsonObject = JSON.parse(localStorage.getItem('ristoranti'));
+        sessionStorage.setItem('ristoranti', JSON.stringify(ristoranti));
+        var jsonObject = JSON.parse(sessionStorage.getItem('ristoranti'));
         function checkLogin() { 
             console.log("ciao2");
             emailInserita = document.getElementById("email").value;
@@ -27,7 +27,7 @@
                 if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita) {
                     console.log("prova1");
                     window.location.href = "ristoprofilo.html";
-                    localStorage.setItem('ristoratore', JSON.stringify(jsonObject[x]));
+                    sessionStorage.setItem('ristoratore', JSON.stringify(jsonObject[x]));
                     console.log("prova2");
                     
 

@@ -7,7 +7,9 @@ utenti = [
         "method": "contanti",
         "password": "giovannipw",
         "address": "via san siro 12",
-        "telephone": "3205564159"
+        "telephone": "3205564159",
+        "latitude" : "45.468016",
+        "longitude" : "9.181568"
     },
     {
         "id":2,
@@ -17,7 +19,9 @@ utenti = [
         "method": "buonipasto",
         "password": "aldopw",
         "address": "via sicilia 11",
-        "telephone": "3315462333"
+        "telephone": "3315462333",
+        "latitude" : "45.458525",
+        "longitude" : "9.205272"
     },
     {
         "id":3,
@@ -27,7 +31,9 @@ utenti = [
         "method": "bancomat",
         "password": "giacomopw",
         "address": "via statale 152",
-        "telephone": "3225489654"
+        "telephone": "3225489654",
+        "latitude" : "45.510624",
+        "longitude" : "10.385402"
 
     },
 
@@ -39,7 +45,9 @@ utenti = [
         "method": "paypal",
         "password": "maripw",
         "address": "via grecia 18",
-        "telephone": "3897603755"
+        "telephone": "3897603755",
+        "latitude" : "45.454500",
+        "longitude" : "9.190373"
 
     }
 

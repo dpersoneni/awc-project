@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="style.css" type="text/css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
   <title>EatMI</title>
   <script src="prodotti1.json"></script>
   <script src="utenti.json"></script>
@@ -78,6 +81,7 @@
 
     var utenteObj = JSON.parse(localStorage.getItem('utente'));
     var carrelloObj = JSON.parse(localStorage.getItem('carrello'));
+    var ristoratoreObj = JSON.parse(sessionStorage.getItem('ristoratore'));
     txt1 = "<h3>Carrello</h3>";
     txt = "<table id='tabellabella'><tr><th>Prodotto</th><th>Quantità</th><th>Prezzo</th><th>Modalità di pagamento</th></tr> ";
     console.log(carrelloObj);
@@ -157,6 +161,20 @@
 
     }
 
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZHBlcnNvbmVuaSIsImEiOiJja2hha3dhb2owanQ0MzFwam44MWx3M2p1In0.j2kboFTenc7rda5RURJJWQ';
+     
+     var to = [ristoratoreObj.latitude, ristoratoreObj.longitude] //lng, lat
+     var from = [utenteObj.latitude, utenteObj.longitude] //lng, lat 
+
+     var options = {
+       units: 'kilometers'
+     }; // units can be degrees, radians, miles, or kilometers, just be sure to change the units in the text box to match. 
+
+     var distance = turf.distance(to, from, options);
+
+   //  var value = document.getElementById('map-overlay')
+    // value.innerHTML = "Distance: " + distance.toFixed([2]) + " km"
+    console.log(distance);
 
   </script>
 

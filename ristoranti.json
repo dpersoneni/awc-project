@@ -8,7 +8,9 @@ ristoranti = [
         "partitaiva" : "25458565896",
         "telephone": "0399935656",
         "firstname" : "Alberto",
-        "lastname" : "Jojoba"
+        "lastname" : "Jojoba",
+        "latitude" : "45.466660",
+        "longitude" : "9.147831"
     },
     {
         "id": 2,
@@ -19,7 +21,9 @@ ristoranti = [
         "partitaiva" : "58545812378",
         "telephone": "0368884741",
         "firstname" : "Sofia",
-        "lastname" : "Bergamaschi"
+        "lastname" : "Bergamaschi",
+        "latitude" : "45.464361",
+        "longitude" : "9.188564"
     },
     {
         "id": 3,
@@ -30,6 +34,8 @@ ristoranti = [
         "partitaiva" : "56581219753",
         "telephone": "0399954826",
         "firstname" : "Quasimodo",
-        "lastname" : "Lopez  "
+        "lastname" : "Lopez  ",
+        "latitude" : "45.494403",
+        "longitude" : "9.206432"
     }
 ]
