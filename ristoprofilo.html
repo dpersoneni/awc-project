@@ -75,21 +75,22 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-10 offset-sm-4">
-                        <button type="button" class="btn btn-primary" onclick="aggiungiPiattoScelto()">Aggiungi al menù</button>
+                        <button type="button" class="btn btn-primary" onclick="aggiungiPiattoScelto()">Aggiungi al
+                            menù</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 
-
-    <div id="piattiristoratore"></div>
     <div id="piattigiascelti" style="margin-left: 8%;"></div>
-    <button onclick="aggiungiPiattiaLS()" style="margin-right: 10em; margin-bottom: 10em; float: right;">Aggiungi piatti
-        al tuo menu</button>
+    <div id="piattiristoratore" style="margin-bottom: 10em;"> </div>
+
+
 
     <script>
-         localStorage.setItem('prodotti', JSON.stringify(prodotti));
+        var lista = [];
+        localStorage.setItem('prodotti', JSON.stringify(prodotti));
         var jsonProdotti = JSON.parse(localStorage.getItem('prodotti'));
         var jsonRistoranti = JSON.parse(localStorage.getItem('ristoranti'));
         var jsonRistoratore = JSON.parse(localStorage.getItem('ristoratore'));
@@ -128,7 +129,7 @@
                 }
                 container.appendChild(document.createTextNode("Ingrediente " + (i + 1)));
                 var input = document.createElement("input");
-                input.id = i+1;
+                input.id = i + 1;
                 input.type = "text";
                 container.appendChild(input);
                 container.appendChild(document.createElement("br"));
@@ -140,64 +141,82 @@
             listaProdotti1 = JSON.parse(localStorage.getItem(jsonRistoratore.mail));
             if (listaProdotti1 != null) {
                 var nome = document.getElementById("nomepiatto").value;
-            var prezzo = document.getElementById("prezzo").value;
-            var ingredienti = [];
-            var id;
-            id = Math.floor(Math.random()*1000)+100; //scelgo numero a caso per l'id
-            for (i = 0; i < number; i++) {
-                ingredienti.push(document.getElementById(i+1).value);
+                var prezzo = document.getElementById("prezzo").value;
+                var ingredienti = [];
+                var id;
+                id = Math.floor(Math.random() * 1000) + 100; //scelgo numero a caso per l'id
+                for (i = 0; i < number; i++) {
+                    ingredienti.push(document.getElementById(i + 1).value);
                 }
                 var singoloPiatto = {
-                "id": id,
-                "name": nome,
-                "price": prezzo,
-                "ingredients": ingredienti
-            };
-            console.log(listaProdotti1)
-            listaProdotti1.push(singoloPiatto);
-            localStorage.setItem(jsonRistoratore.mail, JSON.stringify(listaProdotti1));
+                    "id": id,
+                    "name": nome,
+                    "price": prezzo,
+                    "ingredients": ingredienti
+                };
+                console.log(listaProdotti1)
+                listaProdotti1.push(singoloPiatto);
+                localStorage.setItem(jsonRistoratore.mail, JSON.stringify(listaProdotti1));
+                location.reload();
+                localStorage.setItem(jsonRistoratore.mail + "2", JSON.stringify("piatto"));
             } else {
                 var nome = document.getElementById("nomepiatto").value;
-            var prezzo = document.getElementById("prezzo").value;
-            var ingredienti = [];
-            var id;
-            id = Math.floor(Math.random()*1000)+100; //scelgo numero a caso per l'id
-            for (i = 0; i < number; i++) {
-                ingredienti.push(document.getElementById(i+1).value);
+                var prezzo = document.getElementById("prezzo").value;
+                var ingredienti = [];
+                var id;
+                id = Math.floor(Math.random() * 1000) + 100; //scelgo numero a caso per l'id
+                for (i = 0; i < number; i++) {
+                    ingredienti.push(document.getElementById(i + 1).value);
                 }
                 var singoloPiatto = {
-                "id": id,
-                "name": nome,
-                "price": prezzo,
-                "ingredients": ingredienti
-            };
-            console.log(listaProdotti1)
-          
-            localStorage.setItem(jsonRistoratore.mail, JSON.stringify(singoloPiatto));
+                    "id": id,
+                    "name": nome,
+                    "price": prezzo,
+                    "ingredients": ingredienti
+                };
+                console.log(listaProdotti1)
+
+                localStorage.setItem(jsonRistoratore.mail, JSON.stringify(singoloPiatto));
+                location.reload();
+                localStorage.setItem(jsonRistoratore.mail + "2", JSON.stringify("piatto"));
+
+
             }
-           
+
         }
 
 
 
 
-       
+
 
         function decidiCosaMostrare() {
-            piattiGiaScelti = JSON.parse(localStorage.getItem(jsonRistoratore.mail))
-            if (piattiGiaScelti === null) {
+            piattiGiaScelti = JSON.parse(localStorage.getItem(jsonRistoratore.mail + "1"))
+            piattoPersonalizzato = JSON.parse(localStorage.getItem(jsonRistoratore.mail + "2"))
+            if (piattiGiaScelti === null && piattoPersonalizzato === null) {
+
                 mostraLista();
-            } else {
+            } else if (piattiGiaScelti === null && piattoPersonalizzato != null) {
                 mostraProdottiScelti();
 
+                mostraLista();
+
+            } else if (piattiGiaScelti != null && piattoPersonalizzato != null) {
+                mostraProdottiScelti();
             }
         }
 
         function mostraProdottiScelti() {
-            console.log("mostraProdottiScelti");
             piattiGiaScelti = JSON.parse(localStorage.getItem(jsonRistoratore.mail))
+            console.log(piattiGiaScelti);
+
             txt = "<h3>I tuoi Piatti</h3><br><table id='tabellabella'><tr><th>Prodotto</th><th>Prezzo</th><th>Ingredienti</th></tr> ";
             for (x in piattiGiaScelti) {
+                console.log(piattiGiaScelti);
+
+                console.log(piattiGiaScelti[x].name)
+                console.log(piattiGiaScelti[x].price)
+                console.log(piattiGiaScelti[x].ingredients)
                 txt += "<tr><td>" + piattiGiaScelti[x].name + "</td><td>" + piattiGiaScelti[x].price + " € </td><td>" + piattiGiaScelti[x].ingredients + "</td></tr>";
             }
             document.getElementById("piattigiascelti").innerHTML = txt + "</table>";
@@ -221,13 +240,15 @@
                 txt += "</ul>  <button type='button' onclick='aggiungiLista(" + x + ")'>Aggiungi ai tuoi piatti</button></div> </div> </div>"
             }
 
-            txt += "</div>"
+            txt += "</div>  <button onclick='aggiungiPiattiaLS()' style='margin-right: 10em; margin-bottom: 10em; float: right;'>Aggiungi piatti al tuo menu</button>";
+
+
             document.getElementById("piattiristoratore").innerHTML = txt;
 
 
 
         }
-        var lista = [];
+        
         function aggiungiLista(x) {
 
             if ("lista" in localStorage) {
@@ -241,24 +262,27 @@
                 "ingredients": jsonProdotti[x].ingredients
             };
 
-           /* var listaProdotti = {};
-            listaProdotti["mail"] = jsonRistoratore.mail;*/
+            /* var listaProdotti = {};
+             listaProdotti["mail"] = jsonRistoratore.mail;*/
 
             var index = lista.findIndex(function (item, i) {
-                return item.id == obj.id; 
+                return item.id == obj.id;
             });
 
             if (index === -1) {
                 lista.push(obj); //non piglia il prodotto più di una volta
             }
-           /* listaProdotti["lista"] = lista;
-            console.log(lista);*/
+            /* listaProdotti["lista"] = lista;
+             console.log(lista);*/
 
         }
 
         function aggiungiPiattiaLS() {
             console.log(lista);
             localStorage.setItem(jsonRistoratore.mail, JSON.stringify(lista));
+            var chiave = "1";
+            localStorage.setItem(jsonRistoratore.mail + chiave, JSON.stringify("mail"));
+
         }
 
     </script>
