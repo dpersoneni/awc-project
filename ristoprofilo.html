@@ -50,6 +50,20 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="tipo" class="col-sm-4 col-form-label">Tipologia</label>
+                    <div class="col-sm-7">
+                        <select id="tipo" name="piatti">
+                            <option value="">Tipologia di piatto</option>
+                            <option value="panini">Hamburger</option>
+                            <option value="pizza">Pizza</option>
+                            <option value="pasta">Pasta</option>
+                            <option value="piadina">Piadine</option>
+                            <option value="insalate">Insalate</option>
+                            <option value="dolci">Dolci</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="prezzo" class="col-sm-4 col-form-label">Prezzo</label>
                     <div class="col-sm-7">
                         <input type="number" class="form-control" id="prezzo">
@@ -141,41 +155,53 @@
             listaMista = [];
             listaProdotti1 = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail));
 
+            var nome = document.getElementById("nomepiatto").value;
+            var tipo = document.getElementById("tipo").value;
+            var prezzo = document.getElementById("prezzo").value;
+            var ingredienti = [];
+            var id;
+            var immagine;
+            switch (tipo) {
+                case "panini":
+                    immagine = "images/15.jpg" 
+                    break;
+                case "pizza":
+                immagine = "images/15.jpg" 
+                    break;
+                case "piadina":
+                immagine = "images/15.jpg" 
+                    break;
+                case "insalate":
+                immagine = "images/15.jpg" 
+                    break;
+                case "pasta":
+                immagine = "images/15.jpg" 
+                    break;
+                case "dolci":
+                immagine = "images/15.jpg" 
+                    break;
+            
+            }
+            id = Math.floor(Math.random() * 1000) + 100; //scelgo numero a caso per l'id
+            for (i = 0; i < number; i++) {
+                ingredienti.push(document.getElementById(i + 1).value);
+            }
+            var singoloPiatto = {
+                "id": id,
+                "name": nome,
+                "type": tipo,
+                "image": immagine,
+                "price": prezzo,
+                "ingredients": ingredienti
+            };
             if (listaProdotti1 != null) {
-                var nome = document.getElementById("nomepiatto").value;
-                var prezzo = document.getElementById("prezzo").value;
-                var ingredienti = [];
-                var id;
-                id = Math.floor(Math.random() * 1000) + 100; //scelgo numero a caso per l'id
-                for (i = 0; i < number; i++) {
-                    ingredienti.push(document.getElementById(i + 1).value);
-                }
-                var singoloPiatto = {
-                    "id": id,
-                    "name": nome,
-                    "price": prezzo,
-                    "ingredients": ingredienti
-                };
+
                 console.log(listaProdotti1)
                 listaProdotti1.push(singoloPiatto);
                 sessionStorage.setItem(jsonRistoratore.mail, JSON.stringify(listaProdotti1));
                 location.reload();
                 sessionStorage.setItem(jsonRistoratore.mail + "2", JSON.stringify("piatto"));
             } else {
-                var nome = document.getElementById("nomepiatto").value;
-                var prezzo = document.getElementById("prezzo").value;
-                var ingredienti = [];
-                var id;
-                id = Math.floor(Math.random() * 1000) + 100; //scelgo numero a caso per l'id
-                for (i = 0; i < number; i++) {
-                    ingredienti.push(document.getElementById(i + 1).value);
-                }
-                var singoloPiatto = {
-                    "id": id,
-                    "name": nome,
-                    "price": prezzo,
-                    "ingredients": ingredienti
-                };
                 console.log(listaProdotti1)
                 listaMista.push(singoloPiatto);
 
@@ -206,9 +232,9 @@
 
             } else if (piattiGiaScelti != null && piattoPersonalizzato != null) {
                 mostraProdottiScelti();
-            } else if(piattiGiaScelti != null && piattoPersonalizzato == null) {
+            } else if (piattiGiaScelti != null && piattoPersonalizzato == null) {
                 mostraProdottiScelti();
-            } 
+            }
         }
 
         function mostraProdottiScelti() {
@@ -251,13 +277,13 @@
 
 
         }
-        
+
         function aggiungiLista(x) {
 
-            if (JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)) !=null) {
+            if (JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)) != null) {
                 lista = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail));
 
-                }
+            }
 
             obj = {
                 "id": jsonProdotti[x].id,
@@ -280,13 +306,13 @@
             }
             /* listaProdotti["lista"] = lista;
              console.log(lista);*/
-             sessionStorage.setItem(jsonRistoratore.mail, JSON.stringify(lista));
+            sessionStorage.setItem(jsonRistoratore.mail, JSON.stringify(lista));
 
 
         }
 
         function aggiungiPiattiaLS() {
-            
+
             var chiave = "1";
             sessionStorage.setItem(jsonRistoratore.mail + chiave, JSON.stringify("mail"));
             location.reload();

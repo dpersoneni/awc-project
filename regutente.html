@@ -12,6 +12,7 @@
 
 <body>
 
+
     <div class="casa">
         <form>
             <div class="col-sm-10 offset-sm-4">
@@ -20,7 +21,7 @@
             <div class="form-group row">
                 <label for="nomer" class="col-sm-4 col-form-label">Mail</label>
                 <div class="col-sm-8">
-                    <input type="email" class="form-control" id="nomer" placeholder="Mail">
+                    <input type="email" class="form-control" id="mail" placeholder="Mail">
                 </div>
             </div>
 
@@ -68,23 +69,66 @@
                 <label for="bancomat">Bancomat</label> <br>
                 <input type="radio" id="paypal" name="metodo" value="paypal">
                 <label for="paypal">Paypal</label> <br>
-             </div>
-             <form>
+            </div>
+            <form>
                 <div>
-                  <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
-                  <label for="subscribeNews">Accetti la normativa della privacy?</label>
+                    <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+                    <label for="subscribeNews">Accetti la normativa della privacy?</label>
                 </div>
                 <div>
                 </div>
-              </form>
+            </form>
 
             <div class="form-group row">
                 <div class="col-sm-10 offset-sm-9">
-                    <button type="submit" class="btn btn-primary" style="margin-bottom: 15px;">Submit</button>
+                    <button type="button" onclick="salvaRisto()" class="btn btn-primary"
+                        style="margin-bottom: 15px;">Submit</button>
                 </div>
             </div>
         </form>
     </div>
+    <script>
+        function salvaRisto() {
+            console.log("ciao")
+            var mail = document.getElementById("mail").value;
+            var password = document.getElementById("password").value;
+            var firstname = document.getElementById("firstname").value;
+            var secondname = document.getElementById("secondname").value;
+            var telephone = document.getElementById("telephone").value;
+            var address = document.getElementById("address").value;
+            var modalitapagamento = document.getElementsByName("metodo").value;
+
+            var utente = [];
+            if ("utente" in sessionStorage) {
+                utente = JSON.parse(sessionStorage.getItem('utente'));
+            }
+            object = {
+                "mail": mail,
+                "password": password,
+                "telephone": telephone,
+                "address": address,
+                "modalitapagamento": modalitapagamento,
+                "firstname": firstname,
+                "secondame": secondname
+            }
+            var index = utente.findIndex(function (item, i) {
+                return item.id == object.id; 
+            });
+
+            if (index === -1) {
+                utente.push(object);
+            } else {
+                utente.add(object);
+            }
+
+            sessionStorage.setItem('utente', JSON.stringify(utente));
+
+            window.location.href='index.html'
+
+        }
+
+    </script>
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
