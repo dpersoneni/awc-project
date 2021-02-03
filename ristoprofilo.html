@@ -15,7 +15,7 @@
 
 <body onload="decidiCosaMostrare()">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand">EatMI</a>
+        <a class="navbar-brand" href="index.html" >EatMI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -109,23 +109,22 @@
         var jsonRistoranti = JSON.parse(sessionStorage.getItem('ristoranti'));
         var jsonRistoratore = JSON.parse(sessionStorage.getItem('ristoratore'));
 
-        var jsonObject = JSON.parse(sessionStorage.getItem('ristoratore'));
-        ristorante = "<p><i class='fas fa-utensils' style = 'margin-right: 8px'></i>" + " " + jsonObject.restaurant + "</p>";
+        ristorante = "<p><i class='fas fa-utensils' style = 'margin-right: 8px'></i>" + " " + jsonRistoratore.restaurant + "</p>";
         document.getElementById("ristorante").innerHTML = ristorante;
 
-        nome = "<p><i class='fas fa-user' style = 'margin-right: 8px'></i>" + " " + jsonObject.firstname + " " + jsonObject.lastname + "</p>";
+        nome = "<p><i class='fas fa-user' style = 'margin-right: 8px'></i>" + " " + jsonRistoratore.firstname + " " + jsonRistoratore.lastname + "</p>";
         document.getElementById("nome").innerHTML = nome;
 
-        mail = "<p><i class='fas fa-envelope'style = 'margin-right: 8px'></i>" + " " + jsonObject.mail + "</p>";
+        mail = "<p><i class='fas fa-envelope'style = 'margin-right: 8px'></i>" + " " + jsonRistoratore.mail + "</p>";
         document.getElementById("mail").innerHTML = mail;
 
-        indirizzo = "<p><i class='fas fa-map-marker' style = 'margin-right: 8px'></i>" + " " + jsonObject.address + "</p>";
+        indirizzo = "<p><i class='fas fa-map-marker' style = 'margin-right: 8px'></i>" + " " + jsonRistoratore.address + "</p>";
         document.getElementById("indirizzo").innerHTML = indirizzo;
 
-        telefono = "<p><i class='fas fa-phone-alt' style = 'margin-right: 8px'></i>" + " " + jsonObject.telephone + "</p>";
+        telefono = "<p><i class='fas fa-phone-alt' style = 'margin-right: 8px'></i>" + " " + jsonRistoratore.telephone + "</p>";
         document.getElementById("telefono").innerHTML = telefono;
 
-        partitaiva = "<p><i class='fas fa-sticky-note' style = 'margin-right: 8px'></i>" + " " + jsonObject.partitaiva + "</p>";
+        partitaiva = "<p><i class='fas fa-sticky-note' style = 'margin-right: 8px'></i>" + " " + jsonRistoratore.partitaiva + "</p>";
         document.getElementById("partitaiva").innerHTML = partitaiva;
 
         //Aggiungi input ingredienti 

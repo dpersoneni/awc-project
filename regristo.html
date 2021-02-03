@@ -82,6 +82,8 @@
     </div>
     <script>
         function salvaRisto() {
+            var jsonObject = JSON.parse(sessionStorage.getItem('ristoranti'));
+
             var mail = document.getElementById("mail").value;
             var password = document.getElementById("password").value;
             var restaurant = document.getElementById("restaurant").value;
@@ -103,7 +105,9 @@
                 "address": address,
                 "partitaiva": partitaiva,
                 "firstname": firstname,
-                "lastname": lastname
+                "lastname": lastname,
+                "latitude": "45.478155",
+                "longitude": "9.226284"
             }
             var index = ristorante.findIndex(function (item, i) {
                 return item.id == object.id;
@@ -114,10 +118,11 @@
             } else {
                 ristorante.add(object);
             }
+            jsonObject.push(object);
+          
 
-            localStorage.setItem('ristorante', JSON.stringify(ristorante));
-
-
+            sessionStorage.setItem('ristoranti', JSON.stringify(jsonObject));
+            window.location.href = "logristo.html"
         }
 
     </script>

@@ -89,6 +89,8 @@
     </div>
     <script>
         function salvaRisto() {
+            var jsonObject = JSON.parse(sessionStorage.getItem('utenti'));
+
             console.log("ciao")
             var mail = document.getElementById("mail").value;
             var password = document.getElementById("password").value;
@@ -109,7 +111,9 @@
                 "address": address,
                 "modalitapagamento": modalitapagamento,
                 "firstname": firstname,
-                "secondame": secondname
+                "secondname": secondname,
+                "latitude": "45.464211",
+                "longitude": "9.191383"
             }
             var index = utente.findIndex(function (item, i) {
                 return item.id == object.id; 
@@ -120,8 +124,11 @@
             } else {
                 utente.add(object);
             }
+            jsonObject.push(object);
+          
 
-            sessionStorage.setItem('utente', JSON.stringify(utente));
+          sessionStorage.setItem('utenti', JSON.stringify(jsonObject));
+
 
             window.location.href='index.html'
 

@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="index.html">EatMI</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -20,49 +21,33 @@
   </nav>
 
 
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-sm-4 col-md-3 col-lg-4">
-
-        <div class="card-body">
-          <h4 class="card-title">Ristoria Pizzorante</h4>
-          <p class="card-text">Via degli Olmi, 4<br><br> 0399935656
-          </p><br><br><br>
-          <small class="btn btn-secondary"  onclick="scegliRistorante('albijojoba@mail.com')" role="button">Mostra di più</small>
-        </div>
-
-      </div>
-      <div class="col-12 col-sm-4 col-md-3 col-lg-4">
-
-
-        <div class="card-body">
-          <h4 class="card-title">Pasta mi hai rotto</h4>
-          <p class="card-text">Via Cesare Battisti, 12<br><br> 0368884741 </p><br><br><br>
-          <small class="btn btn-secondary" onclick="scegliRistorante('sofiaberga@mail.com')" role="button">Mostra di più</small>
-        </div>
-
-      </div>
-      <div class="col-12 col-sm-4 col-md-3 col-lg-4">
-
-        <div class="card-body">
-          <h4 class="card-title">All you can meet</h4>
-          <p class="card-text">Via Giuseppe Garibaldi, 445<br><br> 0399954826</br></p><br><br><br>
-          <small class="btn btn-secondary" onclick="scegliRistorante('quasilopez@mail.com')" role="button">Mostra di più</small>
-        </div>
-
-      </div>
-    </div>
+  <div class="container" id ="ristoranti">
+  
   </div>
   
-    <script>
+  <script>
+    ristoranti =  JSON.parse(sessionStorage.getItem('ristoranti'));
+    txt = "";
+    txt += "<div class='row'>";
+    for (x in ristoranti) {
+      txt += ' <div class="col-12 col-sm-4 col-md-3 col-lg-4" id="cartaristorante"><div class="card-body"><h4 class="card-title">' + ristoranti[x].restaurant;
+        
+      txt += '</h4> <p class="card-text">' + ristoranti[x].address + '<br><br> ' +  ristoranti[x].telephone;
+        mail = ristoranti[x].mail ;
+        txt += ' </p><br><br><br> <small class="btn btn-secondary"  onclick="scegliRistorante(' + x+ ')" role="button">Mostra di più</small>  </div> </div>';
 
-        function scegliRistorante(mail) {
+    }
+    
+    txt += "</div>"
+    document.getElementById("ristoranti").innerHTML = txt;
+
+    function scegliRistorante(x) {
             console.log(mail)
-            sessionStorage.setItem("mailristoratore",mail);
+            sessionStorage.setItem("mailristoratore",ristoranti[x].mail);
             window.location="plates.html";
         }
 
-    </script>
+  </script>
 
       
 
@@ -74,7 +59,7 @@
 
   </main>
 
-  <footer class="footer" style="position: absolute;">
+  <footer class="footer">
     <p>EatMI</p>
     <ul class="footer_Links">
       <li> <a href="about.html">Chi siamo</a> </li>

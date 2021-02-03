@@ -14,31 +14,27 @@
 
 <body>
     <script>
-        localStorage.setItem('utenti', JSON.stringify(utenti));
         var jsonObject = JSON.parse(localStorage.getItem('utenti'));
+
         var carrelloTemp = JSON.parse(localStorage.getItem('carrello'));
         function checkLogin() { 
             emailInserita = document.getElementById("email").value;
             passwordInserita = document.getElementById("password").value;
-            console.log(emailInserita);
-            console.log(passwordInserita);
+          
+          
             for(x in jsonObject) {
-                if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita) {
+                if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita)  {
                     console.log(carrelloTemp);
                   //  console.log(carrelloTemp.length);
-                  localStorage.setItem('utente', JSON.stringify(jsonObject[x]));
+                  sessionStorage.setItem('utenteAcquisto', JSON.stringify(jsonObject[x]));
                     if (carrelloTemp != null) {
                         window.location.href = "acquista.html";
               
-
                     } else {
                    
                         window.location.href = "utenteprofilo.html";
                     }
 
-                    
-                   
-                  
                 }
             }
         }

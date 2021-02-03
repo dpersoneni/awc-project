@@ -14,22 +14,25 @@
 
 <body>
     <script>
-        sessionStorage.setItem('ristoranti', JSON.stringify(ristoranti));
+   
         var jsonObject = JSON.parse(sessionStorage.getItem('ristoranti'));
+
         function checkLogin() { 
             console.log("ciao2");
             emailInserita = document.getElementById("email").value;
             passwordInserita = document.getElementById("password").value;
             console.log(emailInserita);
             console.log(passwordInserita);
+         
             for(x in jsonObject) {
-                console.log(jsonObject[x]);
+                
                 if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita) {
                     console.log("prova1");
                     window.location.href = "ristoprofilo.html";
                     sessionStorage.setItem('ristoratore', JSON.stringify(jsonObject[x]));
                     console.log("prova2");
-                    
+                    window.location.href = "ristoprofilo.html";
+
 
                 }
             }

@@ -19,7 +19,7 @@ function mostraProdotti() {
     }
 
     txt += "</div>"
-    document.getElementById("ciao").innerHTML = txt;
+    document.getElementById("piatti").innerHTML = txt;
 
     if ("carrello" in localStorage) {
         localStorage.clear();
@@ -94,7 +94,7 @@ function filtraTipo() {
         }
     }
     txt += "</div>"
-    document.getElementById("ciao").innerHTML = txt;
+    document.getElementById("piatti").innerHTML = txt;
 
 
 }
@@ -118,7 +118,7 @@ function filtraPrezzo() {
         }
     }
     txt += "</div>"
-    document.getElementById("ciao").innerHTML = txt;
+    document.getElementById("piatti").innerHTML = txt;
 
 }
 
@@ -142,7 +142,7 @@ function filtraEntrambi() {
         }
     }
     txt += "</div>"
-    document.getElementById("ciao").innerHTML = txt;
+    document.getElementById("piatti").innerHTML = txt;
 
 
 }
@@ -186,7 +186,7 @@ function cercaNome() {
         }
     }
     txt += "</div>"
-    document.getElementById("ciao").innerHTML = txt;
+    document.getElementById("piatti").innerHTML = txt;
 }
 
 
