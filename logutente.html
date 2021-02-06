@@ -14,7 +14,7 @@
 
 <body>
     <script>
-        var jsonObject = JSON.parse(localStorage.getItem('utenti'));
+        var jsonObject = JSON.parse(sessionStorage.getItem('utenti'));
 
         var carrelloTemp = JSON.parse(localStorage.getItem('carrello'));
         function checkLogin() { 

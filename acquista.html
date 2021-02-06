@@ -48,9 +48,10 @@
     <div id="tableCarrello"></div>
     <div id="orario"></div>
 
+
  
 
-    <div><small class="btn btn-secondary" onclick="concludiAquisto()" role="button" style="float: right;">Concludi
+    <div id="concludiAcquisto"><small class="btn btn-secondary" onclick="concludiAquisto()" role="button" style="float: right;">Concludi
         acquisto</small></div>
     <div><small class="btn btn-secondary" onclick="location.href='plates.html'" role="button"
         style="float: right; margin-right: 5px;">Torna ai piatti</small></div>
@@ -137,8 +138,8 @@
 
     
 
-
-    var arrayLength = array.length;
+    function orarioRitiro() {
+      var arrayLength = array.length;
     for (var pos = 0; pos < arrayLength; pos++) {
       if (pos == count1) {
         console.log(array[pos]);
@@ -151,6 +152,8 @@
     }
 
     document.getElementById("orario").innerHTML = txt2;
+    }
+
 
     function concludiAquisto() {
       aggiungiPiattiPassati();
@@ -165,16 +168,31 @@
      
      var to = [ristoratoreObj.latitude, ristoratoreObj.longitude] //lng, lat
      var from = [utenteObj.latitude, utenteObj.longitude] //lng, lat 
-
+    
      var options = {
        units: 'kilometers'
      }; // units can be degrees, radians, miles, or kilometers, just be sure to change the units in the text box to match. 
 
-     var distance = turf.distance(to, from, options);
+     var distance = turf.distance(to, from, options);  //Turf.js is an open-source JavaScript library used for spatial analysis
+     distance = distance.toFixed(1);
+
+     if (distance <= 50) {
+      orarioRitiro();
+    } else {
+      txt = "<p> Non è possibile effettuare consegne che superano i 50 km :( </p>";
+      document.getElementById("orario").innerHTML = txt;
+      button = document.getElementById("concludiAcquisto") ;
+   
+      button.parentNode.removeChild(button); 
+
+    }
+
+
 
    //  var value = document.getElementById('map-overlay')
     // value.innerHTML = "Distance: " + distance.toFixed([2]) + " km"
-    console.log(distance);
+    
+
 
   </script>
 

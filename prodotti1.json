@@ -216,7 +216,7 @@ prodotti =
     {
         "id":16,
         "name":"wurstel e patatine",
-        "image":"images/trofie.jpg",
+        "image":"images/16.jpg",
         "type":"pizza",
         "price": 8.50,
         "ingredients" : [
