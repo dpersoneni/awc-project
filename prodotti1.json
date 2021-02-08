@@ -231,7 +231,7 @@ prodotti =
     {
         "id":17,
         "name":"Belpaese",
-        "image":"images/trofie.jpg",
+        "image":"images/17.jpg",
         "type":"piadina",
         "price": 7.00,
         "ingredients" : [
@@ -245,7 +245,7 @@ prodotti =
     {
         "id":18,
         "name":"Tiramisù",
-        "image":"images/trofie.jpg",
+        "image":"images/18.jpg",
         "type":"dolci",
         "price": 5.00,
         "ingredients" : [
@@ -260,7 +260,7 @@ prodotti =
     {
         "id":19,
         "name":"Torta della Nonna",
-        "image":"images/trofie.jpg",
+        "image":"images/19.jpg",
         "type":"dolci",
         "price": 8.00,
         "ingredients" : [
@@ -275,7 +275,7 @@ prodotti =
     {
         "id":20,
         "name":"Torta al cioccolato",
-        "image":"images/trofie.jpg",
+        "image":"images/20.jpg",
         "type":"dolci",
         "price": 5.00,
         "ingredients" : [
@@ -290,7 +290,7 @@ prodotti =
     {
         "id":21,
         "name":"Crepes alla Nutella",
-        "image":"images/trofie.jpg",
+        "image":"images/21.jpg",
         "type":"dolci",
         "price": 4.50,
         "ingredients" : [
@@ -305,7 +305,7 @@ prodotti =
     {
         "id":22,
         "name":"Insalata di Castagne",
-        "image":"images/trofie.jpg",
+        "image":"images/22.png",
         "type":"insalate",
         "price": 8.50,
         "ingredients" : [
@@ -320,7 +320,7 @@ prodotti =
     {
         "id":23,
         "name":"Insalata Invernale",
-        "image":"images/trofie.jpg",
+        "image":"images/23.jpg",
         "type":"insalate",
         "price": 7.00,
         "ingredients" : [
@@ -334,8 +334,8 @@ prodotti =
     },
     {
         "id":24,
-        "name":"Insalara di pollo",
-        "image":"images/trofie.jpg",
+        "name":"Insalata di pollo",
+        "image":"images/24.jpg",
         "type":"insalate",
         "price": 8.00,
         "ingredients" : [
@@ -350,7 +350,7 @@ prodotti =
     {
         "id":25,
         "name":"Insalata greca",
-        "image":"images/trofie.jpg",
+        "image":"images/25.jpg",
         "type":"insalate",
         "price": 6.50,
         "ingredients" : [
@@ -365,22 +365,19 @@ prodotti =
     {
         "id":26,
         "name":"Marinara",
-        "image":"images/trofie.jpg",
+        "image":"images/26.jpg",
         "type":"pizza",
         "price": 6.50,
         "ingredients" : [
             "impasto", 
             "salsa di pomodoro",
-            "origano",
-            "zucchero",
-            "cacao",
-            "uova"        
+            "origano"       
         ]
     },
     {
         "id":27,
         "name":"Pizza Boscaiola",
-        "image":"images/trofie.jpg",
+        "image":"images/27.jpg",
         "type":"pizza",
         "price": 7.00,
         "ingredients" : [
