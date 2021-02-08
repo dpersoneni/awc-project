@@ -129,9 +129,9 @@
         function aggiungiIngredienti() {
             number = document.getElementById("npiatti").value;
             console.log(number)
-            var container = document.getElementById("container");
+            var container = document.getElementById("container"); //div che al suo interno avraà gli input degli ingredienti 
             while (container.hasChildNodes()) {
-                container.removeChild(container.lastChild);
+                container.removeChild(container.lastChild); //while svuota il  div container 
             }
             for (i = 0; i < number; i++) {
                 if (number > 6) {
@@ -216,11 +216,11 @@
 
 
         function decidiCosaMostrare() {
-            piattiGiaScelti = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail + "1"))
+            piattiGiaScelti = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail + "1")) 
             piattoPersonalizzato = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail + "2"))
             if (piattiGiaScelti === null && piattoPersonalizzato === null) {
 
-                mostraLista();
+                mostraLista(); //mostra  tutta la lista di piatti 
             } else if (piattiGiaScelti === null && piattoPersonalizzato != null) {
                 mostraProdottiScelti();
 
@@ -250,7 +250,6 @@
 
         function mostraLista() {
             console.log("mostraLista");
-            var mailProva = "ueeeee";
             txt = "";
             txt += "<div class='row'>"
             for (x in jsonProdotti) {
@@ -294,7 +293,7 @@
              listaProdotti["mail"] = jsonRistoratore.mail;*/
 
             var index = lista.findIndex(function (item, i) {
-                return item.id == obj.id;
+                return item.id == obj.id; 
             });
 
             if (index === -1) {
@@ -317,7 +316,15 @@
 
     </script>
 
-
+<footer class="footer" >
+    <p>EatMI</p>
+    <div class="footer-bottom">
+      <div class="container">
+          <p class="pull-left copyright"> Copyright © EatMI 2020. All right reserved. </p>
+     
+      </div>
+  </div>
+  </footer>
 
 
 

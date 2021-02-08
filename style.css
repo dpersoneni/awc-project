@@ -109,32 +109,14 @@ ul, li {
 }
 
 
-.footer_Links {
-  text-align: left;
-  margin-bottom: 0;
-}
 
-ul {
-  list-style-type: none;
-}
-.footer a:visited{
-  color: white;
-  text-decoration: none;
-}
 
 .footer p {
 	color: white;
   font-weight: lighter;
 }
 
-.footer a:hover {
-	text-decoration:none;
-  font-weight: bold;
-}
 
-.footer a {
-	color: #78828D
-}
 
 .footer-bottom {
   margin-top: 2em;

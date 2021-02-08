@@ -170,7 +170,7 @@
     }; // units can be degrees, radians, miles, or kilometers, just be sure to change the units in the text box to match. 
 
     var distance = turf.distance(to, from, options);  //Turf.js is an open-source JavaScript library used for spatial analysis
-    distance = distance.toFixed(1);
+    distance = distance.toFixed(1); //Arriva alla prima cifra decimale
 
     if (distance <= 50) {
       orarioRitiro();
@@ -182,11 +182,6 @@
       button.parentNode.removeChild(button);
 
     }
-
-
-
-   //  var value = document.getElementById('map-overlay')
-    // value.innerHTML = "Distance: " + distance.toFixed([2]) + " km"
 
 
 
