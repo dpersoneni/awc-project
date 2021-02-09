@@ -19,8 +19,8 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-
         </button>
+
         <a class="nav-link" href="logristo.html" role="button" aria-haspopup="true" aria-expanded="false"
             style="position: absolute; right: 1px;">Accedi</a>
     </nav>
@@ -129,7 +129,7 @@
         function aggiungiIngredienti() {
             number = document.getElementById("npiatti").value;
             console.log(number)
-            var container = document.getElementById("container"); //div che al suo interno avraà gli input degli ingredienti 
+            var container = document.getElementById("container"); //div che al suo interno avrà gli input degli ingredienti 
             while (container.hasChildNodes()) {
                 container.removeChild(container.lastChild); //while svuota il  div container 
             }
@@ -178,7 +178,7 @@
                     break;
             
             }
-            id = Math.floor(Math.random() * 1000) + 100; //scelgo numero a caso per l'id
+            id = Math.floor(Math.random() * 1000) + 100; //scelgo numero a caso per l'id 
             for (i = 0; i < number; i++) {
                 ingredienti.push(document.getElementById(i + 1).value);
             }
