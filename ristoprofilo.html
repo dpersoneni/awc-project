@@ -15,7 +15,7 @@
 
 <body onload="decidiCosaMostrare()">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="index.html" >EatMI</a>
+        <a class="navbar-brand" href="index.html">EatMI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -41,13 +41,13 @@
                 <div class="col-sm-10 offset-sm-4">
                     <h3>Inserisci un piatto a<br> tua scelta nel menu!</h3>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row" style="margin-top: 40px;">
                     <label for="nomepiatto" class="col-sm-4 col-form-label">Nome piatto</label>
                     <div class="col-sm-7">
-                        <input type="nomepiatto" class="form-control" id="nomepiatto">
+                        <input type="nomepiatto" class="form-control" id="nomepiatto" required>
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row" style="margin-top: 40px;">
                     <label for="tipo" class="col-sm-4 col-form-label">Tipologia</label>
                     <div class="col-sm-7">
                         <select id="tipo" name="piatti">
@@ -61,17 +61,18 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row" style="margin-top: 40px;">
                     <label for="prezzo" class="col-sm-4 col-form-label">Prezzo</label>
                     <div class="col-sm-7">
-                        <input type="number" class="form-control" id="prezzo">
+                        <input type="number" class="form-control" id="prezzo" min="4" max="10" value="4">
+
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group row" style="margin-top: 40px;">
                     <label for="npiatti" class="col-sm-4 col-form-label">Numero ingredienti </label>
                     <div class="col-sm-7">
-                        <input type="number" class="form-control" id="npiatti" name="npiatti" value=""
+                        <input type="number" class="form-control" id="npiatti" name="npiatti" value="1" min="1" max="6"
                             placeholder="Massimo sei">
                     </div>
                     <label class="col-sm-4 col-form-label"></label>
@@ -85,9 +86,10 @@
                 <div id="container">
                     <br>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row" style="margin-top: 20px;">
                     <div class="col-sm-10 offset-sm-4">
-                        <button type="button" class="btn btn-primary" onclick="aggiungiPiattoScelto()">Aggiungi al menù</button>
+                        <button type="button" class="btn btn-primary" onclick="aggiungiPiattoScelto()">Aggiungi al
+                            menù</button>
                     </div>
                 </div>
             </form>
@@ -96,6 +98,55 @@
 
     <div id="piattigiascelti" style="margin-left: 8%;"></div>
     <div id="piattiristoratore" style="margin-bottom: 10em;"> </div>
+
+    <div class="casa">
+        <form>
+            <div class="col-sm-10 offset-sm-4">
+                <h3>Modifica dati</h3>
+            </div>
+
+
+            <div class="form-group row" style="margin-top: 20px;">
+                <label for="password" class="col-sm-4 col-form-label">Password</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-9">
+                    <button type="button" onclick="modificaPassword()" class="btn btn-primary"
+                        style="margin-bottom: 15px;">Submit</button>
+                </div>
+            </div>
+
+
+            <div class="form-group row" style="margin-top: 20px;">
+                <label for="telephone" class="col-sm-4 col-form-label">Telefono</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="telephone" placeholder="Telefono">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-9">
+                    <button type="button" onclick="modificaTelefono()" class="btn btn-primary"
+                        style="margin-bottom: 15px;">Submit</button>
+                </div>
+            </div>
+
+
+
+        </form>
+    </div>
+    <div class="casa" style="background-color: #ffbfaa">
+        <div class="form-group row">
+            <div class="col-sm-10 offset-sm-3">
+                <label for="">Vuoi eliminare il profilo del tuo ristorante?</label>
+                <button type="button" onclick="eliminaRistorante()" class="btn btn-danger"
+                    style="margin-bottom: 15px; margin-top:15px">Elimina </button>
+            </div>
+        </div>
+    </div>
+
 
 
 
@@ -159,24 +210,24 @@
             var immagine;
             switch (tipo) {
                 case "panini":
-                    immagine = "images/panini.jpg" 
+                    immagine = "images/panini.jpg"
                     break;
                 case "pizza":
-                immagine = "images/pizza.jpg" 
+                    immagine = "images/pizza.jpg"
                     break;
                 case "piadina":
-                immagine = "images/piadine.jpg" 
+                    immagine = "images/piadine.jpg"
                     break;
                 case "insalate":
-                immagine = "images/insalata.jpg" 
+                    immagine = "images/insalata.jpg"
                     break;
                 case "pasta":
-                immagine = "images/pasta.jpg" 
+                    immagine = "images/pasta.jpg"
                     break;
                 case "dolci":
-                immagine = "images/dolci.jpg" 
+                    immagine = "images/dolci.jpg"
                     break;
-            
+
             }
             id = Math.floor(Math.random() * 1000) + 100; //scelgo numero a caso per l'id 
             for (i = 0; i < number; i++) {
@@ -216,7 +267,7 @@
 
 
         function decidiCosaMostrare() {
-            piattiGiaScelti = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail + "1")) 
+            piattiGiaScelti = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail + "1"))
             piattoPersonalizzato = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail + "2"))
             if (piattiGiaScelti === null && piattoPersonalizzato === null) {
 
@@ -293,7 +344,7 @@
              listaProdotti["mail"] = jsonRistoratore.mail;*/
 
             var index = lista.findIndex(function (item, i) {
-                return item.id == obj.id; 
+                return item.id == obj.id;
             });
 
             if (index === -1) {
@@ -314,17 +365,69 @@
 
         }
 
+
+
+        function modificaPassword() {
+            password = document.getElementById("password").value;
+            for (x in jsonRistoranti) {
+                if (jsonRistoranti[x] != null) {
+
+                    if (jsonRistoratore.mail == jsonRistoranti[x].mail) {
+                        jsonRistoranti[x].password = password;
+                    }
+                }
+            }
+            sessionStorage.setItem('ristoranti', "")
+            sessionStorage.setItem('ristoranti', JSON.stringify(jsonRistoranti))
+            window.location.href = "logristo.html";
+
+        }
+
+        function modificaTelefono() {
+            telefono = document.getElementById("telephone").value;
+            for (x in jsonRistoranti) {
+                if (jsonRistoranti[x] != null) {
+
+                    if (jsonRistoratore.mail == jsonRistoranti[x].mail) {
+                        jsonRistoranti[x].telephone = telephone;
+                    }
+                }
+            }
+            sessionStorage.setItem('ristoranti', "")
+            sessionStorage.setItem('ristoranti', JSON.stringify(jsonRistoranti))
+            window.location.href = "logristo.html";
+
+        }
+
+        function eliminaRistorante() {
+            for (x in jsonRistoranti) {
+                if (jsonRistoranti[x] != null) {
+                    if (jsonRistoratore.mail == jsonRistoranti[x].mail) {
+
+
+                        delete jsonRistoranti[x];
+                    }
+                }
+
+            }
+            sessionStorage.setItem('ristoranti', "")
+            sessionStorage.setItem('ristoranti', JSON.stringify(jsonRistoranti))
+            window.location.href = "regristo.html";
+
+
+        }
+
     </script>
 
-<footer class="footer" >
-    <p>EatMI</p>
-    <div class="footer-bottom">
-      <div class="container">
-          <p class="pull-left copyright"> Copyright © EatMI 2020. All right reserved. </p>
-     
-      </div>
-  </div>
-  </footer>
+    <footer class="footer">
+        <p>EatMI</p>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="pull-left copyright"> Copyright © EatMI 2020. All right reserved. </p>
+
+            </div>
+        </div>
+    </footer>
 
 
 

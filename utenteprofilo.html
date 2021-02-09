@@ -14,31 +14,104 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="index.html" >EatMI</a>
+        <a class="navbar-brand" href="index.html">EatMI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-            </button>
+        </button>
     </nav>
 
 
 
     <div class="login-form">
-     
+
         <div id="nomecognome"></div>
         <div id="mail"></div>
         <div id="indirizzo"></div>
         <div id="telefono"></div>
 
-    </div>   
+    </div>
+    <div class="casa">
+        <form>
+            <div class="col-sm-10 offset-sm-4">
+                <h3>Modifica dati</h3>
+            </div>
+
+
+            <div class="form-group row" style="margin-top: 20px;">
+                <label for="password" class="col-sm-4 col-form-label">Password</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-9">
+                    <button type="button" onclick="modificaPassword()" class="btn btn-primary"
+                        style="margin-bottom: 15px;">Submit</button>
+                </div>
+            </div>
+
+
+            <div class="form-group row" style="margin-top: 20px;">
+                <label for="telephone" class="col-sm-4 col-form-label">Telefono</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="telephone" placeholder="Telefono">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-9">
+                    <button type="button" onclick="modificaTelefono()" class="btn btn-primary"
+                        style="margin-bottom: 15px;">Submit</button>
+                </div>
+            </div>
+            <div class="form-group row" style="margin-top: 20px;">
+                <label for="indirizzo" class="col-sm-4 col-form-label">Indirizzo</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="address" placeholder="Indirizzo">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-9">
+                    <button type="button" onclick="modificaIndirizzo()" class="btn btn-primary"
+                        style="margin-bottom: 15px;">Submit</button>
+                </div>
+            </div>
+            <div class="form-group1">
+                <p><b>Metodo di pagamento:</b></p>
+                <input type="radio" id="contanti" name="metodo" value="contanti">
+                <label for="contanti">Contanti</label> <br>
+                <input type="radio" id="buonipasto" name="metodo" value="buonipasto">
+                <label for="buonipasto">Buoni pasto</label> <br>
+                <input type="radio" id="bancomat" name="metodo" value="bancomat">
+                <label for="bancomat">Bancomat</label> <br>
+                <input type="radio" id="paypal" name="metodo" value="paypal">
+                <label for="paypal">Paypal</label> <br>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-9">
+                    <button type="button" onclick="modificaMetodo()" class="btn btn-primary"
+                        style="margin-bottom: 15px;">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="casa" style="background-color: #ffbfaa">
+        <div class="form-group row">
+            <div class="col-sm-10 offset-sm-5">
+                <label for="">Vuoi eliminare il tuo profilo?</label>
+                <button type="button" onclick="eliminaProfilo()" class="btn btn-danger"
+                    style="margin-bottom: 15px; margin-top:15px">Elimina </button>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         var utenteObj = JSON.parse(sessionStorage.getItem('utenteAcquisto'));
-        console.log(utenteObj.firstname);
-        console.log(utenteObj.secondname);
-        console.log(utenteObj.address);
-        console.log(utenteObj.mail);
-        console.log(utenteObj.telephone);
+        var utenti = JSON.parse(sessionStorage.getItem('utenti'));
 
         nome = "<p><i class='fas fa-user' style = 'margin-right: 8px'></i>" + " " + utenteObj.firstname + " " + utenteObj.secondname + "</p>";
         document.getElementById("nomecognome").innerHTML = nome;
@@ -53,8 +126,90 @@
         document.getElementById("telefono").innerHTML = telefono;
 
 
-      
-    </script>   
+        function modificaIndirizzo() {
+            indirizzo = document.getElementById("address").value;
+            for (x in utenti) {
+                if (utenti[x] != null) {
+
+                    if (utenteObj.mail == utenti[x].mail) {
+                        utenti[x].address = indirizzo;
+                    }
+                }
+            }
+            sessionStorage.setItem('utenti', "")
+            sessionStorage.setItem('utenti', JSON.stringify(utenti));
+            window.location.href = "logutente.html";
+        }
+
+        function modificaPassword() {
+            password = document.getElementById("password").value;
+            for (x in utenti) {
+                if (utenti[x] != null) {
+
+                    if (utenteObj.mail == utenti[x].mail) {
+                        utenti[x].password = password;
+                    }
+                }
+            }
+            sessionStorage.setItem('utenti', "")
+            sessionStorage.setItem('utenti', JSON.stringify(utenti))
+            window.location.href = "logutente.html";
+
+        }
+
+        function modificaMetodo() {
+            metodo = document.getElementById("metodo").value;
+            for (x in utenti) {
+                if (utenti[x] != null) {
+
+                    if (utenteObj.mail == utenti[x].mail) {
+                        utenti[x].method = metodo;
+                    }
+                }
+            }
+            sessionStorage.setItem('utenti', "")
+            sessionStorage.setItem('utenti', JSON.stringify(utenti))
+            window.location.href = "logutente.html";
+
+        }
+
+        function modificaTelefono() {
+            telefono = document.getElementById("telephone").value;
+            console.log(indirizzo);
+            for (x in utenti) {
+                if (utenti[x] != null) {
+
+                    if (utenteObj.mail == utenti[x].mail) {
+                        utenti[x].telephone = telephone;
+                    }
+                }
+            }
+            sessionStorage.setItem('utenti', "")
+            sessionStorage.setItem('utenti', JSON.stringify(utenti))
+            window.location.href = "logutente.html";
+
+        }
+
+        function eliminaProfilo() {
+            for (x in utenti) {
+                if (utenti[x] != null) {
+
+                    if (utenteObj.mail == utenti[x].mail) {
+                        delete utenti[x];
+
+                    }
+                }
+            }
+            sessionStorage.setItem('utenti', "")
+            sessionStorage.setItem('utenti', JSON.stringify(utenti))
+            window.location.href = "regutente.html";
+
+        }
+
+
+
+
+    </script>
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -69,13 +224,14 @@
 </body>
 
 
-<footer class="footer"  style="position: absolute; bottom: 0%;">
+<footer class="footer">
     <p>EatMI</p>
     <div class="footer-bottom">
-      <div class="container">
-          <p class="pull-left copyright"> Copyright © EatMI 2020. All right reserved. </p>
-     
-      </div>
-  </div>
-  </footer>
+        <div class="container">
+            <p class="pull-left copyright"> Copyright © EatMI 2020. All right reserved. </p>
+
+        </div>
+    </div>
+</footer>
+
 </html>
