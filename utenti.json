@@ -1,4 +1,5 @@
 utenti = [
+
     {
         "id":1,
         "mail":"giovastorti@mail.com",
@@ -11,6 +12,7 @@ utenti = [
         "latitude" : "45.468016",
         "longitude" : "9.181568"
     },
+    
     {
         "id":2,
         "mail":"aldobaglio@mail.com",
