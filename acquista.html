@@ -24,12 +24,19 @@
       <span class="navbar-toggler-icon"></span>
     </button>
   </nav>
+
   <div id="visualCarrello">
     <div id="titoloCarrello"></div>
     <div id="tableCarrello"></div>
-    <div id="orario"></div>
 
-    <div id="concludiAcquisto"><small class="btn btn-secondary" onclick="concludiAquisto()" role="button" style="float: right;">Concludi acquisto</small></div>
+    <div id="orario"><label for="modalita">Modalità ritiro</label><select name="modalita" id="modalita">
+        <option value="ritiro">Presso ristorante</option>
+        <option value="consegna">Consegna a domicilio</option>
+        <input type="submit" value="Seleziona" onclick="decidiRitiro()">
+      </select></div>
+
+    <div id="concludiAcquisto"><small class="btn btn-secondary" onclick="concludiAquisto()" role="button"
+        style="float: right;">Concludi acquisto</small></div>
     <div><small class="btn btn-secondary" onclick="location.href='plates.html'" role="button"
         style="float: right; margin-right: 5px;">Torna ai piatti</small></div>
     <div id="acquistiPassati">
@@ -113,7 +120,16 @@
       console.log(arraytemporaneo);
     }
 
-
+    function decidiRitiro() {
+      var decisione = document.getElementById("modalita").value
+      if (decisione ==  "ritiro") {
+        document.getElementById("orario").innerHTML = "";
+        orarioRitiro();
+      } else {
+        document.getElementById("orario").innerHTML = "";
+        consegnaDomicilio();
+      }
+    }
 
     function orarioRitiro() {
       var arrayLength = array.length;
@@ -131,6 +147,34 @@
       document.getElementById("orario").innerHTML = txt2;
     }
 
+   
+
+    function consegnaDomicilio() {
+
+      mapboxgl.accessToken = 'pk.eyJ1IjoiZHBlcnNvbmVuaSIsImEiOiJja2hha3dhb2owanQ0MzFwam44MWx3M2p1In0.j2kboFTenc7rda5RURJJWQ';
+
+      var to = [ristoratoreObj.latitude, ristoratoreObj.longitude] //lng, lat
+      var from = [utenteObj.latitude, utenteObj.longitude] //lng, lat 
+
+      var options = {
+        units: 'kilometers'
+      }; // units can be degrees, radians, miles, or kilometers, just be sure to change the units in the text box to match. 
+
+      var distance = turf.distance(to, from, options);  //Turf.js is an open-source JavaScript library used for spatial analysis
+      distance = distance.toFixed(); // Toglie le cifre decimali
+
+      if (distance <= 50) {
+        txt = "<p> Il costo della consegna è di: " + distance + " € </p>";
+        document.getElementById("orario").innerHTML = txt;
+      } else {
+        txt = "<p> Non è possibile effettuare consegne che superano i 50 km :( </p>";
+        document.getElementById("orario").innerHTML = txt;
+        button = document.getElementById("concludiAcquisto");
+
+        button.parentNode.removeChild(button);
+
+      }
+    }
 
     function concludiAquisto() {
       aggiungiPiattiPassati();
@@ -138,29 +182,6 @@
       count++;
       sessionStorage.setItem('contatore', JSON.stringify(count));
       window.location.href = "successo.html";
-
-    }
-
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZHBlcnNvbmVuaSIsImEiOiJja2hha3dhb2owanQ0MzFwam44MWx3M2p1In0.j2kboFTenc7rda5RURJJWQ';
-
-    var to = [ristoratoreObj.latitude, ristoratoreObj.longitude] //lng, lat
-    var from = [utenteObj.latitude, utenteObj.longitude] //lng, lat 
-
-    var options = {
-      units: 'kilometers'
-    }; // units can be degrees, radians, miles, or kilometers, just be sure to change the units in the text box to match. 
-
-    var distance = turf.distance(to, from, options);  //Turf.js is an open-source JavaScript library used for spatial analysis
-    distance = distance.toFixed(1); //Arriva alla prima cifra decimale
-
-    if (distance <= 50) {
-      orarioRitiro();
-    } else {
-      txt = "<p> Non è possibile effettuare consegne che superano i 50 km :( </p>";
-      document.getElementById("orario").innerHTML = txt;
-      button = document.getElementById("concludiAcquisto");
-
-      button.parentNode.removeChild(button);
 
     }
 
