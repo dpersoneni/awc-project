@@ -15,21 +15,23 @@
 <body>
     <script>
    
-        var jsonObject = JSON.parse(sessionStorage.getItem('ristoranti'));
+        var jsonObject = JSON.parse(sessionStorage.getItem('ristoranti')); // prendiamo i ristoranti dal SessionStorage
 
         function checkLogin() { 
-            console.log("ciao2");
+            console.log("ciao2"); // La funzione entra e ritorna il valore della mail e della password che successivamente stampa nel console log
             emailInserita = document.getElementById("email").value;
             passwordInserita = document.getElementById("password").value;
             console.log(emailInserita);
             console.log(passwordInserita);
          
-            for(x in jsonObject) {
+            for(x in jsonObject) { // cicliamo ogni oggetto del jsonObject che in questo caso sono i ristoranti e verifico se una
+                                // mail e rispettive password inserite corrispondano.
                 if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita) {
        
-                    sessionStorage.setItem('ristoratore', JSON.stringify(jsonObject[x]));
+                    sessionStorage.setItem('ristoratore', JSON.stringify(jsonObject[x])); // settiamo nel session la chiave "ristoratore" e come
+                    //valore l'array contenente le informazioni del ristoratore
             
-                    window.location.href = "ristoprofilo.html";
+                    window.location.href = "ristoprofilo.html"; //una volta fatto ciò ci manda nel ristoprofilo
                 }                   
              
             }

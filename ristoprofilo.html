@@ -13,7 +13,7 @@
 </head>
 
 
-<body onload="decidiCosaMostrare()">
+<body onload="decidiCosaMostrare()"> <!--Appena si apre la pagina avremo questa funzione che ci "mostraLista" che conterrà tutte le cards-->
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="index.html">EatMI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -77,8 +77,8 @@
                     </div>
                     <label class="col-sm-4 col-form-label"></label>
                     <div class="col-sm-7">
-                        <a href="#" id="aggiungiigredienti" onclick="aggiungiIngredienti()"
-                            style="float: right;">Aggiungi ingredienti</a>
+                        <a href="#" id="aggiungiigredienti" onclick="aggiungiIngredienti()" 
+                            style="float: right;">Aggiungi ingredienti</a> <!-- Cliccando sul button per gli ingrendienti abbiamo la funzione aggiungiIngredienti-->
 
                     </div>
                 </div>
@@ -88,8 +88,7 @@
                 </div>
                 <div class="form-group row" style="margin-top: 20px;">
                     <div class="col-sm-10 offset-sm-4">
-                        <button type="button" class="btn btn-primary" onclick="aggiungiPiattoScelto()">Aggiungi al
-                            menù</button>
+                        <button type="button" class="btn btn-primary" onclick="aggiungiPiattoScelto()">Aggiungi al menù</button>
                     </div>
                 </div>
             </form>
@@ -176,22 +175,23 @@
         document.getElementById("partitaiva").innerHTML = partitaiva;
 
         //Aggiungi input ingredienti 
-        var number;
+
+        var number; // creiamo una variabile number
         function aggiungiIngredienti() {
-            number = document.getElementById("npiatti").value;
+            number = document.getElementById("npiatti").value; // alla var number diamo il valore del numero degli ingredienti che mettiamo, variano da 1 a 6 max
             console.log(number)
-            var container = document.getElementById("container"); //div che al suo interno avrà gli input degli ingredienti 
-            while (container.hasChildNodes()) {
+            var container = document.getElementById("container"); //div che al suo interno avrà gli input degli ingredienti (rettangolo di input)
+            while (container.hasChildNodes()) { // se all'interno della casella abbiamo inserito qualcoda allora:
                 container.removeChild(container.lastChild); //while svuota il  div container 
             }
             for (i = 0; i < number; i++) {
                 if (number > 6) {
-                    return;
+                    return;  // il numero degli ingredienti possibili che possiamo aggiungere varia da 1 a 6 e non di più.
                 }
-                container.appendChild(document.createTextNode("Ingrediente " + (i + 1)));
+                container.appendChild(document.createTextNode("Ingrediente " + (i + 1))); // all'interno del container abbiamo "Ingrediente1 e la casella con dentro l'ingrediente"
                 var input = document.createElement("input");
-                input.id = i + 1;
-                input.type = "text";
+                input.id = i + 1; // numero ingredienti che partendo da 0 aggiungiamo 1
+                input.type = "text"; // id e type servono per identificare ogni input
                 container.appendChild(input);
                 container.appendChild(document.createElement("br"));
             }
@@ -199,16 +199,16 @@
         }
 
         function aggiungiPiattoScelto() {
-            listaMista = [];
-            listaProdotti1 = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail));
+            listaMista = []; // creiamo in array vuoto
+            listaProdotti1 = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)); // chiave: mail del ristoratore con valore il prodotto a scelta aggiunto da noi
 
-            var nome = document.getElementById("nomepiatto").value;
+            var nome = document.getElementById("nomepiatto").value; // tre variabili con cui prendiamo i tre rispettivi input del nome, tipo, prezzo ecc..
             var tipo = document.getElementById("tipo").value;
             var prezzo = document.getElementById("prezzo").value;
-            var ingredienti = [];
+            var ingredienti = []; // array vuoto 
             var id;
             var immagine;
-            switch (tipo) {
+            switch (tipo) {  // switch che occorre in base al tipo di piatto che scegliamo e di conseguenza torna quel tipo di immagine 
                 case "panini":
                     immagine = "images/panini.jpg"
                     break;
@@ -229,11 +229,11 @@
                     break;
 
             }
-            id = Math.floor(Math.random() * 1000) + 100; //scelgo numero a caso per l'id 
+            id = Math.floor(Math.random() * 1000) + 100; //scelgo numero a caso per l'id del nuovo piatto per non confonderlo con gli id precedenti
             for (i = 0; i < number; i++) {
                 ingredienti.push(document.getElementById(i + 1).value);
             }
-            var singoloPiatto = {
+            var singoloPiatto = { //array di ingredienti 
                 "id": id,
                 "name": nome,
                 "type": tipo,
@@ -241,7 +241,7 @@
                 "price": prezzo,
                 "ingredients": ingredienti
             };
-            if (listaProdotti1 != null) {
+            if (listaProdotti1 != null) { // in questo caso verifico se ho già dei prodotti e aggiungo il singoloPiatto ai prodotti
 
                 console.log(listaProdotti1)
                 listaProdotti1.push(singoloPiatto);
@@ -249,7 +249,7 @@
                 location.reload();
                 sessionStorage.setItem(jsonRistoratore.mail + "2", JSON.stringify("piatto"));
             } else {
-                console.log(listaProdotti1)
+                console.log(listaProdotti1) //qui essendo che l'array listaProdotti1 è vuoto non posso dargli un elemento essendo vuoto, quindi creo array ListaMista e ci metto dentro il singoloPiatto
                 listaMista.push(singoloPiatto);
 
                 sessionStorage.setItem(jsonRistoratore.mail, JSON.stringify(listaMista));
@@ -271,9 +271,10 @@
             piattoPersonalizzato = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail + "2"))
             if (piattiGiaScelti === null && piattoPersonalizzato === null) {
 
-                mostraLista(); //mostra  tutta la lista di piatti 
+                mostraLista(); //mostra  tutta la lista di piatti inizialamente essendo che queste due sarannno vuote
+
             } else if (piattiGiaScelti === null && piattoPersonalizzato != null) {
-                mostraProdottiScelti();
+                mostraProdottiScelti(); // se abbiamo scelto il piatto personalizzato mostra questa funzione
 
                 mostraLista();
 
@@ -285,7 +286,7 @@
         }
 
         function mostraProdottiScelti() {
-            piattiGiaScelti = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail))
+            piattiGiaScelti = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)) // prendiamo dal session l'email del ristoratore
             console.log(piattiGiaScelti);
 
             txt = "<h3>I tuoi Piatti</h3><br><table id='tabellabella'><tr><th>Prodotto</th><th>Prezzo</th><th>Ingredienti</th></tr> ";
@@ -326,8 +327,8 @@
 
         function aggiungiLista(x) {
 
-            if (JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)) != null) {
-                lista = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail));
+            if (JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)) != null) { // se l'email che prendiamo dal session è presente:
+                lista = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)); // in lista prendiamo la chiave ovvero mail del ristoratore
 
             }
 
@@ -337,22 +338,22 @@
                 "price": jsonProdotti[x].price,
                 "image": jsonProdotti[x].image,
                 "type": jsonProdotti[x].type,
-                "ingredients": jsonProdotti[x].ingredients
+                "ingredients": jsonProdotti[x].ingredients  // aggiungiamo obj che è un array con le info del prodotto
             };
 
             /* var listaProdotti = {};
              listaProdotti["mail"] = jsonRistoratore.mail;*/
 
-            var index = lista.findIndex(function (item, i) {
+            var index = lista.findIndex(function (item, i) { //find index torna l'indice del primo elemento che soddisfa la richiesta 
                 return item.id == obj.id;
             });
 
-            if (index === -1) {
+            if (index === -1) {  // altrimenti torna -1
                 lista.push(obj); //non piglia il prodotto più di una volta
             }
             /* listaProdotti["lista"] = lista;
              console.log(lista);*/
-            sessionStorage.setItem(jsonRistoratore.mail, JSON.stringify(lista));
+            sessionStorage.setItem(jsonRistoratore.mail, JSON.stringify(lista)); // settiamo nel session come chiave mail del ristoratore e come valore la lista 
 
 
         }
@@ -368,16 +369,16 @@
 
 
         function modificaPassword() {
-            password = document.getElementById("password").value;
-            for (x in jsonRistoranti) {
+            password = document.getElementById("password").value; // dentro a password ho il valore della password messa nel box finale 
+            for (x in jsonRistoranti) {  // cicliamo su i tre ristoratori che abbiamo e valutiamo se sono diversi da null 
                 if (jsonRistoranti[x] != null) {
 
-                    if (jsonRistoratore.mail == jsonRistoranti[x].mail) {
-                        jsonRistoranti[x].password = password;
+                    if (jsonRistoratore.mail == jsonRistoranti[x].mail) { // vediamo se la mail è uguale a quella del json
+                        jsonRistoranti[x].password = password;  // diamo alla passowrd del json il valore della nuova passowrd inserita
                     }
                 }
             }
-            sessionStorage.setItem('ristoranti', "")
+            sessionStorage.setItem('ristoranti', "") // settiamo nel session la chiave ristoranti
             sessionStorage.setItem('ristoranti', JSON.stringify(jsonRistoranti))
             window.location.href = "logristo.html";
 
