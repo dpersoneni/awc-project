@@ -117,15 +117,7 @@
                 "latitude": "45.464211",
                 "longitude": "9.191383"
             }
-            var index = utente.findIndex(function (item, i) {
-                return item.id == object.id; 
-            });
-
-            if (index === -1) {
-                utente.push(object);
-            } else {
-                utente.add(object);
-            }
+            
             jsonObject.push(object);
           
 

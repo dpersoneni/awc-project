@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css" type="text/css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <title>EatMI</title>
   <script src="ristoranti.json"></script>
   <script src="utenti.json"></script>
@@ -14,19 +15,19 @@
 </head>
 
 <body>
-  <script>  
-  if (sessionStorage.getItem('utenti') == null) {
-    sessionStorage.setItem('utenti', JSON.stringify(utenti));
-  }
-  if (sessionStorage.getItem('ristoranti') == null) {
-    sessionStorage.setItem('ristoranti', JSON.stringify(ristoranti));
-  }
-  if (sessionStorage.getItem('prodotti') == null) {
-    sessionStorage.setItem('prodotti', JSON.stringify(prodotti1));
-  }
+  <script>
+    if (sessionStorage.getItem('utenti') == null) {
+      sessionStorage.setItem('utenti', JSON.stringify(utenti));
+    }
+    if (sessionStorage.getItem('ristoranti') == null) {
+      sessionStorage.setItem('ristoranti', JSON.stringify(ristoranti));
+    }
+    if (sessionStorage.getItem('prodotti') == null) {
+      sessionStorage.setItem('prodotti', JSON.stringify(prodotti));
+    }
 
 
-  
+
 
     localStorage.clear();
   </script>
@@ -38,22 +39,23 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="position: absolute; right: 1px;">
-    
-      
-     
+
+
+
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Accedi</a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Accedi</a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <p id="idp" class="dropdown-item">Accedi come:</p>
           <a id="ida" class="dropdown-item" href="logutente.html">Utente</a>
           <a id="ida" class="dropdown-item" href="logristo.html">Ristoratore</a><br>
-          <p id="idp"class="dropdown-item">Registrati come:</p>
+          <p id="idp" class="dropdown-item">Registrati come:</p>
           <a id="ida" class="dropdown-item" href="regutente.html">Utente</a>
           <a id="ida" class="dropdown-item" href="regristo.html">Ristoratore</a>
 
         </div>
-      </li> 
+      </li>
     </div>
   </nav>
 
@@ -67,19 +69,22 @@
     </div>
   </div>
 
-    
+
 
   <div class="about">
     <img src="images/eat.png" style="max-width:30%; display:inline-block;">
 
     <div style="display:inline-block; float: right;">
-    <h2 >Chi siamo?</h2>
-    <p>Siamo due studenti di Informatica per la comunicazione digitale <br> all’Università degli Studi di Milano, <br>abbiamo creato una startup 
-      per il food delivering nella città più all'avanguardia d'Italia. <br> Siamo convinti che anche i piccoli ristoratori abbiano bisogno<br> di un
-      servizio che riesca ad ampliare il loro business, per questo esiste EatMI! <br> EatMI è il presente ma soprattutto il futuro di Milano.
-    </p>
+      <h2>Chi siamo?</h2>
+      <p>Siamo due studenti di Informatica per la comunicazione digitale <br> all’Università degli Studi di Milano,
+        <br>abbiamo creato una startup
+        per il food delivering nella città più all'avanguardia d'Italia. <br> Siamo convinti che anche i piccoli
+        ristoratori abbiano bisogno<br> di un
+        servizio che riesca ad ampliare il loro business, per questo esiste EatMI! <br> EatMI è il presente ma
+        soprattutto il futuro di Milano.
+      </p>
+    </div>
   </div>
-</div>
 
 
 
@@ -90,10 +95,10 @@
     <p>EatMI</p>
     <div class="footer-bottom">
       <div class="container">
-          <p class="pull-left copyright"> Copyright © EatMI 2020. All right reserved. </p>
-     
+        <p class="pull-left copyright"> Copyright © EatMI 2020. All right reserved. </p>
+
       </div>
-  </div>
+    </div>
   </footer>
 
 
@@ -105,8 +110,10 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
     crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
- <!-- <script type="text/javascript" src="script.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <!-- <script type="text/javascript" src="script.js"></script>
   <script type="text/javascript" src="prodotti1.json"></script>-->
 </body>
 

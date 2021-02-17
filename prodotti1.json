@@ -189,7 +189,7 @@ prodotti =
     {
         "id":14,
         "name":"Prosciutto e formaggio",
-        "image":"images/trofie.jpg",
+        "image":"images/14.jpg",
         "type":"piadina",
         "price": 7.00,
         "ingredients" : [

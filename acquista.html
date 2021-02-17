@@ -48,7 +48,6 @@
 
   <script>
     var count1 = JSON.parse(sessionStorage.getItem('contatore'));
-
     sessionStorage.setItem('contatore', JSON.stringify(count1));
     var array = [];
     for (i = 19; i < 23; i++) {
@@ -69,7 +68,7 @@
     var ristoratoreObj = JSON.parse(sessionStorage.getItem('ristoratore'));
     txt1 = "<h3>Carrello</h3>";
     txt = "<table id='tabellabella'><tr><th>Prodotto</th><th>Quantità</th><th>Prezzo</th><th>Modalità di pagamento</th></tr> ";
-    console.log(carrelloObj);
+    console.log(carrelloObj); // nella console abbiamo i piatti scelti dall'utente
     for (x in carrelloObj) {
       txt += "<tr><td>" + carrelloObj[x].name + "</td><td>" + carrelloObj[x].qnt + "</td><td>" + carrelloObj[x].qnt * carrelloObj[x].price + " € </td><td>" + utenteObj.method + "</td></tr>";
     }
@@ -94,23 +93,21 @@
 
     function aggiungiPiattiPassati() {
 
-
       var prodottiPassati = JSON.parse(sessionStorage.getItem(utenteObj.mail));
-
 
       if (prodottiPassati == null) {
         var vuoto = null;
-        sessionStorage.setItem(utenteObj.mail, JSON.stringify(vuoto));
+        sessionStorage.setItem(utenteObj.mail, JSON.stringify(vuoto)); // nel caso in cui non abbiamo nulla non aggiunge nulla nella tabella
 
       }
 
-      var arraytemporaneo = [];
+      var arraytemporaneo = []; // serve per tenere sia i prodotti del carrello sia quelli passati
       //var prodottiPassati = JSON.parse(sessionStorage.getItem(utenteObj.mail));
       for (x in prodottiPassati) {
-        arraytemporaneo.push(prodottiPassati[x]);
+        arraytemporaneo.push(prodottiPassati[x]); // nell'arraytemporaneo andiamo a pushare i prodotti passati
       }
 
-      for (x in carrelloObj) {
+      for (x in carrelloObj) {  // per il carrello
         arraytemporaneo.push(carrelloObj[x].name);
         console.log(carrelloObj[x].name);
       }
@@ -122,7 +119,7 @@
 
     function decidiRitiro() {
       var decisione = document.getElementById("modalita").value
-      if (decisione ==  "ritiro") {
+      if (decisione == "ritiro") {
         document.getElementById("orario").innerHTML = "";
         orarioRitiro();
       } else {
@@ -147,7 +144,7 @@
       document.getElementById("orario").innerHTML = txt2;
     }
 
-   
+
 
     function consegnaDomicilio() {
 
