@@ -23,8 +23,8 @@
           
           
             for(x in jsonObject) {
-            
-                if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita)  {
+                if (jsonObject[x] != null) {
+                    if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita)  {
                     console.log(carrelloTemp);
                   //  console.log(carrelloTemp.length);
                   sessionStorage.setItem('utenteAcquisto', JSON.stringify(jsonObject[x]));
@@ -37,6 +37,9 @@
                     }
 
                 } 
+                }
+            
+              
                 
             }
         }

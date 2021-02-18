@@ -31,12 +31,15 @@
     txt = "";
     txt += "<div class='row'>";
     for (x in ristoranti) {
-      txt += ' <div class="col-12 col-sm-4 col-md-3 col-lg-4" id="cartaristorante"><div class="card-body"><h4 class="card-title">' + ristoranti[x].restaurant;
+      if (ristoranti[x] != null) {
+        txt += ' <div class="col-12 col-sm-4 col-md-3 col-lg-4" id="cartaristorante"><div class="card-body"><h4 class="card-title">' + ristoranti[x].restaurant;
         
-      txt += '</h4> <p class="card-text">' + ristoranti[x].address + '<br><br> ' +  ristoranti[x].telephone;
-        mail = ristoranti[x].mail ;
-        txt += ' </p><br><br><br> <small class="btn btn-secondary"  onclick="scegliRistorante(' + x+ ')" role="button">Mostra di più</small>  </div> </div>';
-
+        txt += '</h4> <p class="card-text">' + ristoranti[x].address + '<br><br> ' +  ristoranti[x].telephone;
+          mail = ristoranti[x].mail ;
+          txt += ' </p><br><br><br> <small class="btn btn-secondary"  onclick="scegliRistorante(' + x+ ')" role="button">Mostra di più</small>  </div> </div>';
+  
+      }
+    
     }
     
     txt += "</div>"
