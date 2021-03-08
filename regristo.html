@@ -11,6 +11,57 @@
 </head>
 
 <body>
+    <style>
+    
+        /* Style the submit button */
+        input[type=submit] {
+          background-color: #4CAF50;
+          color: white;
+        }
+        
+        /* Style the container for inputs */
+        .container {
+          background-color: #f1f1f1;
+          padding: 20px;
+        }
+        
+        /* The message box is shown when the user clicks on the password field */
+        #message {
+          display:none;
+          background: #f1f1f1;
+          color: #000;
+          position: relative;
+          padding: 20px;
+          margin-top: 10px;
+        }
+        
+        #message p {
+          padding: 10px 35px;
+          font-size: 18px;
+        }
+        
+        /* Add a green text color and a checkmark when the requirements are right */
+        .valid {
+          color: green;
+        }
+        
+        .valid:before {
+          position: relative;
+          left: -35px;
+          content: "✔";
+        }
+        
+        /* Add a red text color and an "x" when the requirements are wrong */
+        .invalid {
+          color: red;
+        }
+        
+        .invalid:before {
+          position: relative;
+          left: -35px;
+          content: "✖";
+        }
+        </style>
 
 
     <div class="casa">
@@ -21,28 +72,38 @@
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="mail" class="col-sm-4 col-form-label">Mail</label>
                 <div class="col-sm-7">
-                    <input type="email" class="form-control" id="mail" placeholder="Mail">
+                    <input type="email" class="form-control" id="mail" placeholder="Mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                 </div>
             </div>
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="password" class="col-sm-4 col-form-label">Password</label>
                 <div class="col-sm-7">
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <input type="password" class="form-control" id="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="La password deve contenere almeno un numero, almeno una lettera minuscola, almeno una lettera maiuscola e minimo 8 caratteri."
+                    required>
                 </div>
             </div>
+            <div id="message">
+                <h3>Password must contain the following:</h3>
+                <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                <p id="number" class="invalid">A <b>number</b></p>
+                <p id="length8" class="invalid">Minimum <b>8 characters</b></p>
+            </div>
+
             <div class="col-sm-10 offset-sm-4">
                 <h3>Dati ristorante</h3>
             </div>
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="restaurant" class="col-sm-4 col-form-label">Nome ristorante </label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" id="restaurant" placeholder="Nome ristorante">
+                    <input type="text" class="form-control" id="restaurant"  minlength="1" placeholder="Nome ristorante">
                 </div>
             </div>
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="telephone" class="col-sm-4 col-form-label">Numero di telefono</label>
                 <div class="col-sm-7">
-                    <input type="tel" class="form-control" id="telephone" placeholder="Numero di telefono">
+                    <input type="tel" class="form-control" id="telephone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required placeholder="Numero di telefono">
                 </div>
             </div>
             <div class="form-group row" style="margin-top: 20px;">
@@ -54,7 +115,7 @@
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="partitaiva" class="col-sm-4 col-form-label">Partita IVA</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" id="partitaiva" placeholder="Partita IVA">
+                    <input type="text" pattern="[0-9]{11}" class="form-control" id="partitaiva" placeholder="Partita IVA">
                 </div>
             </div>
             <div class="col-sm-10 offset-sm-4">
@@ -63,19 +124,19 @@
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="firstname" class="col-sm-4 col-form-label">Nome</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" id="firstname" placeholder="Nome">
+                    <input type="text"  minlength="3" class="form-control" id="firstname" placeholder="Nome">
                 </div>
             </div>
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="lastname" class="col-sm-4 col-form-label">Cognome</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" id="lastname" placeholder="Cognome">
+                    <input type="text"  minlength="2" class="form-control" id="lastname" placeholder="Cognome">
                 </div>
             </div>
 
             <div class="form-group row" style="margin-top: 20px;">
                 <div class="col-sm-10 offset-sm-4">
-                    <button type="button" class="btn btn-primary" onclick="salvaRisto()">Registrati</button>
+                    <button type="submit" class="btn btn-primary" onclick="salvaRisto()">Registrati</button>
                 </div>
             </div>
         </form>
@@ -110,12 +171,80 @@
                 "latitude": "45.478155",
                 "longitude": "9.226284"
             }
-            jsonObject.push(object);
 
+            
+            var bool = 0;
 
-            sessionStorage.setItem('ristoranti', JSON.stringify(jsonObject));
-            window.location.href = "logristo.html"
+            for (x in jsonObject) {
+                if (jsonObject[x].mail == mail) {
+                    bool = 1
+                }
+            }
+
+            if (bool == 0) {
+                jsonObject.push(object);
+                sessionStorage.setItem('ristoranti', JSON.stringify(jsonObject));
+            }
+  
+          //  window.location.href = "logristo.html"
         }
+        var myInput = document.getElementById("password");
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function () {
+    document.getElementById("message").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function () {
+    document.getElementById("message").style.display = "none";
+}
+myInput.onkeyup = function () {
+
+    // Validate lowercase letters
+    var lowerCaseLetters = /[a-z]/g;
+    if (myInput.value.match(lowerCaseLetters)) {
+        letter.classList.remove("invalid");
+        letter.classList.add("valid");
+    } else {
+        letter.classList.remove("valid");
+        letter.classList.add("invalid");
+    }
+
+    // Validate capital letters
+    var upperCaseLetters = /[A-Z]/g;
+    if (myInput.value.match(upperCaseLetters)) {
+        capital.classList.remove("invalid");
+        capital.classList.add("valid");
+    } else {
+        capital.classList.remove("valid");
+        capital.classList.add("invalid");
+    }
+
+    // Validate numbers
+    var numbers = /[0-9]/g;
+    if (myInput.value.match(numbers)) {
+        number.classList.remove("invalid");
+        number.classList.add("valid");
+    } else {
+        number.classList.remove("valid");
+        number.classList.add("invalid");
+    }
+
+    // Validate length
+    if (myInput.value.length >= 8) {
+        console.log(myInput.value.length +"ccccc");
+
+        length8.classList.remove("invalid");
+        length8.classList.add("valid");
+    } else {
+        console.log(myInput.value.length);
+
+        length8.classList.remove("valid");
+        length8.classList.add("invalid");
+    }
+}
+
 
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

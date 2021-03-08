@@ -23,6 +23,7 @@
             passwordInserita = document.getElementById("password").value;
             console.log(emailInserita);
             console.log(passwordInserita);
+            
 
             for (x in jsonObject) {
                 if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita) {
@@ -35,7 +36,6 @@
 
             }
         }
-
     </script>
     <div class="wrap">
         <form class="login-form" action="">
@@ -44,11 +44,13 @@
             </div>
             <!--Email Input-->
             <div class="form-group">
-                <input id="email" type="email" class="form-input" placeholder="email" required>
+                <input id="email" type="email" class="form-input" placeholder="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
             </div>
             <!--Password Input-->
             <div class="form-group">
-                <input id="password" type="password" class="form-input" placeholder="password">
+                <input id="password" type="password" class="form-input" placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="La password deve contenere almeno un numero, almeno una lettera minuscola, almeno una lettera maiuscola e minimo 8 caratteri."
+                required>
             </div>
             <!--Login Button-->
             <div class="form-group">

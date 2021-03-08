@@ -50,15 +50,17 @@
             </div>
             <!--Email Input-->
             <div class="form-group">
-                <input id="email" type="text" class="form-input" placeholder="email">
+                <input id="email" type="email" class="form-input" placeholder="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
             </div>
             <!--Password Input-->
             <div class="form-group">
-                <input id="password" type="password" class="form-input" placeholder="password">
+                <input id="password" type="password" class="form-input" placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="La password deve contenere almeno un numero, almeno una lettera minuscola, almeno una lettera maiuscola e minimo 8 caratteri."
+                        required>
             </div>
             <!--Login Button-->
             <div class="form-group">
-                <button class="form-button" type="button" onclick="checkLogin()">Login</button>
+                <button class="form-button" type="submit" onclick="checkLogin()">Login</button>
 
             </div>
             <div class="form-footer">
