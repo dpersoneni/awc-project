@@ -17,33 +17,31 @@
         var jsonObject = JSON.parse(sessionStorage.getItem('utenti'));
 
         var carrelloTemp = JSON.parse(localStorage.getItem('carrello'));
-        function checkLogin() { 
+
+        function checkLogin() {
             emailInserita = document.getElementById("email").value;
             passwordInserita = document.getElementById("password").value;
-          
-          
-            for(x in jsonObject) {
+
+
+            for (x in jsonObject) {
                 if (jsonObject[x] != null) {
-                    if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita)  {
-                    console.log(carrelloTemp);
-                  //  console.log(carrelloTemp.length);
-                  sessionStorage.setItem('utenteAcquisto', JSON.stringify(jsonObject[x]));
-                    if (carrelloTemp != null) {
-                        window.location.href = "acquista.html";
-              
-                    } else {
-                   
-                        window.location.href = "utenteprofilo.html";
+                    if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita) {
+                        console.log(carrelloTemp);
+                        //  console.log(carrelloTemp.length);
+                        sessionStorage.setItem('utenteAcquisto', JSON.stringify(jsonObject[x]));
+                        if (carrelloTemp != null) { // se abbiamo qualcosa nel carrello allora ci manda ad acquista.html 
+                            window.location.href = "acquista.html";
+
+                        } else {  // nel caso in cui non aggiungessimo nulla nel carrello, facendo l'accesso andremmo ad utenteprofilo
+
+                            window.location.href = "utenteprofilo.html";
+                        }
+
                     }
 
-                } 
                 }
-            
-              
-                
             }
         }
-
     </script>
     <div class="wrap">
         <form class="login-form" action="">
@@ -70,7 +68,7 @@
     </div>
     <!--/.wrap-->
 
-   
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

@@ -13,7 +13,7 @@
 </head>
 
 
-<body onload="decidiCosaMostrare()"> <!--Appena si apre la pagina avremo questa funzione che ci "mostraLista" che conterrà tutte le cards-->
+<body onload="decidiCosaMostrare()">
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="index.html">EatMI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -77,9 +77,8 @@
                     </div>
                     <label class="col-sm-4 col-form-label"></label>
                     <div class="col-sm-7">
-                        <a href="#" id="aggiungiigredienti" onclick="aggiungiIngredienti()" 
-                            style="float: right;">Aggiungi ingredienti</a> <!-- Cliccando sul button per gli ingrendienti abbiamo la funzione aggiungiIngredienti-->
-
+                        <a href="#" id="aggiungiigredienti" onclick="aggiungiIngredienti()"
+                            style="float: right;">Aggiungi ingredienti</a>
                     </div>
                 </div>
 
@@ -88,7 +87,8 @@
                 </div>
                 <div class="form-group row" style="margin-top: 20px;">
                     <div class="col-sm-10 offset-sm-4">
-                        <button type="button" class="btn btn-primary" onclick="aggiungiPiattoScelto()">Aggiungi al menù</button>
+                        <button type="button" class="btn btn-primary" onclick="aggiungiPiattoScelto()">Aggiungi al
+                            menù</button>
                     </div>
                 </div>
             </form>
@@ -176,12 +176,12 @@
 
         //Aggiungi input ingredienti 
 
-        var number; // creiamo una variabile number
+        var number;
         function aggiungiIngredienti() {
             number = document.getElementById("npiatti").value; // alla var number diamo il valore del numero degli ingredienti che mettiamo, variano da 1 a 6 max
             console.log(number)
-            var container = document.getElementById("container"); //div che al suo interno avrà gli input degli ingredienti (rettangolo di input)
-            while (container.hasChildNodes()) { // se all'interno della casella abbiamo inserito qualcoda allora:
+            var container = document.getElementById("container");
+            while (container.hasChildNodes()) { // se all'interno della casella abbiamo inserito qualcosa allora:
                 container.removeChild(container.lastChild); //while svuota il  div container 
             }
             for (i = 0; i < number; i++) {
@@ -190,7 +190,7 @@
                 }
                 container.appendChild(document.createTextNode("Ingrediente " + (i + 1))); // all'interno del container abbiamo "Ingrediente1 e la casella con dentro l'ingrediente"
                 var input = document.createElement("input");
-                input.id = i + 1; // numero ingredienti che partendo da 0 aggiungiamo 1
+                input.id = i + 1; 
                 input.type = "text"; // id e type servono per identificare ogni input
                 container.appendChild(input);
                 container.appendChild(document.createElement("br"));
@@ -199,10 +199,10 @@
         }
 
         function aggiungiPiattoScelto() {
-            listaMista = []; // creiamo in array vuoto
+            listaMista = [];
             listaProdotti1 = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)); // chiave: mail del ristoratore con valore il prodotto a scelta aggiunto da noi
 
-            var nome = document.getElementById("nomepiatto").value; // tre variabili con cui prendiamo i tre rispettivi input del nome, tipo, prezzo ecc..
+            var nome = document.getElementById("nomepiatto").value;  
             var tipo = document.getElementById("tipo").value;
             var prezzo = document.getElementById("prezzo").value;
             var ingredienti = []; // array vuoto 
@@ -229,7 +229,7 @@
                     break;
 
             }
-            id = Math.floor(Math.random() * 1000) + 100; //scelgo numero a caso per l'id del nuovo piatto per non confonderlo con gli id precedenti
+            id = Math.floor(Math.random() * 1000) + 100; 
             for (i = 0; i < number; i++) {
                 ingredienti.push(document.getElementById(i + 1).value);
             }
@@ -241,7 +241,7 @@
                 "price": prezzo,
                 "ingredients": ingredienti
             };
-            if (listaProdotti1 != null) { // in questo caso verifico se ho già dei prodotti e aggiungo il singoloPiatto ai prodotti
+            if (listaProdotti1 != null) { 
 
                 console.log(listaProdotti1)
                 listaProdotti1.push(singoloPiatto);
@@ -249,7 +249,7 @@
                 location.reload();
                 sessionStorage.setItem(jsonRistoratore.mail + "2", JSON.stringify("piatto"));
             } else {
-                console.log(listaProdotti1) //qui essendo che l'array listaProdotti1 è vuoto non posso dargli un elemento essendo vuoto, quindi creo array ListaMista e ci metto dentro il singoloPiatto
+                console.log(listaProdotti1) 
                 listaMista.push(singoloPiatto);
 
                 sessionStorage.setItem(jsonRistoratore.mail, JSON.stringify(listaMista));
@@ -262,19 +262,15 @@
         }
 
 
-
-
-
-
         function decidiCosaMostrare() {
             piattiGiaScelti = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail + "1"))
             piattoPersonalizzato = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail + "2"))
             if (piattiGiaScelti === null && piattoPersonalizzato === null) {
 
-                mostraLista(); //mostra  tutta la lista di piatti inizialamente essendo che queste due sarannno vuote
+                mostraLista(); 
 
             } else if (piattiGiaScelti === null && piattoPersonalizzato != null) {
-                mostraProdottiScelti(); // se abbiamo scelto il piatto personalizzato mostra questa funzione
+                mostraProdottiScelti(); 
 
                 mostraLista();
 
@@ -286,7 +282,7 @@
         }
 
         function mostraProdottiScelti() {
-            piattiGiaScelti = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)) // prendiamo dal session l'email del ristoratore
+            piattiGiaScelti = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)) // dal session prendiamo i piatti del ristoratore (chiave)
             console.log(piattiGiaScelti);
 
             txt = "<h3>I tuoi Piatti</h3><br><table id='tabellabella'><tr><th>Prodotto</th><th>Prezzo</th><th>Ingredienti</th></tr> ";
@@ -327,8 +323,8 @@
 
         function aggiungiLista(x) {
 
-            if (JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)) != null) { // se l'email che prendiamo dal session è presente:
-                lista = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)); // in lista prendiamo la chiave ovvero mail del ristoratore
+            if (JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)) != null) { 
+                lista = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)); 
 
             }
 
@@ -348,7 +344,7 @@
                 return item.id == obj.id;
             });
 
-            if (index === -1) {  // altrimenti torna -1
+            if (index === -1) {  
                 lista.push(obj); //non piglia il prodotto più di una volta
             }
             /* listaProdotti["lista"] = lista;
@@ -369,16 +365,16 @@
 
 
         function modificaPassword() {
-            password = document.getElementById("password").value; // dentro a password ho il valore della password messa nel box finale 
-            for (x in jsonRistoranti) {  // cicliamo su i tre ristoratori che abbiamo e valutiamo se sono diversi da null 
+            password = document.getElementById("password").value;  
+            for (x in jsonRistoranti) {   
                 if (jsonRistoranti[x] != null) {
 
-                    if (jsonRistoratore.mail == jsonRistoranti[x].mail) { // vediamo se la mail è uguale a quella del json
-                        jsonRistoranti[x].password = password;  // diamo alla passowrd del json il valore della nuova passowrd inserita
+                    if (jsonRistoratore.mail == jsonRistoranti[x].mail) {
+                        jsonRistoranti[x].password = password;
                     }
                 }
             }
-            sessionStorage.setItem('ristoranti', "") // settiamo nel session la chiave ristoranti
+            sessionStorage.setItem('ristoranti', "")
             sessionStorage.setItem('ristoranti', JSON.stringify(jsonRistoranti))
             window.location.href = "logristo.html";
 

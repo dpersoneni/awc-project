@@ -136,8 +136,8 @@
                     }
                 }
             }
-            sessionStorage.setItem('utenti', "")
-            sessionStorage.setItem('utenti', JSON.stringify(utenti));
+            sessionStorage.setItem('utenti', "") // svuota utenti
+            sessionStorage.setItem('utenti', JSON.stringify(utenti));  // setta in utenti il nuovo valore così per tutte le modifiche
             window.location.href = "logutente.html";
         }
 
@@ -205,9 +205,6 @@
             window.location.href = "regutente.html";
 
         }
-
-
-
 
     </script>
 

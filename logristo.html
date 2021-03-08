@@ -14,26 +14,25 @@
 
 <body>
     <script>
-   
-        var jsonObject = JSON.parse(sessionStorage.getItem('ristoranti')); // prendiamo i ristoranti dal SessionStorage
 
-        function checkLogin() { 
-            console.log("ciao2"); // La funzione entra e ritorna il valore della mail e della password che successivamente stampa nel console log
+        var jsonObject = JSON.parse(sessionStorage.getItem('ristoranti'));
+
+        function checkLogin() {
+            console.log("ciao2");
             emailInserita = document.getElementById("email").value;
             passwordInserita = document.getElementById("password").value;
             console.log(emailInserita);
             console.log(passwordInserita);
-         
-            for(x in jsonObject) { // cicliamo ogni oggetto del jsonObject che in questo caso sono i ristoranti e verifico se una
-                                // mail e rispettive password inserite corrispondano.
+
+            for (x in jsonObject) {
                 if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita) {
-       
+
                     sessionStorage.setItem('ristoratore', JSON.stringify(jsonObject[x])); // settiamo nel session la chiave "ristoratore" e come
                     //valore l'array contenente le informazioni del ristoratore
-            
-                    window.location.href = "ristoprofilo.html"; //una volta fatto ciò ci manda nel ristoprofilo
-                }                   
-             
+
+                    window.location.href = "ristoprofilo.html";
+                }
+
             }
         }
 
@@ -45,7 +44,7 @@
             </div>
             <!--Email Input-->
             <div class="form-group">
-                <input id="email" type="text" class="form-input" placeholder="email">
+                <input id="email" type="email" class="form-input" placeholder="email" required>
             </div>
             <!--Password Input-->
             <div class="form-group">
@@ -53,7 +52,7 @@
             </div>
             <!--Login Button-->
             <div class="form-group">
-                <button class="form-button" type="button" onclick="checkLogin()">Login</button>
+                <button class="form-button" type="submit" onclick="checkLogin()">Login</button>
 
             </div>
             <div class="form-footer">

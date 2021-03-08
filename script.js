@@ -21,7 +21,7 @@ function mostraProdotti() {
     txt += "</div>"
     document.getElementById("piatti").innerHTML = txt;
 
-    if ("carrello" in localStorage) {
+    if ("carrello" in localStorage) { 
         localStorage.clear();
         riempiCarrello();
     }
@@ -30,7 +30,7 @@ function mostraProdotti() {
 
 }
 
-function riempiCarrello() {
+function riempiCarrello() { // funzione che parte con quantità e totali uguale a zero e mette nel carrello i prodotti che scegliamo 
     qnt = 0;
     tot = 0;
     txt = "<span><table><tr><th>Prodotto</th><th>Prezzo</th><th>Quantità</th></tr>";
@@ -60,19 +60,19 @@ function aggiungiCarrello(x) {
         "qnt": 1
     };
 
-    var index = carrello.findIndex(function (item, i) {
-        return item.id == obj.id;
+    var index = carrello.findIndex(function (item, i) { // verifica che non ci siano elementi uguali 
+        return item.id == obj.id; 
     });
 
-    if (index === -1) {
+    if (index === -1) { // se dovessimo avere solo una card, che non si ripete allora nel carrello pushiamo obj
         carrello.push(obj);
     } else {
-        carrello[index].qnt++;
+        carrello[index].qnt++;  // altrimenti aggiugiamo solo la quantità di quante volte quel prodotto sia stato scelto
     }
 
-    localStorage.setItem('carrello', JSON.stringify(carrello));
+    localStorage.setItem('carrello', JSON.stringify(carrello)); // aggiugiamo quindi nel local il carrello con i prodotti scelti 
 
-    riempiCarrello();
+    riempiCarrello();  // funzione che aggiunge i prodotti nella tabella con "nome, prezzo e quantità"
 }
 
 
