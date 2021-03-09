@@ -16,6 +16,27 @@
 </head>
 
 <body onload="prendiPiattiPassati()">
+  <style>
+    input[type="number"] {
+  width: 100px;
+}
+
+input + span {
+  padding-right: 30px;
+}
+
+input:invalid+span:after {
+  position: absolute;
+  content: '✖';
+  padding-left: 5px;
+}
+
+input:valid+span:after {
+  position: absolute;
+  content: '✓';
+  padding-left: 5px;
+}
+  </style>
 
   <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="index.html">EatMi</a>
@@ -35,7 +56,7 @@
         <input type="submit" value="Seleziona" onclick="decidiRitiro()">
       </select></div>
 
-    <div id="concludiAcquisto"><small class="btn btn-secondary" onclick="concludiAquisto()" role="button"
+    <div id="concludiAcquisto"><small class="btn btn-secondary"  onclick="concludiAquisto()" role="button"
         style="float: right;">Concludi acquisto</small></div>
     <div><small class="btn btn-secondary" onclick="location.href='plates.html'" role="button"
         style="float: right; margin-right: 5px;">Torna ai piatti</small></div>
@@ -136,6 +157,12 @@
      var minuti =  currentDate.getMinutes();
 
       var minutiDaAggiungere = count * 5;
+      minuti += minutiDaAggiungere;
+      if (minuti > 59) {
+        ore +=  Math.floor(minuti / 60)
+        minuti = minuti % 60;
+      }
+      /*
       if (minutiDaAggiungere > 59) {
         var oreDAggiungere = Math.floor(minutiDaAggiungere / 60);
         minutiDaAggiungere = minutiDaAggiungere % 60;
@@ -144,10 +171,15 @@
       } else {
         minuti += minutiDaAggiungere;
       }
+      */
 
-      txt2 = "L'orario di ritiro segue una coda, aspetta il tuo turno!" ;
-      txt2 += '<input type="time" id="appt" name="appt" value="' + ore +':'+ minuti + '"   min="' + ore +':'+ minuti + '" max="18:00" required>'
-     /*
+      console.log(ore)
+      console.log(minuti)
+
+      txt2 = "Scegli quando ritirare il tuo ordine, l'orario minimo è alle " + ore + ":" + minuti + ". <br>" ;
+      txt2 += '<form><input type="time" id="appt" name="appt" value="' + ore +':'+ minuti + '"   min="' + ore +':'+ minuti + '" max="23:00" required>'
+      txt2 += "<span class='validity'></span></form>"
+      /*
   var arrayLength = array.length;
       for (var pos = 0; pos < arrayLength; pos++) {
         if (pos == count1) {
