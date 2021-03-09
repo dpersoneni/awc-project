@@ -14,9 +14,9 @@
 
 <body>
     <script>
-        var jsonObject = JSON.parse(sessionStorage.getItem('utenti'));
+        var jsonObject = JSON.parse(localStorage.getItem('utenti'));
 
-        var carrelloTemp = JSON.parse(localStorage.getItem('carrello'));
+        var carrelloTemp = JSON.parse(sessionStorage.getItem('carrello'));
 
         function checkLogin() {
             emailInserita = document.getElementById("email").value;
@@ -28,7 +28,7 @@
                     if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita) {
                         console.log(carrelloTemp);
                         //  console.log(carrelloTemp.length);
-                        sessionStorage.setItem('utenteAcquisto', JSON.stringify(jsonObject[x]));
+                        localStorage.setItem('utenteAcquisto', JSON.stringify(jsonObject[x]));
                         if (carrelloTemp != null) { // se abbiamo qualcosa nel carrello allora ci manda ad acquista.html 
                             window.location.href = "acquista.html";
 

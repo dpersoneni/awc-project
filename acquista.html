@@ -47,8 +47,8 @@
 
 
   <script>
-    var count1 = JSON.parse(sessionStorage.getItem('contatore'));
-    sessionStorage.setItem('contatore', JSON.stringify(count1));
+    var count1 = JSON.parse(localStorage.getItem('contatore'));
+    localStorage.setItem('contatore', JSON.stringify(count1));
     var array = [];
     for (i = 19; i < 23; i++) {
       for (j = 0; j < 60; j += 15) {
@@ -63,9 +63,9 @@
       }
     }
 
-    var utenteObj = JSON.parse(sessionStorage.getItem('utenteAcquisto'));
-    var carrelloObj = JSON.parse(localStorage.getItem('carrello'));
-    var ristoratoreObj = JSON.parse(sessionStorage.getItem('ristoratore'));
+    var utenteObj = JSON.parse(localStorage.getItem('utenteAcquisto'));
+    var carrelloObj = JSON.parse(sessionStorage.getItem('carrello'));
+    var mailRistoratore =localStorage.getItem('mailristoratore');
     txt1 = "<h3>Carrello</h3>";
     txt = "<table id='tabellabella'><tr><th>Prodotto</th><th>Quantità</th><th>Prezzo</th><th>Modalità di pagamento</th></tr> ";
     console.log(carrelloObj); // nella console abbiamo i piatti scelti dall'utente
@@ -79,7 +79,7 @@
 
     function prendiPiattiPassati() {
 
-      var prodottiPassati = JSON.parse(sessionStorage.getItem(utenteObj.mail));
+      var prodottiPassati = JSON.parse(localStorage.getItem(utenteObj.mail));
       if (prodottiPassati == null) {
         return;
       }
@@ -93,11 +93,11 @@
 
     function aggiungiPiattiPassati() {
 
-      var prodottiPassati = JSON.parse(sessionStorage.getItem(utenteObj.mail));
+      var prodottiPassati = JSON.parse(localStorage.getItem(utenteObj.mail));
 
       if (prodottiPassati == null) {
         var vuoto = null;
-        sessionStorage.setItem(utenteObj.mail, JSON.stringify(vuoto)); // nel caso in cui non abbiamo nulla non aggiunge nulla nella tabella
+        localStorage.setItem(utenteObj.mail, JSON.stringify(vuoto)); // nel caso in cui non abbiamo nulla non aggiunge nulla nella tabella
 
       }
 
@@ -112,7 +112,7 @@
         console.log(carrelloObj[x].name);
       }
 
-      sessionStorage.setItem(utenteObj.mail, JSON.stringify(arraytemporaneo))
+      localStorage.setItem(utenteObj.mail, JSON.stringify(arraytemporaneo))
 
       console.log(arraytemporaneo);
     }
@@ -129,7 +129,26 @@
     }
 
     function orarioRitiro() {
-      var arrayLength = array.length;
+      var count = JSON.parse(localStorage.getItem(mailRistoratore + 'contatore'));
+      var currentDate = new Date(); 
+
+     var ore =  currentDate.getHours();
+     var minuti =  currentDate.getMinutes();
+
+      var minutiDaAggiungere = count * 5;
+      if (minutiDaAggiungere > 59) {
+        var oreDAggiungere = Math.floor(minutiDaAggiungere / 60);
+        minutiDaAggiungere = minutiDaAggiungere % 60;
+        ore += oreDAggiungere;
+        minuti += minutiDaAggiungere;
+      } else {
+        minuti += minutiDaAggiungere;
+      }
+
+      txt2 = "L'orario di ritiro segue una coda, aspetta il tuo turno!" ;
+      txt2 += '<input type="time" id="appt" name="appt" value="' + ore +':'+ minuti + '"   min="' + ore +':'+ minuti + '" max="18:00" required>'
+     /*
+  var arrayLength = array.length;
       for (var pos = 0; pos < arrayLength; pos++) {
         if (pos == count1) {
           console.log(array[pos]);
@@ -140,6 +159,7 @@
           txt2 = "<p> Orario di ritiro: " + array[0] + "</p>";
         }
       }
+      */
 
       document.getElementById("orario").innerHTML = txt2;
     }
@@ -177,9 +197,9 @@
 
     function concludiAquisto() {
       aggiungiPiattiPassati();
-      var count = JSON.parse(sessionStorage.getItem('contatore'));
+      var count = JSON.parse(localStorage.getItem(mailRistoratore + 'contatore'));
       count++;
-      sessionStorage.setItem('contatore', JSON.stringify(count));
+      localStorage.setItem(mailRistoratore + 'contatore', JSON.stringify(count));
       window.location.href = "successo.html";
 
     }

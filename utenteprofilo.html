@@ -110,8 +110,8 @@
 
 
     <script>
-        var utenteObj = JSON.parse(sessionStorage.getItem('utenteAcquisto'));
-        var utenti = JSON.parse(sessionStorage.getItem('utenti'));
+        var utenteObj = JSON.parse(localStorage.getItem('utenteAcquisto'));
+        var utenti = JSON.parse(localStorage.getItem('utenti'));
 
         nome = "<p><i class='fas fa-user' style = 'margin-right: 8px'></i>" + " " + utenteObj.firstname + " " + utenteObj.secondname + "</p>";
         document.getElementById("nomecognome").innerHTML = nome;
@@ -136,8 +136,8 @@
                     }
                 }
             }
-            sessionStorage.setItem('utenti', "") // svuota utenti
-            sessionStorage.setItem('utenti', JSON.stringify(utenti));  // setta in utenti il nuovo valore così per tutte le modifiche
+            localStorage.setItem('utenti', "") // svuota utenti
+            localStorage.setItem('utenti', JSON.stringify(utenti));  // setta in utenti il nuovo valore così per tutte le modifiche
             window.location.href = "logutente.html";
         }
 
@@ -151,8 +151,8 @@
                     }
                 }
             }
-            sessionStorage.setItem('utenti', "")
-            sessionStorage.setItem('utenti', JSON.stringify(utenti))
+            localStorage.setItem('utenti', "")
+            localStorage.setItem('utenti', JSON.stringify(utenti))
             window.location.href = "logutente.html";
 
         }
@@ -167,8 +167,8 @@
                     }
                 }
             }
-            sessionStorage.setItem('utenti', "")
-            sessionStorage.setItem('utenti', JSON.stringify(utenti))
+            localStorage.setItem('utenti', "")
+            localStorage.setItem('utenti', JSON.stringify(utenti))
             window.location.href = "logutente.html";
 
         }
@@ -184,8 +184,8 @@
                     }
                 }
             }
-            sessionStorage.setItem('utenti', "")
-            sessionStorage.setItem('utenti', JSON.stringify(utenti))
+            localStorage.setItem('utenti', "")
+            localStorage.setItem('utenti', JSON.stringify(utenti))
             window.location.href = "logutente.html";
 
         }
@@ -200,8 +200,8 @@
                     }
                 }
             }
-            sessionStorage.setItem('utenti', "")
-            sessionStorage.setItem('utenti', JSON.stringify(utenti))
+            localStorage.setItem('utenti', "")
+            localStorage.setItem('utenti', JSON.stringify(utenti))
             window.location.href = "regutente.html";
 
         }

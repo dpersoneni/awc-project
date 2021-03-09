@@ -26,10 +26,11 @@
   </div>
   
   <script>
-    ristoranti =  JSON.parse(sessionStorage.getItem('ristoranti')); 
+    ristoranti =  JSON.parse(localStorage.getItem('ristoranti')); 
     console.log(ristoranti);
     txt = "";
     txt += "<div class='row'>";
+      var mailR ;
     for (x in ristoranti) {
       if (ristoranti[x] != null) {
       txt += ' <div class="col-12 col-sm-4 col-md-3 col-lg-4" id="cartaristorante"><div class="card-body"><h4 class="card-title">' + ristoranti[x].restaurant;
@@ -45,8 +46,8 @@
     document.getElementById("ristoranti").innerHTML = txt;
 
     function scegliRistorante(x) {
-            console.log(mail)
-            sessionStorage.setItem("mailristoratore",ristoranti[x].mail);
+          
+            localStorage.setItem("mailristoratore", ristoranti[x].mail);
             window.location="plates.html";
         }
 

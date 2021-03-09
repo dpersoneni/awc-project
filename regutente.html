@@ -156,7 +156,7 @@
     </div>
     <script>
         function salvaRisto() {
-            var jsonObject = JSON.parse(sessionStorage.getItem('utenti'));
+            var jsonObject = JSON.parse(localStorage.getItem('utenti'));
 
             console.log("ciao")
             var mail = document.getElementById("mail").value;
@@ -168,8 +168,8 @@
             var modalitapagamento = document.getElementsByName("metodo").value;
 
             var utente = [];
-            if ("utente" in sessionStorage) {
-                utente = JSON.parse(sessionStorage.getItem('utente'));
+            if ("utente" in localStorage) {
+                utente = JSON.parse(localStorage.getItem('utente'));
             }
             object = {
                 "mail": mail,
@@ -193,7 +193,7 @@
 
             if (bool == 0) {
                 jsonObject.push(object);
-                sessionStorage.setItem('utenti', JSON.stringify(jsonObject));
+                localStorage.setItem('utenti', JSON.stringify(jsonObject));
             }
 
       

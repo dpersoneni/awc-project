@@ -151,10 +151,10 @@
 
     <script>
         var lista = [];
-        sessionStorage.setItem('prodotti', JSON.stringify(prodotti));
-        var jsonProdotti = JSON.parse(sessionStorage.getItem('prodotti'));
-        var jsonRistoranti = JSON.parse(sessionStorage.getItem('ristoranti'));
-        var jsonRistoratore = JSON.parse(sessionStorage.getItem('ristoratore'));
+        localStorage.setItem('prodotti', JSON.stringify(prodotti));
+        var jsonProdotti = JSON.parse(localStorage.getItem('prodotti'));
+        var jsonRistoranti = JSON.parse(localStorage.getItem('ristoranti'));
+        var jsonRistoratore = JSON.parse(localStorage.getItem('ristoratore'));
 
         ristorante = "<p><i class='fas fa-utensils' style = 'margin-right: 8px'></i>" + " " + jsonRistoratore.restaurant + "</p>";
         document.getElementById("ristorante").innerHTML = ristorante;
@@ -200,7 +200,7 @@
 
         function aggiungiPiattoScelto() {
             listaMista = [];
-            listaProdotti1 = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)); // chiave: mail del ristoratore con valore il prodotto a scelta aggiunto da noi
+            listaProdotti1 = JSON.parse(localStorage.getItem(jsonRistoratore.mail)); // chiave: mail del ristoratore con valore il prodotto a scelta aggiunto da noi
 
             var nome = document.getElementById("nomepiatto").value;  
             var tipo = document.getElementById("tipo").value;
@@ -245,16 +245,16 @@
 
                 console.log(listaProdotti1)
                 listaProdotti1.push(singoloPiatto);
-                sessionStorage.setItem(jsonRistoratore.mail, JSON.stringify(listaProdotti1));
+                localStorage.setItem(jsonRistoratore.mail, JSON.stringify(listaProdotti1));
                 location.reload();
-                sessionStorage.setItem(jsonRistoratore.mail + "2", JSON.stringify("piatto"));
+                localStorage.setItem(jsonRistoratore.mail + "2", JSON.stringify("piatto"));
             } else {
                 console.log(listaProdotti1) 
                 listaMista.push(singoloPiatto);
 
-                sessionStorage.setItem(jsonRistoratore.mail, JSON.stringify(listaMista));
+                localStorage.setItem(jsonRistoratore.mail, JSON.stringify(listaMista));
                 location.reload();
-                sessionStorage.setItem(jsonRistoratore.mail + "2", JSON.stringify("piatto"));
+                localStorage.setItem(jsonRistoratore.mail + "2", JSON.stringify("piatto"));
 
 
             }
@@ -263,8 +263,8 @@
 
 
         function decidiCosaMostrare() {
-            piattiGiaScelti = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail + "1"))
-            piattoPersonalizzato = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail + "2"))
+            piattiGiaScelti = JSON.parse(localStorage.getItem(jsonRistoratore.mail + "1"))
+            piattoPersonalizzato = JSON.parse(localStorage.getItem(jsonRistoratore.mail + "2"))
             if (piattiGiaScelti === null && piattoPersonalizzato === null) {
 
                 mostraLista(); 
@@ -282,7 +282,7 @@
         }
 
         function mostraProdottiScelti() {
-            piattiGiaScelti = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)) // dal session prendiamo i piatti del ristoratore (chiave)
+            piattiGiaScelti = JSON.parse(localStorage.getItem(jsonRistoratore.mail)) // dal session prendiamo i piatti del ristoratore (chiave)
             console.log(piattiGiaScelti);
 
             txt = "<h3>I tuoi Piatti</h3><br><table id='tabellabella'><tr><th>Prodotto</th><th>Prezzo</th><th>Ingredienti</th></tr> ";
@@ -323,8 +323,8 @@
 
         function aggiungiLista(x) {
 
-            if (JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)) != null) { 
-                lista = JSON.parse(sessionStorage.getItem(jsonRistoratore.mail)); 
+            if (JSON.parse(localStorage.getItem(jsonRistoratore.mail)) != null) { 
+                lista = JSON.parse(localStorage.getItem(jsonRistoratore.mail)); 
 
             }
 
@@ -349,7 +349,7 @@
             }
             /* listaProdotti["lista"] = lista;
              console.log(lista);*/
-            sessionStorage.setItem(jsonRistoratore.mail, JSON.stringify(lista)); // settiamo nel session come chiave mail del ristoratore e come valore la lista 
+            localStorage.setItem(jsonRistoratore.mail, JSON.stringify(lista)); // settiamo nel session come chiave mail del ristoratore e come valore la lista 
 
 
         }
@@ -357,7 +357,7 @@
         function aggiungiPiattiaLS() {
 
             var chiave = "1";
-            sessionStorage.setItem(jsonRistoratore.mail + chiave, JSON.stringify("mail"));
+            localStorage.setItem(jsonRistoratore.mail + chiave, JSON.stringify("mail"));
             location.reload();
 
         }
@@ -374,8 +374,8 @@
                     }
                 }
             }
-            sessionStorage.setItem('ristoranti', "")
-            sessionStorage.setItem('ristoranti', JSON.stringify(jsonRistoranti))
+            localStorage.setItem('ristoranti', "")
+            localStorage.setItem('ristoranti', JSON.stringify(jsonRistoranti))
             window.location.href = "logristo.html";
 
         }
@@ -390,8 +390,8 @@
                     }
                 }
             }
-            sessionStorage.setItem('ristoranti', "")
-            sessionStorage.setItem('ristoranti', JSON.stringify(jsonRistoranti))
+            localStorage.setItem('ristoranti', "")
+            localStorage.setItem('ristoranti', JSON.stringify(jsonRistoranti))
             window.location.href = "logristo.html";
 
         }
@@ -407,8 +407,8 @@
                 }
 
             }
-            sessionStorage.setItem('ristoranti', "")
-            sessionStorage.setItem('ristoranti', JSON.stringify(jsonRistoranti))
+            localStorage.setItem('ristoranti', "")
+            localStorage.setItem('ristoranti', JSON.stringify(jsonRistoranti))
             window.location.href = "regristo.html";
 
 

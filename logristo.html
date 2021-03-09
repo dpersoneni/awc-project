@@ -15,7 +15,7 @@
 <body>
     <script>
 
-        var jsonObject = JSON.parse(sessionStorage.getItem('ristoranti'));
+        var jsonObject = JSON.parse(localStorage.getItem('ristoranti'));
 
         function checkLogin() {
             console.log("ciao2");
@@ -28,7 +28,7 @@
             for (x in jsonObject) {
                 if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita) {
 
-                    sessionStorage.setItem('ristoratore', JSON.stringify(jsonObject[x])); // settiamo nel session la chiave "ristoratore" e come
+                    localStorage.setItem('ristoratore', JSON.stringify(jsonObject[x])); // settiamo nel session la chiave "ristoratore" e come
                     //valore l'array contenente le informazioni del ristoratore
 
                     window.location.href = "ristoprofilo.html";

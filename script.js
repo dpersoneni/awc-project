@@ -1,6 +1,6 @@
-var mail = sessionStorage.getItem("mailristoratore");
+var mail = localStorage.getItem("mailristoratore");
 
-var jsonObject = JSON.parse(sessionStorage.getItem(mail));
+var jsonObject = JSON.parse(localStorage.getItem(mail));
 
 function mostraProdotti() {
 
@@ -21,8 +21,8 @@ function mostraProdotti() {
     txt += "</div>"
     document.getElementById("piatti").innerHTML = txt;
 
-    if ("carrello" in localStorage) { 
-        localStorage.clear();
+    if ("carrello" in sessionStorage) { 
+        sessionStorage.clear();
         riempiCarrello();
     }
 
@@ -34,7 +34,7 @@ function riempiCarrello() { // funzione che parte con quantità e totali uguale 
     qnt = 0;
     tot = 0;
     txt = "<span><table><tr><th>Prodotto</th><th>Prezzo</th><th>Quantità</th></tr>";
-    carrello = JSON.parse(localStorage.getItem("carrello"));
+    carrello = JSON.parse(sessionStorage.getItem("carrello"));
     for (c in carrello) {
 
         qnt += carrello[c].qnt;
@@ -49,8 +49,8 @@ function riempiCarrello() { // funzione che parte con quantità e totali uguale 
 
 function aggiungiCarrello(x) {
     var carrello = [];
-    if ("carrello" in localStorage) {
-        carrello = JSON.parse(localStorage.getItem('carrello'));
+    if ("carrello" in sessionStorage) {
+        carrello = JSON.parse(sessionStorage.getItem('carrello'));
     }
 
     obj = {
@@ -70,7 +70,7 @@ function aggiungiCarrello(x) {
         carrello[index].qnt++;  // altrimenti aggiugiamo solo la quantità di quante volte quel prodotto sia stato scelto
     }
 
-    localStorage.setItem('carrello', JSON.stringify(carrello)); // aggiugiamo quindi nel local il carrello con i prodotti scelti 
+    sessionStorage.setItem('carrello', JSON.stringify(carrello)); // aggiugiamo quindi nel local il carrello con i prodotti scelti 
 
     riempiCarrello();  // funzione che aggiunge i prodotti nella tabella con "nome, prezzo e quantità"
 }

@@ -144,7 +144,7 @@
 
     <script>
         function salvaRisto() {
-            var jsonObject = JSON.parse(sessionStorage.getItem('ristoranti'));
+            var jsonObject = JSON.parse(localStorage.getItem('ristoranti'));
 
             var mail = document.getElementById("mail").value;
             var password = document.getElementById("password").value;
@@ -156,8 +156,8 @@
             var lastname = document.getElementById("lastname").value;
 
             var ristorante = [];
-            if ("ristorante" in sessionStorage) {
-                ristorante = JSON.parse(sessionStorage.getItem('ristorante'));
+            if ("ristorante" in localStorage) {
+                ristorante = JSON.parse(localStorage.getItem('ristorante'));
             }
             object = {
                 "mail": mail,
@@ -183,7 +183,7 @@
 
             if (bool == 0) {
                 jsonObject.push(object);
-                sessionStorage.setItem('ristoranti', JSON.stringify(jsonObject));
+                localStorage.setItem('ristoranti', JSON.stringify(jsonObject));
             }
   
           //  window.location.href = "logristo.html"
