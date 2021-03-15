@@ -12,56 +12,55 @@
 
 <body>
     <style>
-    
         /* Style the submit button */
         input[type=submit] {
-          background-color: #4CAF50;
-          color: white;
+            background-color: #4CAF50;
+            color: white;
         }
-        
+
         /* Style the container for inputs */
         .container {
-          background-color: #f1f1f1;
-          padding: 20px;
+            background-color: #f1f1f1;
+            padding: 20px;
         }
-        
+
         /* The message box is shown when the user clicks on the password field */
         #message {
-          display:none;
-          background: #f1f1f1;
-          color: #000;
-          position: relative;
-          padding: 20px;
-          margin-top: 10px;
+            display: none;
+            background: #f1f1f1;
+            color: #000;
+            position: relative;
+            padding: 20px;
+            margin-top: 10px;
         }
-        
+
         #message p {
-          padding: 10px 35px;
-          font-size: 18px;
+            padding: 10px 35px;
+            font-size: 18px;
         }
-        
+
         /* Add a green text color and a checkmark when the requirements are right */
         .valid {
-          color: green;
+            color: green;
         }
-        
+
         .valid:before {
-          position: relative;
-          left: -35px;
-          content: "✔";
+            position: relative;
+            left: -35px;
+            content: "✔";
         }
-        
+
         /* Add a red text color and an "x" when the requirements are wrong */
         .invalid {
-          color: red;
+            color: red;
         }
-        
+
         .invalid:before {
-          position: relative;
-          left: -35px;
-          content: "✖";
+            position: relative;
+            left: -35px;
+            content: "✖";
         }
-        </style>
+    </style>
 
 
     <div class="casa">
@@ -119,10 +118,18 @@
             </div>
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="indirizzo" class="col-sm-4 col-form-label">Indirizzo</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" id="address" placeholder="Indirizzo">
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" id="indirizzoDaInserire" placeholder="Via, numero civico, città">
+                </div>
+                <div class="col-sm-1">
+                    <input type="button" onclick="return_place()" class="form-control" id="address"
+                        placeholder="Indirizzo">
                 </div>
             </div>
+            <div id="divDaMostrare" class="form-group row" style="display: none; margin-top: 20px; ">
+                <p id="luogoRestituito"> </p>
+            </div>
+
             <div class="form-group1">
                 <p><b>Metodo di pagamento:</b></p>
                 <input type="radio" id="contanti" name="metodo" value="contanti" required>
@@ -155,6 +162,10 @@
         </form>
     </div>
     <script>
+        var latitude;
+        var longitude;
+        var indirizzo;
+
         function salvaRisto() {
             var jsonObject = JSON.parse(localStorage.getItem('utenti'));
 
@@ -164,7 +175,7 @@
             var firstname = document.getElementById("firstname").value;
             var secondname = document.getElementById("secondname").value;
             var telephone = document.getElementById("telephone").value;
-            var address = document.getElementById("address").value;
+            var address = indirizzo;
             var modalitapagamento = document.getElementsByName("metodo").value;
 
             var utente = [];
@@ -179,8 +190,8 @@
                 "modalitapagamento": modalitapagamento,
                 "firstname": firstname,
                 "secondname": secondname,
-                "latitude": "45.464211",
-                "longitude": "9.191383"
+                "latitude": latitude,
+                "longitude": longitude
             }
 
             var bool = 0;
@@ -196,7 +207,7 @@
                 localStorage.setItem('utenti', JSON.stringify(jsonObject));
             }
 
-      
+
 
 
             //       window.location.href='logutente.html'
@@ -248,7 +259,7 @@
 
             // Validate length
             if (myInput.value.length >= 8) {
-                console.log(myInput.value.length +"ccccc");
+                console.log(myInput.value.length + "ccccc");
 
                 length8.classList.remove("invalid");
                 length8.classList.add("valid");
@@ -258,6 +269,38 @@
                 length8.classList.remove("valid");
                 length8.classList.add("invalid");
             }
+        }
+
+
+        function get_url(url, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.responseType = 'json';
+            xhr.onload = function () {
+                var status = xhr.status;
+                callback(status, xhr.response);
+            }
+            xhr.send();
+        };
+
+
+
+        function get_place(query) {
+            return "https://api.mapbox.com/geocoding/v5/mapbox.places/" + query + ".json?limit=1&access_token=pk.eyJ1IjoiZHBlcnNvbmVuaSIsImEiOiJja2hha3dhb2owanQ0MzFwam44MWx3M2p1In0.j2kboFTenc7rda5RURJJWQ"
+        }
+
+        function return_place() {
+            window.alert("Se l'indirizzo è sbagliato, aggiungi altre informazioni")
+            var luogo = document.getElementById("indirizzoDaInserire").value;
+            // var luogo = " via giovanni celoria 18 milano";
+
+            get_url(get_place(luogo), function (status, result) {
+                document.getElementById('divDaMostrare').style.display = 'block';
+                indirizzo = result.features[0].place_name;
+                document.getElementById("luogoRestituito").innerHTML = result.features[0].place_name;
+                latitude = result.features[0].center[1];
+                longitude = result.features[0].center[0];
+            })
         }
 
     </script>
