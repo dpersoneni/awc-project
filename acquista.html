@@ -68,6 +68,11 @@ input:valid+span:after {
 
 
   <script>
+    var latitudineUtente;
+    var longitudineUtente;
+    var latitudineRisto;
+    var longitudineRisto;
+
     var count1 = JSON.parse(localStorage.getItem('contatore'));
     localStorage.setItem('contatore', JSON.stringify(count1));
     var array = [];
@@ -87,6 +92,24 @@ input:valid+span:after {
     var utenteObj = JSON.parse(localStorage.getItem('utenteAcquisto'));
     var carrelloObj = JSON.parse(sessionStorage.getItem('carrello'));
     var mailRistoratore =localStorage.getItem('mailristoratore');
+    var ristorantiObj = JSON.parse(localStorage.getItem('ristoranti'));
+
+    latitudineUtente = utenteObj.latitude;
+    longitudineUtente = utenteObj.longitude;
+
+
+    for (x in ristorantiObj) {
+      
+       if (mailRistoratore == ristorantiObj[x].mail ) {
+         lat = ristorantiObj[x].latitude
+         lon = ristorantiObj[x].longitude
+         
+        latitudineRisto = lat;
+        longitudineRisto = lon;
+      }
+    }
+
+    
     txt1 = "<h3>Carrello</h3>";
     txt = "<table id='tabellabella'><tr><th>Prodotto</th><th>Quantità</th><th>Prezzo</th><th>Modalità di pagamento</th></tr> ";
     console.log(carrelloObj); // nella console abbiamo i piatti scelti dall'utente
@@ -145,7 +168,7 @@ input:valid+span:after {
         orarioRitiro();
       } else {
         document.getElementById("orario").innerHTML = "";
-        consegnaDomicilio();
+        return_place();
       }
     }
 
@@ -236,6 +259,46 @@ input:valid+span:after {
 
     }
 
+    function get_url(url, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.responseType = 'json';
+            xhr.onload = function () {
+                var status = xhr.status;
+                callback(status, xhr.response);
+            }
+            xhr.send();
+        };
+
+
+
+        function get_place(latitudeU, longitudineU, latitudineR, longitudineR) {
+            //return "https://api.mapbox.com/geocoding/v5/mapbox.places/" + query + ".json?limit=1&access_token=pk.eyJ1IjoiZHBlcnNvbmVuaSIsImEiOiJja2hha3dhb2owanQ0MzFwam44MWx3M2p1In0.j2kboFTenc7rda5RURJJWQ"
+          return "https://api.mapbox.com/directions-matrix/v1/mapbox/driving-traffic/" + longitudineR + ","+ latitudineR + ";" + longitudineU + "," + latitudeU + "?sources=1&destinations=0&annotations=distance,duration&access_token=pk.eyJ1IjoiZHBlcnNvbmVuaSIsImEiOiJja2hha3dhb2owanQ0MzFwam44MWx3M2p1In0.j2kboFTenc7rda5RURJJWQ"
+          }
+
+        function return_place() {
+            // var luogo = " via giovanni celoria 18 milano";
+
+            get_url(get_place(latitudineUtente, longitudineUtente, latitudineRisto, longitudineRisto), function (status, result) {
+                console.log(result.distances[0][0]);
+                distance = (result.distances[0][0] / 1000).toFixed();
+                
+                if (distance <= 50) {
+        txt = "<p> Il costo della consegna è di: " + distance + " € </p>";
+        document.getElementById("orario").innerHTML = txt;
+      } else {
+        txt = "<p> Non è possibile effettuare consegne che superano i 50 km :( </p>";
+        document.getElementById("orario").innerHTML = txt;
+        button = document.getElementById("concludiAcquisto");
+
+        button.parentNode.removeChild(button);
+      }
+      
+            })
+        }
+
+    
 
 
   </script>
