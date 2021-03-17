@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>EatMI</title>
+    
+        <script src="https://kit.fontawesome.com/e5d002ab59.js"></script>
+        <title>EatMI</title>
 </head>
 
 <body>
@@ -114,14 +116,14 @@
                     <input type="text" class="form-control" id="indirizzoDaInserire"
                         placeholder="Via, numero civico, città">
                 </div>
-                <div class="col-sm-1">
-                    <input type="button" onclick="return_place()" class="form-control" id="address"
+                <div class="col-sm-2"  style="padding-left: 0 !important  ; ">
+                    <button class="btn btn-primary" type="submit" style="width: 80%; background-color: #007bff;"  onclick="return_place()"><i class="fas fa-arrow-right"></i></button>
                         placeholder="Indirizzo">
                 </div>
             </div>
-            <div id="divDaMostrare" class="form-group row" style="display: none; margin-top: 20px; ">
-                <p id="luogoRestituito"> </p>
-            </div>
+            <div id="divDaMostrare"  style="display: none; margin-top: 20px; background-color: #d1e7dd" class="shadow p-3 mb-5 bg-body rounded"> 
+                <p id="luogoRestituito" style="margin-bottom: 0;   margin: auto ;" > </p>
+        </div>
 
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="partitaiva" class="col-sm-4 col-form-label">Partita IVA</label>
