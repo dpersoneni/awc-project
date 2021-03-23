@@ -1,0 +1,527 @@
+.jumbotron{
+    background-image:url('images/sfondo.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.75;
+    border-radius: none;
+    text-align: center;
+    color: #410400;
+    
+}
+@font-face {
+    font-family: 'BebasNeue-regular';
+    src: url(BebasNeue-Regular.ttf.eot);
+    src: local('BebasNeue'), url('BebasNeue-Regular.ttf') format('truetype');
+ }
+ 
+ .services-container {
+   margin: 2em 8% 4em 8%;
+ }
+
+.jumbotron h1{
+    font-family:'BebasNeue-regular';
+    margin-top:100px;
+    font-size:55px;
+    margin-bottom:10px;
+}
+
+
+.card-body{
+  background-color:#ffccb3;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  max-width: 100%;
+  height: 300px;
+  margin: 0 auto;
+  float: none; 
+  border: none;
+  perspective: 1000px;
+}
+
+.row {
+  margin-top: 75px;
+  margin-bottom: 25px; 
+}
+
+.card-img-top {
+  max-width:100%;
+  max-height:100%;
+}
+
+
+.btn .btn-secondary {
+    width: 200px;
+    height: 50px;
+}
+
+.card {
+  border:0px;
+  outline: none;
+  width: 400px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: auto;
+  text-align: center;
+}
+
+.card-deck {
+    border: none;
+}
+nav {
+    background-color: #617C58;
+    }
+
+
+ul, li {
+  list-style-type: none;
+}
+
+.about {
+    margin: 50px 100px 50px 100px;
+}
+
+.footer-top {
+    background-color: #C0C0C0;
+    font: lighter;
+    background-image:url(images/skyline1.jpg);
+}
+
+.full {
+    width: 100%;    
+}
+.gap {
+	height: 30px;
+	width: 100%;
+	clear: both;
+	display: block;
+}
+.footer {
+  background: #817679;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  margin-bottom: 0;
+	
+}
+
+
+
+
+.footer p {
+	color: white;
+  font-weight: lighter;
+}
+
+
+
+.footer-bottom {
+  margin-top: 2em;
+	border-top: 1px solid #DDDDDD;
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: #817679;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #817679;
+  cursor: pointer;
+}
+.generic {
+  margin: 2% 8% 5% 8%;
+ 
+}
+
+.casa {
+    background-color:#DCDCDC;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 3em;
+    float: none; 
+    margin-bottom: 2em;
+    border: none;
+  
+}
+
+.casa form {
+  padding: 2em 3em 2em 4em;
+
+}
+
+.grid-container {
+  display: inline-grid;
+}
+
+
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  /*font-size: 22px;*/
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px; 
+  height: 260px;
+  margin: 5px 37px 5px 37px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  font-family: 'BebasNeue-regular';
+  src: url(BebasNeue-Regular.ttf.eot);
+  src: local('BebasNeue'), url('BebasNeue-Regular.ttf') format('truetype');
+  font-size: 20px;
+  letter-spacing: 3px;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #e0b241;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color:#e0b241 ;
+  color: black;
+  transform: rotateY(180deg);
+}
+
+.flip-card-back ul {
+  margin-top: 10px;
+
+  vertical-align: middle;
+  font-family: 'BebasNeue-regular';
+  src: url(BebasNeue-Regular.ttf.eot);
+  src: local('BebasNeue'), url('BebasNeue-Regular.ttf') format('truetype');
+  font-size: 20px;
+  font-stretch: ultra-condensed;
+}
+
+.nav-link {
+  color: blanchedalmond;
+}
+
+
+.barra form {
+  margin-left: 20px ;
+}
+
+.dropdown1 {
+  /*float: right;*/
+  margin-left: auto !important;
+}
+
+.dropdown-menu {
+  left: auto !important;
+  background-color: #889e81 !important; 
+  color: blanchedalmond !important;
+}
+
+#idp {
+  background-color: #617C58 !important;
+}
+
+
+.dropdown-item {
+  color: blanchedalmond !important;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  right:0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  
+}
+
+#filtro {
+  display: inline-block;
+}
+
+#cerca {
+  display: inline-block;
+}
+
+#carrellodiv {
+  display: inline-block;
+  float:right;
+}
+
+
+#visualCarrello {
+    margin: 0 15% 0 15%;
+    border: 1px solid #ddd;
+    padding: 2rem;
+    background: #ffffff;
+    background-color: #E4D4C8;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    float: none; 
+    border: none;
+    perspective: 1000px;
+    margin-top: 30px;
+}
+
+#orario {
+  text-align: right;
+  font-weight: bold;
+}
+
+#acquistiPassati {
+padding-top: 30px;
+}
+
+#tabellabella {
+  border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: #D0B49F;
+    border-radius: 5px;
+
+}
+#tbody {
+  background-color: lavender;
+
+}
+
+#tabellabella thead tr {
+  background-color: #520a1d;
+  color: #ffffff;
+  text-align: left;
+}
+#tabellabella th,
+#tabellabella td {
+    padding: 12px 15px;
+}
+
+#tabellabella tbody tr {
+  border-bottom: 1px solid ;
+}
+
+
+
+
+
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  height: 100%;
+}
+body{
+  font-family: 'Segoe UI', sans-serif;;
+  font-size: 1rem;
+  line-height: 1.6;
+  height: 100%;
+}
+.wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafafa;
+
+}
+.login-form{
+  width: 350px;
+  margin: 3em auto auto auto;
+  border: 1px solid #ddd;
+  padding: 2rem;
+  background: #ffffff;
+  background-color:#ffccb3;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  float: none; 
+  border: none;
+  perspective: 1000px;
+}
+.form-input{
+  background: #fafafa;
+  border: 1px solid #eeeeee;
+  padding: 12px;
+  width: 100%;
+}
+.form-group1{
+  margin-bottom: 1rem;
+  background-color: silver;
+  margin-left: -20px;
+  padding-left: 20px;
+  padding-top: 5px;
+  border-radius: 5px;
+}
+.form-button{
+  background: #2f3236;
+  border: 1px solid #ddd;
+  color: #ffffff;
+  padding: 10px;
+  width: 100%;
+  text-transform: uppercase;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border: 2px solid #2f3236;
+  padding: 10px;
+  border-radius: 25px;
+  
+}
+.form-button:hover{
+  background: #69c8e7;
+}
+.form-header{
+  text-align: center;
+  margin-bottom : 2rem;
+}
+.form-footer{
+  text-align: center;
+}
+
+/*Cookie Consent Begin*/
+#cookieConsent {
+  background-color: rgba(20,20,20,0.8);
+  min-height: 26px;
+  font-size: 14px;
+  color: #ccc;
+  line-height: 26px;
+  padding: 8px 0 8px 30px;
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  z-index: 9999;
+}
+#cookieConsent a {
+  color: #4B8EE7;
+  text-decoration: none;
+}
+#closeCookieConsent {
+  float: right;
+  display: inline-block;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  margin: -15px 0 0 0;
+  font-weight: bold;
+}
+#closeCookieConsent:hover {
+  color: #FFF;
+}
+#cookieConsent a.cookieConsentOK {
+  background-color: #F1D600;
+  color: #000;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 0 20px;
+  cursor: pointer;
+  float: right;
+  margin: 0 60px 0 10px;
+}
+#cookieConsent a.cookieConsentOK:hover {
+  background-color: #E0C91F;
+}
+/*Cookie Consent End*/
+
+
+#piattiristoratore {
+  margin: 2% 8% 5% 8%;
+}
+
+.inforistorante {
+  display: flex;
+  margin-left: 8%;
+  margin-right: 8%;
+}
+
+
+#cartaristorante {
+  margin-bottom: 2em;
+}
