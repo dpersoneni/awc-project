@@ -13,6 +13,31 @@
 </head>
 
 <body>
+  
+    <div class="wrap">
+        <form class="login-form" onsubmit=" return checkLogin()">
+            <div class="form-header">
+                <h3>Accedi</h3>
+            </div>
+            <!--Email Input-->
+            <div class="form-group">
+                <input id="email" type="email" class="form-input" placeholder="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+            </div>
+            <!--Password Input-->
+            <div class="form-group">
+                <input id="password" type="password" class="form-input" placeholder="password"  required>
+            </div>
+            <!--Login Button-->
+            <div class="form-group">
+                <button class="form-button" type="submit" >Login</button>
+
+            </div>
+            <div class="form-footer">
+                Non hai un account? <a href="regristo.html">Registrati</a>
+            </div>
+        </form>
+    </div>
+    <!--/.wrap-->
     <script>
 
         var jsonObject = JSON.parse(localStorage.getItem('ristoranti'));
@@ -31,39 +56,16 @@
                     localStorage.setItem('ristoratore', JSON.stringify(jsonObject[x])); // settiamo nel session la chiave "ristoratore" e come
                     //valore l'array contenente le informazioni del ristoratore
 
-                    window.location.href = "ristoprofilo.html";
+                    window.location.replace("ristoprofilo.html");
+                    return false;
+                 //   return false;
                 }
 
             }
+            
+
         }
     </script>
-    <div class="wrap">
-        <form class="login-form" action="">
-            <div class="form-header">
-                <h3>Accedi</h3>
-            </div>
-            <!--Email Input-->
-            <div class="form-group">
-                <input id="email" type="email" class="form-input" placeholder="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
-            </div>
-            <!--Password Input-->
-            <div class="form-group">
-                <input id="password" type="password" class="form-input" placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                title="La password deve contenere almeno un numero, almeno una lettera minuscola, almeno una lettera maiuscola e minimo 8 caratteri."
-                required>
-            </div>
-            <!--Login Button-->
-            <div class="form-group">
-                <button class="form-button" type="submit" onclick="checkLogin()">Login</button>
-
-            </div>
-            <div class="form-footer">
-                Non hai un account? <a href="regristo.html">Registrati</a>
-            </div>
-        </form>
-    </div>
-    <!--/.wrap-->
-
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

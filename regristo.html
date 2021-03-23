@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
-        <script src="https://kit.fontawesome.com/e5d002ab59.js"></script>
-        <title>EatMI</title>
+
+    <script src="https://kit.fontawesome.com/e5d002ab59.js"></script>
+    <title>EatMI</title>
 </head>
 
 <body>
@@ -66,7 +66,7 @@
 
 
     <div class="casa">
-        <form>
+        <form onsubmit="return salvaRisto()">
             <div class="col-sm-10 offset-sm-4">
                 <h3>Dati utente</h3>
             </div>
@@ -100,7 +100,8 @@
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="restaurant" class="col-sm-4 col-form-label">Nome ristorante </label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" id="restaurant" minlength="1" placeholder="Nome ristorante">
+                    <input type="text" class="form-control" id="restaurant" minlength="1" placeholder="Nome ristorante"
+                        required>
                 </div>
             </div>
             <div class="form-group row" style="margin-top: 20px;">
@@ -114,22 +115,23 @@
                 <label for="address" class="col-sm-4 col-form-label">Indirizzo</label>
                 <div class="col-sm-6">
                     <input type="text" class="form-control" id="indirizzoDaInserire"
-                        placeholder="Via, numero civico, città">
+                        placeholder="Via, numero civico, città" required>
                 </div>
-                <div class="col-sm-2"  style="padding-left: 0 !important  ; ">
-                    <button class="btn btn-primary" type="submit" style="width: 80%; background-color: #007bff;"  onclick="return_place()"><i class="fas fa-arrow-right"></i></button>
-                        placeholder="Indirizzo">
+                <div class="col-sm-2" style="padding-left: 0 !important  ; ">
+                    <button class="btn btn-primary" type="button" style="width: 80%; background-color: #007bff;"
+                        onclick="return_place()"><i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
-            <div id="divDaMostrare"  style="display: none; margin-top: 20px; background-color: #d1e7dd" class="shadow p-3 mb-5 bg-body rounded"> 
-                <p id="luogoRestituito" style="margin-bottom: 0;   margin: auto ;" > </p>
-        </div>
+            <div id="divDaMostrare" style="display: none; margin-top: 20px; background-color: #d1e7dd"
+                class="shadow p-3 mb-5 bg-body rounded">
+                <p id="luogoRestituito" style="margin-bottom: 0;   margin: auto ;"> </p>
+            </div>
 
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="partitaiva" class="col-sm-4 col-form-label">Partita IVA</label>
                 <div class="col-sm-7">
                     <input type="text" pattern="[0-9]{11}" class="form-control" id="partitaiva"
-                        placeholder="Partita IVA">
+                        placeholder="Partita IVA" required>
                 </div>
             </div>
             <div class="col-sm-10 offset-sm-4">
@@ -138,19 +140,19 @@
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="firstname" class="col-sm-4 col-form-label">Nome</label>
                 <div class="col-sm-7">
-                    <input type="text" minlength="3" class="form-control" id="firstname" placeholder="Nome">
+                    <input type="text" minlength="3" class="form-control" id="firstname" placeholder="Nome" required>
                 </div>
             </div>
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="lastname" class="col-sm-4 col-form-label">Cognome</label>
                 <div class="col-sm-7">
-                    <input type="text" minlength="2" class="form-control" id="lastname" placeholder="Cognome">
+                    <input type="text" minlength="2" class="form-control" id="lastname" placeholder="Cognome" required>
                 </div>
             </div>
 
             <div class="form-group row" style="margin-top: 20px;">
                 <div class="col-sm-10 offset-sm-4">
-                    <button type="submit" class="btn btn-primary" onclick="salvaRisto()">Registrati</button>
+                    <button type="submit" class="btn btn-primary">Registrati</button>
                 </div>
             </div>
         </form>
@@ -161,6 +163,7 @@
         var longitude;
         var indirizzo;
         function salvaRisto() {
+           console.log("funzione")
 
             var jsonObject = JSON.parse(localStorage.getItem('ristoranti'));
 
@@ -202,9 +205,18 @@
             if (bool == 0) {
                 jsonObject.push(object);
                 localStorage.setItem('ristoranti', JSON.stringify(jsonObject));
+                alert("prima")
+                window.location.replace("logristo.html");
+                alert("dopo")
+                return false;
+                //  window.location.href = "logristo.html" 
+            
+
+            } else {
+                return false;
+                alert("Mail già esistente!")
             }
 
-            //  window.location.href = "logristo.html"
         }
         var myInput = document.getElementById("password");
 
@@ -289,7 +301,7 @@
             get_url(get_place(luogo), function (status, result) {
                 document.getElementById('divDaMostrare').style.display = 'block';
                 indirizzo = result.features[0].place_name;
-               
+
                 document.getElementById("luogoRestituito").innerHTML = result.features[0].place_name;
                 latitude = result.features[0].center[1];
                 longitude = result.features[0].center[0];

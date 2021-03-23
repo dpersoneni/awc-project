@@ -99,26 +99,27 @@
     <div id="piattiristoratore" style="margin-bottom: 10em;"> </div>
 
     <div class="casa">
-        <form>
             <div class="col-sm-10 offset-sm-4">
                 <h3>Modifica dati</h3>
             </div>
 
-
+            <form  onsubmit=" return modificaPassword()"> 
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="password" class="col-sm-4 col-form-label">Password</label>
                 <div class="col-sm-8">
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <input type="password" class="form-control" id="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="La password deve contenere almeno un numero, almeno una lettera minuscola, almeno una lettera maiuscola e minimo 8 caratteri.">
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-10 offset-sm-9">
-                    <button type="button" onclick="modificaPassword()" class="btn btn-primary"
+                    <button type="submit" class="btn btn-primary"
                         style="margin-bottom: 15px;">Submit</button>
                 </div>
             </div>
+        </form>
 
-
+            <form onsubmit=" return modificaTelefono()">
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="telephone" class="col-sm-4 col-form-label">Telefono</label>
                 <div class="col-sm-8">
@@ -127,14 +128,13 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-10 offset-sm-9">
-                    <button type="button" onclick="modificaTelefono()" class="btn btn-primary"
+                    <button type="submit"  class="btn btn-primary"
                         style="margin-bottom: 15px;">Submit</button>
                 </div>
             </div>
-
-
-
         </form>
+
+
     </div>
     <div class="casa" style="background-color: #ffbfaa">
         <div class="form-group row">
@@ -376,7 +376,9 @@
             }
             localStorage.setItem('ristoranti', "")
             localStorage.setItem('ristoranti', JSON.stringify(jsonRistoranti))
-            window.location.href = "logristo.html";
+         
+            window.location.replace("logristo.html");
+            return false
 
         }
 
@@ -392,7 +394,8 @@
             }
             localStorage.setItem('ristoranti', "")
             localStorage.setItem('ristoranti', JSON.stringify(jsonRistoranti))
-            window.location.href = "logristo.html";
+            window.location.replace("logristo.html");
+            return false
 
         }
 

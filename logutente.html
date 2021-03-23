@@ -13,54 +13,24 @@
 </head>
 
 <body>
-    <script>
-        var jsonObject = JSON.parse(localStorage.getItem('utenti'));
 
-        var carrelloTemp = JSON.parse(sessionStorage.getItem('carrello'));
-
-        function checkLogin() {
-            emailInserita = document.getElementById("email").value;
-            passwordInserita = document.getElementById("password").value;
-
-
-            for (x in jsonObject) {
-                if (jsonObject[x] != null) {
-                    if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita) {
-                        console.log(carrelloTemp);
-                        //  console.log(carrelloTemp.length);
-                        localStorage.setItem('utenteAcquisto', JSON.stringify(jsonObject[x]));
-                        if (carrelloTemp != null) { // se abbiamo qualcosa nel carrello allora ci manda ad acquista.html 
-                            window.location.href = "acquista.html";
-
-                        } else {  // nel caso in cui non aggiungessimo nulla nel carrello, facendo l'accesso andremmo ad utenteprofilo
-
-                            window.location.href = "utenteprofilo.html";
-                        }
-
-                    }
-
-                }
-            }
-        }
-    </script>
     <div class="wrap">
-        <form class="login-form" action="">
+        <form class="login-form" onsubmit=" return checkLogin()">
             <div class="form-header">
                 <h3>Accedi</h3>
             </div>
             <!--Email Input-->
             <div class="form-group">
-                <input id="email" type="email" class="form-input" placeholder="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                <input id="email" type="email" class="form-input" placeholder="email"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
             </div>
             <!--Password Input-->
             <div class="form-group">
-                <input id="password" type="password" class="form-input" placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                        title="La password deve contenere almeno un numero, almeno una lettera minuscola, almeno una lettera maiuscola e minimo 8 caratteri."
-                        required>
+                <input id="password" type="password" class="form-input" placeholder="password" required>
             </div>
             <!--Login Button-->
             <div class="form-group">
-                <button class="form-button" type="submit" onclick="checkLogin()">Login</button>
+                <button class="form-button" type="submit">Login</button>
 
             </div>
             <div class="form-footer">
@@ -71,7 +41,55 @@
     <!--/.wrap-->
 
 
+    <script>
 
+        var jsonObject = JSON.parse(localStorage.getItem('utenti'));
+
+        var carrelloTemp = JSON.parse(sessionStorage.getItem('carrello'));
+        // console.log(carrelloTemp)
+        function redirect() {
+            window.location.replace("ristoprofilo");
+            return false;
+        }
+
+
+        function checkLogin() {
+            console.log("funzione")
+            emailInserita = document.getElementById("email").value;
+            passwordInserita = document.getElementById("password").value;
+
+
+            for (x in jsonObject) {
+
+                if (jsonObject[x] != null) {
+                    if (jsonObject[x].mail == emailInserita && jsonObject[x].password == passwordInserita) {
+                        console.log(carrelloTemp);
+
+                        //  console.log(carrelloTemp.length);
+                        if (carrelloTemp != null) { // se abbiamo qualcosa nel carrello allora ci manda ad acquista.html 
+                           
+                            localStorage.setItem('utenteAcquisto', JSON.stringify(jsonObject[x]));
+
+                       //     window.location.href = "acquista.html";
+                            window.location.replace("acquista.html");
+                            return false;
+
+
+                        } else {
+
+                            //   window.location.href = "utenteprofilo.html";
+                            window.location.replace("utenteprofilo.html");
+                            return false;
+                            //   window.location.assign("utenteprofilo.html")
+                            //  window.location.assign = "utenteprofilo.html";
+                        }
+
+                    }
+
+                }
+            }
+        }
+    </script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

@@ -32,50 +32,67 @@
 
     </div>
     <div class="casa">
-        <form>
+   
             <div class="col-sm-10 offset-sm-4">
                 <h3>Modifica dati</h3>
             </div>
 
-
+            <form  onsubmit=" return modificaPassword()"> 
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="password" class="col-sm-4 col-form-label">Password</label>
                 <div class="col-sm-8">
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <input type="password" class="form-control" id="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="La password deve contenere almeno un numero, almeno una lettera minuscola, almeno una lettera maiuscola e minimo 8 caratteri."
+>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-10 offset-sm-9">
-                    <button type="button" onclick="modificaPassword()" class="btn btn-primary"
+                    <button type="submit" class="btn btn-primary"
                         style="margin-bottom: 15px;">Submit</button>
                 </div>
             </div>
+        </form>
 
 
-            <div class="form-group row" style="margin-top: 20px;">
-                <label for="telephone" class="col-sm-4 col-form-label">Telefono</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" id="telephone" placeholder="Telefono">
+            <form onsubmit=" return modificaTelefono()">
+                <div class="form-group row" style="margin-top: 20px;">
+                    <label for="telephone" class="col-sm-4 col-form-label">Telefono</label>
+                    <div class="col-sm-8">
+                        <input type="tel" class="form-control" id="telephone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}"   placeholder="Telefono">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-10 offset-sm-9">
-                    <button type="button" onclick="modificaTelefono()" class="btn btn-primary"
-                        style="margin-bottom: 15px;">Submit</button>
+                <div class="form-group row">
+                    <div class="col-sm-10 offset-sm-9">
+                        <button type="submit"  class="btn btn-primary"
+                            style="margin-bottom: 15px;">Submit</button>
+                    </div>
                 </div>
-            </div>
+            </form>
+            
+            <form onsubmit="return modificaIndirizzo()" >
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="indirizzo" class="col-sm-4 col-form-label">Indirizzo</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" id="address" placeholder="Indirizzo">
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="indirizzoDaInserire" placeholder="Indirizzo">
+                </div>
+                <div class="col-sm-2"  style="padding-left: 0 !important  ; ">
+                    <button class="btn btn-primary" type="button" style="width: 80%; background-color: #007bff;"  onclick="return_place()"><i class="fas fa-arrow-right"></i></button>
+                        
                 </div>
             </div>
-            <div class="form-group row">
+            <div id="divDaMostrare"  style="display: none; margin-top: 20px; background-color: #d1e7dd" class="shadow p-3 mb-5 bg-body rounded"> 
+                <p id="luogoRestituito" style="margin-bottom: 0;   margin: auto ;" > </p>
+        </div>
+            <div class="form-group row" >
                 <div class="col-sm-10 offset-sm-9">
-                    <button type="button" onclick="modificaIndirizzo()" class="btn btn-primary"
+                    <button type="submit" class="btn btn-primary"
                         style="margin-bottom: 15px;">Submit</button>
                 </div>
             </div>
+            </form>
+
+            <form onsubmit="return modificaMetodo()">
             <div class="form-group1">
                 <p><b>Metodo di pagamento:</b></p>
                 <input type="radio" id="contanti" name="metodo" value="contanti">
@@ -87,10 +104,10 @@
                 <input type="radio" id="paypal" name="metodo" value="paypal">
                 <label for="paypal">Paypal</label> <br>
             </div>
-
+     
             <div class="form-group row">
                 <div class="col-sm-10 offset-sm-9">
-                    <button type="button" onclick="modificaMetodo()" class="btn btn-primary"
+                    <button type="submit"  class="btn btn-primary"
                         style="margin-bottom: 15px;">Submit</button>
                 </div>
             </div>
@@ -127,7 +144,7 @@
 
 
         function modificaIndirizzo() {
-            indirizzo = document.getElementById("address").value;
+            var indirizzo = document.getElementById("luogoRestituito").innerHTML;
             for (x in utenti) {
                 if (utenti[x] != null) {
 
@@ -138,7 +155,9 @@
             }
             localStorage.setItem('utenti', "") // svuota utenti
             localStorage.setItem('utenti', JSON.stringify(utenti));  // setta in utenti il nuovo valore così per tutte le modifiche
-            window.location.href = "logutente.html";
+            window.location.replace("logutente.html");
+            return false
+         
         }
 
         function modificaPassword() {
@@ -153,7 +172,8 @@
             }
             localStorage.setItem('utenti', "")
             localStorage.setItem('utenti', JSON.stringify(utenti))
-            window.location.href = "logutente.html";
+            window.location.replace("logutente.html");
+            return false
 
         }
 
@@ -169,11 +189,13 @@
             }
             localStorage.setItem('utenti', "")
             localStorage.setItem('utenti', JSON.stringify(utenti))
-            window.location.href = "logutente.html";
+            window.location.replace("logutente.html");
+            return false
 
         }
 
         function modificaTelefono() {
+            alert("ciao")
             telefono = document.getElementById("telephone").value;
             console.log(indirizzo);
             for (x in utenti) {
@@ -186,8 +208,10 @@
             }
             localStorage.setItem('utenti', "")
             localStorage.setItem('utenti', JSON.stringify(utenti))
-            window.location.href = "logutente.html";
-
+            // window.location.href = "logutente.html";
+            window.location.replace("logutente.html");
+            return false
+            
         }
 
         function eliminaProfilo() {
@@ -202,8 +226,43 @@
             }
             localStorage.setItem('utenti', "")
             localStorage.setItem('utenti', JSON.stringify(utenti))
-            window.location.href = "regutente.html";
+            window.location.replace("regutente.html");
+            return false
 
+        }
+        
+        function get_url(url, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.responseType = 'json';
+            xhr.onload = function () {
+                var status = xhr.status;
+                callback(status, xhr.response);
+            }
+            xhr.send();
+        };
+
+
+
+        function get_place(query) {
+            return "https://api.mapbox.com/geocoding/v5/mapbox.places/" + query + ".json?limit=1&access_token=pk.eyJ1IjoiZHBlcnNvbmVuaSIsImEiOiJja2hha3dhb2owanQ0MzFwam44MWx3M2p1In0.j2kboFTenc7rda5RURJJWQ"
+        }
+
+        function return_place() {
+            window.alert("Se l'indirizzo è sbagliato, aggiungi altre informazioni")
+            var luogo = document.getElementById("indirizzoDaInserire").value;
+            // var luogo = " via giovanni celoria 18 milano";
+
+            get_url(get_place(luogo), function (status, result) {
+                alert(result.features[0].place_name)
+                document.getElementById('divDaMostrare').style.display = 'block';
+                
+               
+                document.getElementById("luogoRestituito").innerHTML = result.features[0].place_name;
+
+               
+           
+            })
         }
 
     </script>

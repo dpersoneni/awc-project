@@ -72,6 +72,7 @@ input:valid+span:after {
     var longitudineUtente;
     var latitudineRisto;
     var longitudineRisto;
+    var controlloScelta; // 0 è a ritiro, 1 è consegna
 
     var count1 = JSON.parse(localStorage.getItem('contatore'));
     localStorage.setItem('contatore', JSON.stringify(count1));
@@ -165,12 +166,17 @@ input:valid+span:after {
       var decisione = document.getElementById("modalita").value
       if (decisione == "ritiro") {
         document.getElementById("orario").innerHTML = "";
+        controlloScelta = 0;
         orarioRitiro();
       } else {
         document.getElementById("orario").innerHTML = "";
+        controlloScelta = 1;
         return_place();
       }
     }
+
+       var oraGlobale;
+    var minutiGlobali;
 
     function orarioRitiro() {
       var count = JSON.parse(localStorage.getItem(mailRistoratore + 'contatore'));
@@ -184,6 +190,14 @@ input:valid+span:after {
       if (minuti > 59) {
         ore +=  Math.floor(minuti / 60)
         minuti = minuti % 60;
+      }
+      oraGlobale = ore
+      minutiGlobali = minuti
+      if (minuti < 10) {
+        minuti = "0" + minuti
+      }
+      if (ore < 10) {
+        ore = "0" + ore
       }
       /*
       if (minutiDaAggiungere > 59) {
@@ -251,11 +265,42 @@ input:valid+span:after {
     }
 
     function concludiAquisto() {
-      aggiungiPiattiPassati();
-      var count = JSON.parse(localStorage.getItem(mailRistoratore + 'contatore'));
-      count++;
-      localStorage.setItem(mailRistoratore + 'contatore', JSON.stringify(count));
-      window.location.href = "successo.html";
+     
+
+      if (controlloScelta = 0) {
+         
+       var str = document.getElementById("ora").value;
+       var oraprova = str.slice(0, 2);
+       var minutiprova = str.slice(3)
+        if (oraprova < oraGlobale || oraprova > 22) {
+        window.alert("Scegli un orario in cui sia possibile ritirare l'ordine!")
+      } else if (oraprova > oraGlobale) {
+        aggiungiPiattiPassati();
+          var count = JSON.parse(localStorage.getItem(mailRistoratore + 'contatore'));
+          count++;
+          localStorage.setItem(mailRistoratore + 'contatore', JSON.stringify(count));
+          window.location.href = "successo.html";
+      }
+      if (oraprova == oraGlobale) {
+        if (minutiprova < minutiGlobali) {
+          window.alert("Scegli un orario in cui sia possibile ritirare l'ordine!")
+        } else {
+          aggiungiPiattiPassati();
+          var count = JSON.parse(localStorage.getItem(mailRistoratore + 'contatore'));
+          count++;
+          localStorage.setItem(mailRistoratore + 'contatore', JSON.stringify(count));
+          window.location.href = "successo.html";
+        } 
+      } 
+      } else if (controlloScelta = 1) {
+        aggiungiPiattiPassati();
+          var count = JSON.parse(localStorage.getItem(mailRistoratore + 'contatore'));
+          count++;
+          localStorage.setItem(mailRistoratore + 'contatore', JSON.stringify(count));
+          window.location.href = "successo.html";
+      }
+
+     
 
     }
 
