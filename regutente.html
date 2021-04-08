@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <script src="https://kit.fontawesome.com/e5d002ab59.js"></script>
+    <script src="https://kit.fontawesome.com/e5d002ab59.js"></script>
     <title>EatMI</title>
 </head>
 
@@ -120,27 +120,30 @@
             <div class="form-group row" style="margin-top: 20px;">
                 <label for="indirizzo" class="col-sm-4 col-form-label">Indirizzo</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="indirizzoDaInserire" placeholder="Via, numero civico, città">
+                    <input type="text" class="form-control" id="indirizzoDaInserire"
+                        placeholder="Via, numero civico, città">
                 </div>
                 <div class="col-sm-2" style="padding-left: 0 !important  ; ">
-                    <button class="btn btn-primary" style="width: 80%; background-color: #007bff;"  onclick="return_place()"><i class="fas fa-arrow-right"></i></button>
+                    <button class="btn btn-primary" style="width: 80%; background-color: #007bff;"
+                        onclick="return_place()"><i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
-            
-            <div id="divDaMostrare"  style="display: none; margin-top: 20px; background-color: #d1e7dd" class="shadow p-3 mb-5 bg-body rounded"> 
-                <p id="luogoRestituito" style="margin-bottom: 0;   margin: auto ;" > </p>
-        </div>
+
+            <div id="divDaMostrare" style="display: none; margin-top: 20px; background-color: #d1e7dd"
+                class="shadow p-3 mb-5 bg-body rounded">
+                <p id="luogoRestituito" style="margin-bottom: 0;   margin: auto ;"> </p>
+            </div>
 
 
             <div class="form-group1">
                 <p><b>Metodo di pagamento:</b></p>
-                <input type="radio" id="contanti" name="metodo" value="contanti" required>
+                <input type="radio" name="metodo" id="contanti" value="contanti" >
                 <label for="contanti">Contanti</label> <br>
-                <input type="radio" id="buonipasto" name="metodo" value="buonipasto">
+                <input type="radio"  name="metodo" id="buonipasto" value="buonipasto">
                 <label for="buonipasto">Buoni pasto</label> <br>
-                <input type="radio" id="bancomat" name="metodo" value="bancomat">
+                <input type="radio"  name="metodo" id="bancomat" value="bancomat">
                 <label for="bancomat">Bancomat</label> <br>
-                <input type="radio" id="paypal" name="metodo" value="paypal">
+                <input type="radio"  name="metodo" id="paypal" value="paypal">
                 <label for="paypal">Paypal</label> <br>
             </div>
 
@@ -157,8 +160,7 @@
 
             <div class="form-group row">
                 <div class="col-sm-10 offset-sm-9">
-                    <button type="submit" class="btn btn-primary"
-                        style="margin-bottom: 15px;">Submit</button>
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 15px;">Submit</button>
                 </div>
             </div>
         </form>
@@ -178,7 +180,19 @@
             var secondname = document.getElementById("secondname").value;
             var telephone = document.getElementById("telephone").value;
             var address = indirizzo;
-            var modalitapagamento = document.getElementsByName("metodo").value;
+            if (document.getElementById('contanti').checked) {
+              modalitapagamento = document.getElementById('contanti').value;
+            }
+            if (document.getElementById('buonipasto').checked) {
+                modalitapagamento = document.getElementById('buonipasto').value;
+            }
+            if (document.getElementById('bancomat').checked) {
+                modalitapagamento = document.getElementById('bancomat').value;
+            }
+            if (document.getElementById('paypal').checked) {
+                modalitapagamento = document.getElementById('paypal').value;
+            }
+         
 
             var utente = [];
             if ("utente" in localStorage) {
@@ -196,6 +210,7 @@
                 "longitude": longitude
             }
 
+            console.log(object)
             var bool = 0;
 
             for (x in jsonObject) {
@@ -203,18 +218,19 @@
                     bool = 1
                 }
             }
-
+            console.log(bool)
             if (bool == 0) {
                 jsonObject.push(object);
                 localStorage.setItem('utenti', JSON.stringify(jsonObject));
                 window.location.replace("logutente.html");
-             
+
                 return false;
 
             } else {
-                return false;
                 alert("Mail già esistente!")
+                return false
             }
+               
         }
 
         var myInput = document.getElementById("password");
