@@ -18,24 +18,24 @@
 <body onload="prendiPiattiPassati()">
   <style>
     input[type="number"] {
-  width: 100px;
-}
+      width: 100px;
+    }
 
-input + span {
-  padding-right: 30px;
-}
+    input+span {
+      padding-right: 30px;
+    }
 
-input:invalid+span:after {
-  position: absolute;
-  content: '✖';
-  padding-left: 5px;
-}
+    input:invalid+span:after {
+      position: absolute;
+      content: '✖';
+      padding-left: 5px;
+    }
 
-input:valid+span:after {
-  position: absolute;
-  content: '✓';
-  padding-left: 5px;
-}
+    input:valid+span:after {
+      position: absolute;
+      content: '✓';
+      padding-left: 5px;
+    }
   </style>
 
   <nav class="navbar navbar-expand-lg navbar-light">
@@ -56,7 +56,7 @@ input:valid+span:after {
         <input type="submit" value="Seleziona" onclick="decidiRitiro()">
       </select></div>
 
-    <div id="concludiAcquisto"><small class="btn btn-secondary"  onclick="concludiAquisto()" role="button"
+    <div id="concludiAcquisto"><small class="btn btn-secondary" onclick="concludiAquisto()" role="button"
         style="float: right;">Concludi acquisto</small></div>
     <div><small class="btn btn-secondary" onclick="location.href='plates.html'" role="button"
         style="float: right; margin-right: 5px;">Torna ai piatti</small></div>
@@ -92,7 +92,7 @@ input:valid+span:after {
 
     var utenteObj = JSON.parse(localStorage.getItem('utenteAcquisto'));
     var carrelloObj = JSON.parse(sessionStorage.getItem('carrello'));
-    var mailRistoratore =localStorage.getItem('mailristoratore');
+    var mailRistoratore = localStorage.getItem('mailristoratore');
     var ristorantiObj = JSON.parse(localStorage.getItem('ristoranti'));
 
     latitudineUtente = utenteObj.latitude;
@@ -100,17 +100,17 @@ input:valid+span:after {
 
 
     for (x in ristorantiObj) {
-      
-       if (mailRistoratore == ristorantiObj[x].mail ) {
-         lat = ristorantiObj[x].latitude
-         lon = ristorantiObj[x].longitude
-         
+
+      if (mailRistoratore == ristorantiObj[x].mail) {
+        lat = ristorantiObj[x].latitude
+        lon = ristorantiObj[x].longitude
+
         latitudineRisto = lat;
         longitudineRisto = lon;
       }
     }
 
-    
+
     txt1 = "<h3>Carrello</h3>";
     txt = "<table id='tabellabella'><tr><th>Prodotto</th><th>Quantità</th><th>Prezzo</th><th>Modalità di pagamento</th></tr> ";
     console.log(carrelloObj); // nella console abbiamo i piatti scelti dall'utente
@@ -175,20 +175,20 @@ input:valid+span:after {
       }
     }
 
-       var oraGlobale;
+    var oraGlobale;
     var minutiGlobali;
 
     function orarioRitiro() {
       var count = JSON.parse(localStorage.getItem(mailRistoratore + 'contatore'));
-      var currentDate = new Date(); 
+      var currentDate = new Date();
 
-     var ore =  currentDate.getHours();
-     var minuti =  currentDate.getMinutes();
+      var ore = currentDate.getHours();
+      var minuti = currentDate.getMinutes();
 
       var minutiDaAggiungere = count * 5;
       minuti += minutiDaAggiungere;
       if (minuti > 59) {
-        ore +=  Math.floor(minuti / 60)
+        ore += Math.floor(minuti / 60)
         minuti = minuti % 60;
       }
       oraGlobale = ore
@@ -213,8 +213,8 @@ input:valid+span:after {
       console.log(ore)
       console.log(minuti)
 
-      txt2 = "Scegli quando ritirare il tuo ordine, l'orario minimo è alle " + ore + ":" + minuti + ". <br>" ;
-      txt2 += '<form><input type="time" id="appt" name="appt" value="' + ore +':'+ minuti + '"   min="' + ore +':'+ minuti + '" max="23:00" required>'
+      txt2 = "Scegli quando ritirare il tuo ordine, l'orario minimo è alle " + ore + ":" + minuti + ". <br>";
+      txt2 += '<form><input type="time" id="appt" name="appt" value="' + ore + ':' + minuti + '"   min="' + ore + ':' + minuti + '" max="23:00" required>'
       txt2 += "<span class='validity'></span></form>"
       /*
   var arrayLength = array.length;
@@ -259,91 +259,91 @@ input:valid+span:after {
 
         button.parentNode.removeChild(button);
 
-        
+
 
       }
     }
 
     function concludiAquisto() {
-     
 
-      if (controlloScelta = 0) {
-         
-       var str = document.getElementById("ora").value;
-       var oraprova = str.slice(0, 2);
-       var minutiprova = str.slice(3)
+      if (controlloScelta == 0) {
+
+        var str = document.getElementById("appt").value;
+        var oraprova = str.slice(0, 2);
+        var minutiprova = str.slice(3)
+        
         if (oraprova < oraGlobale || oraprova > 22) {
-        window.alert("Scegli un orario in cui sia possibile ritirare l'ordine!")
-      } else if (oraprova > oraGlobale) {
-        aggiungiPiattiPassati();
-          var count = JSON.parse(localStorage.getItem(mailRistoratore + 'contatore'));
-          count++;
-          localStorage.setItem(mailRistoratore + 'contatore', JSON.stringify(count));
-          window.location.href = "successo.html";
-      }
-      if (oraprova == oraGlobale) {
-        if (minutiprova < minutiGlobali) {
           window.alert("Scegli un orario in cui sia possibile ritirare l'ordine!")
-        } else {
+        } else if (oraprova > oraGlobale) {
           aggiungiPiattiPassati();
           var count = JSON.parse(localStorage.getItem(mailRistoratore + 'contatore'));
           count++;
           localStorage.setItem(mailRistoratore + 'contatore', JSON.stringify(count));
           window.location.href = "successo.html";
-        } 
-      } 
-      } else if (controlloScelta = 1) {
+        }
+        if (oraprova == oraGlobale) {
+          if (minutiprova < minutiGlobali) {
+            window.alert("Scegli un orario in cui sia possibile ritirare l'ordine!")
+          } else {
+            aggiungiPiattiPassati();
+            var count = JSON.parse(localStorage.getItem(mailRistoratore + 'contatore'));
+            count++;
+            localStorage.setItem(mailRistoratore + 'contatore', JSON.stringify(count));
+            window.location.href = "successo.html";
+          }
+        }
+      } else if (controlloScelta == 1) {
         aggiungiPiattiPassati();
-          var count = JSON.parse(localStorage.getItem(mailRistoratore + 'contatore'));
-          count++;
-          localStorage.setItem(mailRistoratore + 'contatore', JSON.stringify(count));
-          window.location.href = "successo.html";
+        var count = JSON.parse(localStorage.getItem(mailRistoratore + 'contatore'));
+        count++;
+        localStorage.setItem(mailRistoratore + 'contatore', JSON.stringify(count));
+        window.location.href = "successo.html";
       }
 
-     
+
 
     }
 
     function get_url(url, callback) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.responseType = 'json';
-            xhr.onload = function () {
-                var status = xhr.status;
-                callback(status, xhr.response);
-            }
-            xhr.send();
-        };
-
-
-
-        function get_place(latitudeU, longitudineU, latitudineR, longitudineR) {
-            //return "https://api.mapbox.com/geocoding/v5/mapbox.places/" + query + ".json?limit=1&access_token=pk.eyJ1IjoiZHBlcnNvbmVuaSIsImEiOiJja2hha3dhb2owanQ0MzFwam44MWx3M2p1In0.j2kboFTenc7rda5RURJJWQ"
-          return "https://api.mapbox.com/directions-matrix/v1/mapbox/driving-traffic/" + longitudineR + ","+ latitudineR + ";" + longitudineU + "," + latitudeU + "?sources=1&destinations=0&annotations=distance,duration&access_token=pk.eyJ1IjoiZHBlcnNvbmVuaSIsImEiOiJja2hha3dhb2owanQ0MzFwam44MWx3M2p1In0.j2kboFTenc7rda5RURJJWQ"
-          }
-
-        function return_place() {
-            // var luogo = " via giovanni celoria 18 milano";
-
-            get_url(get_place(latitudineUtente, longitudineUtente, latitudineRisto, longitudineRisto), function (status, result) {
-                console.log(result.distances[0][0]);
-                distance = (result.distances[0][0] / 1000).toFixed();
-                
-                if (distance <= 50) {
-        txt = "<p> Il costo della consegna è di: " + distance + " € </p>";
-        document.getElementById("orario").innerHTML = txt;
-      } else {
-        txt = "<p> Non è possibile effettuare consegne che superano i 50 km :( </p>";
-        document.getElementById("orario").innerHTML = txt;
-        button = document.getElementById("concludiAcquisto");
-
-        button.parentNode.removeChild(button);
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.responseType = 'json';
+      xhr.onload = function () {
+        var status = xhr.status;
+        callback(status, xhr.response);
       }
-      
-            })
+      xhr.send();
+    };
+
+
+
+    function get_place(latitudeU, longitudineU, latitudineR, longitudineR) {
+      //return "https://api.mapbox.com/geocoding/v5/mapbox.places/" + query + ".json?limit=1&access_token=pk.eyJ1IjoiZHBlcnNvbmVuaSIsImEiOiJja2hha3dhb2owanQ0MzFwam44MWx3M2p1In0.j2kboFTenc7rda5RURJJWQ"
+      return "https://api.mapbox.com/directions-matrix/v1/mapbox/driving-traffic/" + longitudineR + "," + latitudineR + ";" + longitudineU + "," + latitudeU + "?sources=1&destinations=0&annotations=distance,duration&access_token=pk.eyJ1IjoiZHBlcnNvbmVuaSIsImEiOiJja2hha3dhb2owanQ0MzFwam44MWx3M2p1In0.j2kboFTenc7rda5RURJJWQ"
+    }
+
+    function return_place() {
+      // var luogo = " via giovanni celoria 18 milano";
+
+      get_url(get_place(latitudineUtente, longitudineUtente, latitudineRisto, longitudineRisto), function (status, result) {
+        console.log(result.distances[0][0]);
+        distance = (result.distances[0][0] / 1000).toFixed();
+
+        if (distance <= 50) {
+          txt = "<p> Il costo della consegna è di: " + distance + " € </p>";
+          document.getElementById("orario").innerHTML = txt;
+        } else {
+          txt = "<p> Non è possibile effettuare consegne che superano i 50 km :( </p>";
+          document.getElementById("orario").innerHTML = txt;
+          button = document.getElementById("concludiAcquisto");
+
+          button.parentNode.removeChild(button);
         }
 
-    
+      })
+    }
+
+
 
 
   </script>
